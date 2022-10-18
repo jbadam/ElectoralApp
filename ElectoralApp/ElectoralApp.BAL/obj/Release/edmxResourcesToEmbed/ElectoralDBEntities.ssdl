@@ -1,0 +1,888 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="electoraldbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tblAssemblyConstituency">
+    <Key>
+      <PropertyRef Name="ACNo" />
+    </Key>
+    <Property Name="ACNo" Type="int" Nullable="false" />
+    <Property Name="DistrictId" Type="int" Nullable="false" />
+    <Property Name="PCNo" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NameTE" Type="nvarchar" MaxLength="128" />
+    <Property Name="ReservedFor" Type="int" />
+  </EntityType>
+  <EntityType Name="tblCaste">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblCommunity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CommunityTypeId" Type="int" Nullable="false" />
+    <Property Name="ACNo" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="DoorNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Locality" Type="nvarchar" MaxLength="50" />
+    <Property Name="Landmark" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PinCode" Type="char" MaxLength="6" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblCommunityCordinator">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CommunityId" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="MobileNo1" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="MobileNo2" Type="nvarchar" MaxLength="20" />
+    <Property Name="WhatsAppNo" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblCommunityType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblDistrict">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StateId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblElectoralRoll">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RevisionYear" Type="int" Nullable="false" />
+    <Property Name="QualifyingDate" Type="date" />
+    <Property Name="PublishDate" Type="date" Nullable="false" />
+    <Property Name="RevisionType" Type="nvarchar" MaxLength="128" />
+    <Property Name="RollSummary" Type="nvarchar" MaxLength="512" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblParliamentConstituency">
+    <Key>
+      <PropertyRef Name="PCNo" />
+    </Key>
+    <Property Name="PCNo" Type="int" Nullable="false" />
+    <Property Name="StateId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReservedFor" Type="int" />
+  </EntityType>
+  <EntityType Name="tblPoliticalParty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ShortName" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="tblPollingStation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ACNo" Type="int" Nullable="false" />
+    <Property Name="StationNo" Type="int" Nullable="false" />
+    <Property Name="StationName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="StationNameTE" Type="nvarchar" MaxLength="512" Nullable="false" />
+    <Property Name="StationAddress" Type="nvarchar" MaxLength="512" Nullable="false" />
+    <Property Name="StationAddressTE" Type="nvarchar" MaxLength="512" Nullable="false" />
+    <Property Name="MainTown" Type="nvarchar" MaxLength="50" />
+    <Property Name="PoliceStation" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mandal" Type="nvarchar" MaxLength="50" />
+    <Property Name="RevenueDivision" Type="nvarchar" MaxLength="50" />
+    <Property Name="District" Type="nvarchar" MaxLength="50" />
+    <Property Name="PinCode" Type="char" MaxLength="6" />
+    <Property Name="StartSerialNo" Type="int" />
+    <Property Name="EndSerialNo" Type="int" />
+    <Property Name="TotalElectors" Type="int" />
+    <Property Name="TotalMale" Type="int" />
+    <Property Name="TotalFemale" Type="int" />
+    <Property Name="TotalOthers" Type="int" />
+  </EntityType>
+  <EntityType Name="tblPollingStationSection">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PollingStationId" Type="bigint" Nullable="false" />
+    <Property Name="SectionNo" Type="int" Nullable="false" />
+    <Property Name="SectionName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="SectionNameTE" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tblPrivilege">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="PageId" Type="nvarchar" MaxLength="50" />
+    <Property Name="PageName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ElementId" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblRequestAttributes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RequestTypeId" Type="int" Nullable="false" />
+    <Property Name="AttrName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblRequestType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FormUsed" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="tblRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblRolePrivilege">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleId" Type="int" />
+    <Property Name="PrivilegeId" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblSetting">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="AgeLimit" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AgeLimit" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblState">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ShortCode" Type="nvarchar" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="tblSubCaste">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CasteId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="AltMobileNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="LoginPwd" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="512" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" />
+    <Property Name="PinCode" Type="char" MaxLength="6" />
+    <Property Name="ParentUserId" Type="bigint" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifledBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="Relation" Type="nvarchar" MaxLength="50" />
+    <Property Name="RelationFirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="RelationLastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Age" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="EPICId" Type="nvarchar" MaxLength="50" />
+    <Property Name="CommunityName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PollingBoothId" Type="int" />
+    <Property Name="AssemblyConstituencyId" Type="int" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblUserRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="RoleId" Type="int" />
+  </EntityType>
+  <EntityType Name="tblUserVisit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="VoterId" Type="bigint" Nullable="false" />
+    <Property Name="VisitStart" Type="datetime" Nullable="false" />
+    <Property Name="VisitEnd" Type="datetime" Nullable="false" />
+    <Property Name="GeoTag" Type="nvarchar" MaxLength="100" />
+    <Property Name="AvailabilityStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsVerified" Type="bit" Nullable="false" />
+    <Property Name="TotalHeadCount" Type="int" />
+    <Property Name="TotalRequests" Type="int" />
+  </EntityType>
+  <EntityType Name="tblVoter">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ERId" Type="int" Nullable="false" />
+    <Property Name="ACNo" Type="int" Nullable="false" />
+    <Property Name="WardNo" Type="nvarchar" MaxLength="5" />
+    <Property Name="WardSNo" Type="int" />
+    <Property Name="PartNo" Type="int" Nullable="false" />
+    <Property Name="SerialNo" Type="int" Nullable="false" />
+    <Property Name="PSSId" Type="int" />
+    <Property Name="EPICNo" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="OldEPICNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirstNameTE" Type="nvarchar" MaxLength="128" />
+    <Property Name="LastNameTE" Type="nvarchar" MaxLength="128" />
+    <Property Name="Relation" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="RelationFirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="RelationLastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="RelationFirstNameTE" Type="nvarchar" MaxLength="128" />
+    <Property Name="RelationLastNameTE" Type="nvarchar" MaxLength="128" />
+    <Property Name="RelationEPICNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="DateOfBirth" Type="date" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+    <Property Name="Address" Type="nvarchar" MaxLength="512" />
+    <Property Name="AddressTE" Type="nvarchar" MaxLength="512" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tblVoter_Stage_old">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ERId" Type="int" Nullable="false" />
+    <Property Name="ACNo" Type="int" Nullable="false" />
+    <Property Name="WardNo" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="WardSNo" Type="int" Nullable="false" />
+    <Property Name="PartNo" Type="int" Nullable="false" />
+    <Property Name="SerialNo" Type="int" Nullable="false" />
+    <Property Name="PSSId" Type="int" Nullable="false" />
+    <Property Name="EPICNo" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="OldEPICNo" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirstNameTE" Type="nvarchar" MaxLength="128" />
+    <Property Name="LastNameTE" Type="nvarchar" MaxLength="128" />
+    <Property Name="Relation" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="RelationFirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RelationLastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="RelationFirstNameTE" Type="nvarchar" MaxLength="128" />
+    <Property Name="RelationLastNameTE" Type="nvarchar" MaxLength="128" />
+    <Property Name="RelationEPICNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="DateOfBirth" Type="date" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="512" />
+    <Property Name="AddressTE" Type="nvarchar" MaxLength="512" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="MetaVFName" Type="varchar" MaxLength="128" StoreGeneratedPattern="Computed" />
+    <Property Name="MetaVLName" Type="varchar" MaxLength="128" StoreGeneratedPattern="Computed" />
+    <Property Name="MetaRLFName" Type="varchar" MaxLength="128" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="tblVoterDemo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ERId" Type="int" Nullable="false" />
+    <Property Name="ACNo" Type="int" Nullable="false" />
+    <Property Name="EPICNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="SerialNo" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Relation" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="RelationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RelationEPICNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="DateOfBirth" Type="date" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="512" />
+    <Property Name="PartNo" Type="int" Nullable="false" />
+    <Property Name="PSSId" Type="int" />
+    <Property Name="WardNo" Type="nvarchar" MaxLength="5" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="DoubleMetaphone" Type="varchar" MaxLength="128" StoreGeneratedPattern="Computed" />
+    <Property Name="DoubleMetaphone1" Type="varchar" MaxLength="128" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="tblVoterExt">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VoterId" Type="bigint" Nullable="false" />
+    <Property Name="CommunityId" Type="bigint" />
+    <Property Name="OldCommunityId" Type="bigint" />
+    <Property Name="IsAccurate" Type="bit" Nullable="false" />
+    <Property Name="IsHead" Type="bit" />
+    <Property Name="HeadMobileNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="AltMobileNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="WhatsAppNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="SubCasteId" Type="int" />
+    <Property Name="PoliticalPartyId" Type="int" />
+    <Property Name="IsNRIVote" Type="bit" />
+    <Property Name="GeoTagInfo" Type="nvarchar" MaxLength="100" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="512" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="128" />
+    <Property Name="VerifyStatus" Type="int" Nullable="false" />
+    <Property Name="VerifyAuthorizeStatus" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblVoterRequest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserVisitId" Type="bigint" Nullable="false" />
+    <Property Name="RequestTypeId" Type="int" Nullable="false" />
+    <Property Name="RequestStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="bigint" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblVoterRequestExt">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VoterRequestId" Type="bigint" Nullable="false" />
+    <Property Name="ReqAttrId" Type="int" Nullable="false" />
+    <Property Name="ReqAttrValue" Type="nvarchar" MaxLength="128" />
+    <Property Name="PreviousValue" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <Association Name="FK_ParlimentConstituency_tblState">
+    <End Role="tblState" Type="Self.tblState" Multiplicity="1" />
+    <End Role="tblParliamentConstituency" Type="Self.tblParliamentConstituency" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblState">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblParliamentConstituency">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblAssemblyConstituency_ParliamentConstituency">
+    <End Role="tblParliamentConstituency" Type="Self.tblParliamentConstituency" Multiplicity="1" />
+    <End Role="tblAssemblyConstituency" Type="Self.tblAssemblyConstituency" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblParliamentConstituency">
+        <PropertyRef Name="PCNo" />
+      </Principal>
+      <Dependent Role="tblAssemblyConstituency">
+        <PropertyRef Name="PCNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblAssemblyConstituency_tblDistrict">
+    <End Role="tblDistrict" Type="Self.tblDistrict" Multiplicity="1" />
+    <End Role="tblAssemblyConstituency" Type="Self.tblAssemblyConstituency" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDistrict">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblAssemblyConstituency">
+        <PropertyRef Name="DistrictId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblCommunity_tblAssemblyConstituency">
+    <End Role="tblAssemblyConstituency" Type="Self.tblAssemblyConstituency" Multiplicity="1" />
+    <End Role="tblCommunity" Type="Self.tblCommunity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAssemblyConstituency">
+        <PropertyRef Name="ACNo" />
+      </Principal>
+      <Dependent Role="tblCommunity">
+        <PropertyRef Name="ACNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblCommunity_tblCommunityType">
+    <End Role="tblCommunityType" Type="Self.tblCommunityType" Multiplicity="1" />
+    <End Role="tblCommunity" Type="Self.tblCommunity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCommunityType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblCommunity">
+        <PropertyRef Name="CommunityTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblCommunityCordinator_tblCommunity">
+    <End Role="tblCommunity" Type="Self.tblCommunity" Multiplicity="1" />
+    <End Role="tblCommunityCordinator" Type="Self.tblCommunityCordinator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCommunity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblCommunityCordinator">
+        <PropertyRef Name="CommunityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblDistrict_tblState">
+    <End Role="tblState" Type="Self.tblState" Multiplicity="1" />
+    <End Role="tblDistrict" Type="Self.tblDistrict" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblState">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblDistrict">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPollingStation_tblAssemblyConstituency">
+    <End Role="tblAssemblyConstituency" Type="Self.tblAssemblyConstituency" Multiplicity="1" />
+    <End Role="tblPollingStation" Type="Self.tblPollingStation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAssemblyConstituency">
+        <PropertyRef Name="ACNo" />
+      </Principal>
+      <Dependent Role="tblPollingStation">
+        <PropertyRef Name="ACNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblRequestAttributes_tblRequestType">
+    <End Role="tblRequestType" Type="Self.tblRequestType" Multiplicity="1" />
+    <End Role="tblRequestAttributes" Type="Self.tblRequestAttributes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRequestType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblRequestAttributes">
+        <PropertyRef Name="RequestTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblRolePrivilege_tblPrivilege">
+    <End Role="tblPrivilege" Type="Self.tblPrivilege" Multiplicity="0..1" />
+    <End Role="tblRolePrivilege" Type="Self.tblRolePrivilege" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPrivilege">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblRolePrivilege">
+        <PropertyRef Name="PrivilegeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblRolePrivilege_tblRole">
+    <End Role="tblRole" Type="Self.tblRole" Multiplicity="0..1" />
+    <End Role="tblRolePrivilege" Type="Self.tblRolePrivilege" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblRolePrivilege">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSubCaste_tblCaste">
+    <End Role="tblCaste" Type="Self.tblCaste" Multiplicity="1" />
+    <End Role="tblSubCaste" Type="Self.tblSubCaste" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCaste">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblSubCaste">
+        <PropertyRef Name="CasteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserRole_tblRole">
+    <End Role="tblRole" Type="Self.tblRole" Multiplicity="0..1" />
+    <End Role="tblUserRole" Type="Self.tblUserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblUserRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserRole_tblUser">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+    <End Role="tblUserRole" Type="Self.tblUserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblUserRole">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserVisit_tblUser">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+    <End Role="tblUserVisit" Type="Self.tblUserVisit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblUserVisit">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblVoter_tblAssemblyConstituency">
+    <End Role="tblAssemblyConstituency" Type="Self.tblAssemblyConstituency" Multiplicity="1" />
+    <End Role="tblVoter" Type="Self.tblVoter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAssemblyConstituency">
+        <PropertyRef Name="ACNo" />
+      </Principal>
+      <Dependent Role="tblVoter">
+        <PropertyRef Name="ACNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblVoter_tblElectoralRoll">
+    <End Role="tblElectoralRoll" Type="Self.tblElectoralRoll" Multiplicity="1" />
+    <End Role="tblVoter" Type="Self.tblVoter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblElectoralRoll">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblVoter">
+        <PropertyRef Name="ERId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblVoterExt_tblCommunity">
+    <End Role="tblCommunity" Type="Self.tblCommunity" Multiplicity="0..1" />
+    <End Role="tblVoterExt" Type="Self.tblVoterExt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCommunity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblVoterExt">
+        <PropertyRef Name="OldCommunityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblVoterExt_tblVoter">
+    <End Role="tblCommunity" Type="Self.tblCommunity" Multiplicity="0..1" />
+    <End Role="tblVoterExt" Type="Self.tblVoterExt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCommunity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblVoterExt">
+        <PropertyRef Name="CommunityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblVoterExt_tblVoter1">
+    <End Role="tblVoter" Type="Self.tblVoter" Multiplicity="1" />
+    <End Role="tblVoterExt" Type="Self.tblVoterExt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblVoter">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblVoterExt">
+        <PropertyRef Name="VoterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblVoterRequest_tblRequestType">
+    <End Role="tblRequestType" Type="Self.tblRequestType" Multiplicity="1" />
+    <End Role="tblVoterRequest" Type="Self.tblVoterRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRequestType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblVoterRequest">
+        <PropertyRef Name="RequestTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblVoterRequest_tblUserVisit">
+    <End Role="tblUserVisit" Type="Self.tblUserVisit" Multiplicity="1" />
+    <End Role="tblVoterRequest" Type="Self.tblVoterRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUserVisit">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblVoterRequest">
+        <PropertyRef Name="UserVisitId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblVoterRequestExt_tblRequestAttributes">
+    <End Role="tblRequestAttributes" Type="Self.tblRequestAttributes" Multiplicity="1" />
+    <End Role="tblVoterRequestExt" Type="Self.tblVoterRequestExt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRequestAttributes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblVoterRequestExt">
+        <PropertyRef Name="ReqAttrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblVoterRequestExt_tblVoterRequest">
+    <End Role="tblVoterRequest" Type="Self.tblVoterRequest" Multiplicity="1" />
+    <End Role="tblVoterRequestExt" Type="Self.tblVoterRequestExt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblVoterRequest">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblVoterRequestExt">
+        <PropertyRef Name="VoterRequestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="dbl_metaphone" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="String" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspGetConditionalDuplicateVoters" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspGetDuplicateVoters" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspGetExactFirstNameSimilarLastName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspGetExactLastNameSimilarFirstName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspGetVoters" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VoterFirstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterLastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="RLName" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterEPICNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterOldEPICNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterMobile" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterAge" Type="int" Mode="In" />
+    <Parameter Name="VoterRLFName" Type="nvarchar" Mode="In" />
+    <Parameter Name="UseSoundex" Type="bit" Mode="In" />
+    <Parameter Name="AgeMargin" Type="int" Mode="In" />
+    <Parameter Name="VLERId" Type="int" Mode="In" />
+    <Parameter Name="VLACNo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="uspGetVotersNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VoterFirstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterLastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="RLName" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterEPICNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterOldEPICNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterMobile" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterAge" Type="int" Mode="In" />
+    <Parameter Name="VoterRLFName" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterCity" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterCommunity" Type="nvarchar" Mode="In" />
+    <Parameter Name="UseSoundex" Type="bit" Mode="In" />
+    <Parameter Name="AgeMargin" Type="int" Mode="In" />
+    <Parameter Name="VLERId" Type="int" Mode="In" />
+    <Parameter Name="VLACNo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Test_Vote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="electoraladmin" />
+  <Function Name="uspFindVoters" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="electoraladmin">
+    <Parameter Name="FName" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="electoraldbModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAssemblyConstituency" EntityType="Self.tblAssemblyConstituency" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCaste" EntityType="Self.tblCaste" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCommunity" EntityType="Self.tblCommunity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCommunityCordinator" EntityType="Self.tblCommunityCordinator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCommunityType" EntityType="Self.tblCommunityType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDistrict" EntityType="Self.tblDistrict" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblElectoralRoll" EntityType="Self.tblElectoralRoll" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblParliamentConstituency" EntityType="Self.tblParliamentConstituency" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPoliticalParty" EntityType="Self.tblPoliticalParty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPollingStation" EntityType="Self.tblPollingStation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPollingStationSection" EntityType="Self.tblPollingStationSection" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPrivilege" EntityType="Self.tblPrivilege" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRequestAttributes" EntityType="Self.tblRequestAttributes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRequestType" EntityType="Self.tblRequestType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRole" EntityType="Self.tblRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRolePrivilege" EntityType="Self.tblRolePrivilege" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblState" EntityType="Self.tblState" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSubCaste" EntityType="Self.tblSubCaste" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUserRole" EntityType="Self.tblUserRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUserVisit" EntityType="Self.tblUserVisit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblVoter" EntityType="Self.tblVoter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblVoter_Stage_old" EntityType="Self.tblVoter_Stage_old" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblVoterDemo" EntityType="Self.tblVoterDemo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblVoterExt" EntityType="Self.tblVoterExt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblVoterRequest" EntityType="Self.tblVoterRequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblVoterRequestExt" EntityType="Self.tblVoterRequestExt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSetting" EntityType="Self.tblSetting" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblSetting].[Id] AS [Id], 
+    [tblSetting].[AgeLimit] AS [AgeLimit]
+    FROM [dbo].[tblSetting] AS [tblSetting]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_ParlimentConstituency_tblState" Association="Self.FK_ParlimentConstituency_tblState">
+      <End Role="tblState" EntitySet="tblState" />
+      <End Role="tblParliamentConstituency" EntitySet="tblParliamentConstituency" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblAssemblyConstituency_ParliamentConstituency" Association="Self.FK_tblAssemblyConstituency_ParliamentConstituency">
+      <End Role="tblParliamentConstituency" EntitySet="tblParliamentConstituency" />
+      <End Role="tblAssemblyConstituency" EntitySet="tblAssemblyConstituency" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblAssemblyConstituency_tblDistrict" Association="Self.FK_tblAssemblyConstituency_tblDistrict">
+      <End Role="tblDistrict" EntitySet="tblDistrict" />
+      <End Role="tblAssemblyConstituency" EntitySet="tblAssemblyConstituency" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblCommunity_tblAssemblyConstituency" Association="Self.FK_tblCommunity_tblAssemblyConstituency">
+      <End Role="tblAssemblyConstituency" EntitySet="tblAssemblyConstituency" />
+      <End Role="tblCommunity" EntitySet="tblCommunity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblCommunity_tblCommunityType" Association="Self.FK_tblCommunity_tblCommunityType">
+      <End Role="tblCommunityType" EntitySet="tblCommunityType" />
+      <End Role="tblCommunity" EntitySet="tblCommunity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblCommunityCordinator_tblCommunity" Association="Self.FK_tblCommunityCordinator_tblCommunity">
+      <End Role="tblCommunity" EntitySet="tblCommunity" />
+      <End Role="tblCommunityCordinator" EntitySet="tblCommunityCordinator" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblDistrict_tblState" Association="Self.FK_tblDistrict_tblState">
+      <End Role="tblState" EntitySet="tblState" />
+      <End Role="tblDistrict" EntitySet="tblDistrict" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPollingStation_tblAssemblyConstituency" Association="Self.FK_tblPollingStation_tblAssemblyConstituency">
+      <End Role="tblAssemblyConstituency" EntitySet="tblAssemblyConstituency" />
+      <End Role="tblPollingStation" EntitySet="tblPollingStation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblRequestAttributes_tblRequestType" Association="Self.FK_tblRequestAttributes_tblRequestType">
+      <End Role="tblRequestType" EntitySet="tblRequestType" />
+      <End Role="tblRequestAttributes" EntitySet="tblRequestAttributes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblRolePrivilege_tblPrivilege" Association="Self.FK_tblRolePrivilege_tblPrivilege">
+      <End Role="tblPrivilege" EntitySet="tblPrivilege" />
+      <End Role="tblRolePrivilege" EntitySet="tblRolePrivilege" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblRolePrivilege_tblRole" Association="Self.FK_tblRolePrivilege_tblRole">
+      <End Role="tblRole" EntitySet="tblRole" />
+      <End Role="tblRolePrivilege" EntitySet="tblRolePrivilege" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSubCaste_tblCaste" Association="Self.FK_tblSubCaste_tblCaste">
+      <End Role="tblCaste" EntitySet="tblCaste" />
+      <End Role="tblSubCaste" EntitySet="tblSubCaste" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserRole_tblRole" Association="Self.FK_tblUserRole_tblRole">
+      <End Role="tblRole" EntitySet="tblRole" />
+      <End Role="tblUserRole" EntitySet="tblUserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserRole_tblUser" Association="Self.FK_tblUserRole_tblUser">
+      <End Role="tblUser" EntitySet="tblUser" />
+      <End Role="tblUserRole" EntitySet="tblUserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserVisit_tblUser" Association="Self.FK_tblUserVisit_tblUser">
+      <End Role="tblUser" EntitySet="tblUser" />
+      <End Role="tblUserVisit" EntitySet="tblUserVisit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblVoter_tblAssemblyConstituency" Association="Self.FK_tblVoter_tblAssemblyConstituency">
+      <End Role="tblAssemblyConstituency" EntitySet="tblAssemblyConstituency" />
+      <End Role="tblVoter" EntitySet="tblVoter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblVoter_tblElectoralRoll" Association="Self.FK_tblVoter_tblElectoralRoll">
+      <End Role="tblElectoralRoll" EntitySet="tblElectoralRoll" />
+      <End Role="tblVoter" EntitySet="tblVoter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblVoterExt_tblCommunity" Association="Self.FK_tblVoterExt_tblCommunity">
+      <End Role="tblCommunity" EntitySet="tblCommunity" />
+      <End Role="tblVoterExt" EntitySet="tblVoterExt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblVoterExt_tblVoter" Association="Self.FK_tblVoterExt_tblVoter">
+      <End Role="tblCommunity" EntitySet="tblCommunity" />
+      <End Role="tblVoterExt" EntitySet="tblVoterExt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblVoterExt_tblVoter1" Association="Self.FK_tblVoterExt_tblVoter1">
+      <End Role="tblVoter" EntitySet="tblVoter" />
+      <End Role="tblVoterExt" EntitySet="tblVoterExt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblVoterRequest_tblRequestType" Association="Self.FK_tblVoterRequest_tblRequestType">
+      <End Role="tblRequestType" EntitySet="tblRequestType" />
+      <End Role="tblVoterRequest" EntitySet="tblVoterRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblVoterRequest_tblUserVisit" Association="Self.FK_tblVoterRequest_tblUserVisit">
+      <End Role="tblUserVisit" EntitySet="tblUserVisit" />
+      <End Role="tblVoterRequest" EntitySet="tblVoterRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblVoterRequestExt_tblRequestAttributes" Association="Self.FK_tblVoterRequestExt_tblRequestAttributes">
+      <End Role="tblRequestAttributes" EntitySet="tblRequestAttributes" />
+      <End Role="tblVoterRequestExt" EntitySet="tblVoterRequestExt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblVoterRequestExt_tblVoterRequest" Association="Self.FK_tblVoterRequestExt_tblVoterRequest">
+      <End Role="tblVoterRequest" EntitySet="tblVoterRequest" />
+      <End Role="tblVoterRequestExt" EntitySet="tblVoterRequestExt" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

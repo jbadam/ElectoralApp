@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- vendor css -->
+    <link href="~/Scripts/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="~/Scripts/lib/Ionicons/css/ionicons.css" rel="stylesheet">
+    <link href="~/Scripts/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+    <link href="~/Scripts/lib/jquery-switchbutton/jquery.switchButton.css" rel="stylesheet">
+    <link href="~/Scripts/lib/rickshaw/rickshaw.min.css" rel="stylesheet">
+    <link href="~/Scripts/lib/chartist/chartist.css" rel="stylesheet">
+
+    <!-- Bracket CSS -->
+    <link rel="stylesheet" href="~/Scripts/css/bracket1.css">
+</head>
+<body>
+    <!-- ########## START: LEFT PANEL ########## -->
+    <div class="br-logo"><a href="#">LOGO</a></div>
+    <div class="br-sideleft overflow-y-auto">
+        <label class="sidebar-label pd-x-15 mg-t-20">Navigation</label>
+        <div class="br-sideleft-menu">
+            <a href="@Url.Action("Index", "Home")" class="br-menu-link active">
+                <div class="br-menu-item">
+                    <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
+                    <span class="menu-item-label">Dashboard</span>
+                </div><!-- menu-item -->
+            </a><!-- br-menu-link -->
+            <a href="mailbox.html" class="br-menu-link">
+                <div class="br-menu-item">
+                    <i class="menu-item-icon icon ion-ios-email-outline tx-24"></i>
+                    <span class="menu-item-label">Voters</span>
+                </div><!-- menu-item -->
+            </a><!-- br-menu-link -->
+            <a href="card-dashboard.html" class="br-menu-link">
+                <div class="br-menu-item">
+                    <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+                    <span class="menu-item-label">Positions</span>
+                </div><!-- menu-item -->
+            </a><!-- br-menu-link -->
+
+            <a href="card-dashboard.html" class="br-menu-link">
+                <div class="br-menu-item">
+                    <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+                    <span class="menu-item-label">Poll Results</span>
+                </div><!-- menu-item -->
+            </a><!-- br-menu-link -->
+
+            <a href="card-dashboard.html" class="br-menu-link">
+                <div class="br-menu-item">
+                    <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+                    <span class="menu-item-label">Voter Registration</span>
+                </div><!-- menu-item -->
+            </a><!-- br-menu-link -->
+
+
+            <a href="#" class="br-menu-link">
+                <div class="br-menu-item">
+                    <i class="menu-item-icon icon ion-ios-filing-outline tx-24"></i>
+                    <span class="menu-item-label">User Profiles</span>
+                    <i class="menu-item-arrow fa fa-angle-down"></i>
+                </div><!-- menu-item -->
+            </a><!-- br-menu-link -->
+            <ul class="br-menu-sub nav flex-column">
+                <li class="nav-item"><a href="@Url.Action("Index", "Login")" class="nav-link">List of Profiles</a></li>
+                <li class="nav-item"><a href="@Url.Action("NewUser", "Login" , new { id=0 })" class="nav-link">Create New Profile</a></li>
+            </ul>
+
+
+            <a href="card-dashboard.html" class="br-menu-link">
+                <div class="br-menu-item">
+                    <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+                    <span class="menu-item-label">Reports</span>
+                </div><!-- menu-item -->
+            </a><!-- br-menu-link -->
+        </div><!-- br-sideleft-menu -->
+
+    </div><!-- br-sideleft -->
+    <!-- ########## END: LEFT PANEL ########## -->
+    <!-- ########## START: HEAD PANEL ########## -->
+    <div class="br-header">
+        <div class="br-header-left">
+            <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href="#"><i class="icon ion-navicon-round"></i></a></div>
+            <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href="#"><i class="icon ion-navicon-round"></i></a></div>
+            <div class="input-group hidden-xs-down wd-170 transition">
+                <input id="searchbox" type="text" class="form-control" placeholder="Search">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="button"><i class="fa fa-search"></i></button>
+                </span>
+            </div><!-- input-group -->
+        </div><!-- br-header-left -->
+        <div class="br-header-right">
+            <nav class="nav">
+                <!-- dropdown -->
+                <!-- dropdown -->
+                <div class="dropdown">
+                    <a href="#" class="nav-link nav-link-profile" data-toggle="dropdown">
+                        <span class="logged-name hidden-md-down">Admin</span>
+                        <img src="img/img1.jpg" class="wd-32 rounded-circle" alt="">
+                        <span class="square-10 bg-success"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-header wd-200">
+                        <ul class="list-unstyled user-profile-nav">
+                            <li><a href="#"><i class="icon ion-ios-person"></i> Edit Profile</a></li>
+                            <li><a href="#"><i class="icon ion-power"></i> Sign Out</a></li>
+                        </ul>
+                    </div><!-- dropdown-menu -->
+                </div><!-- dropdown -->
+            </nav>
+            <!-- navicon-right -->
+        </div><!-- br-header-right -->
+    </div><!-- br-header -->
+
+    <div class="container body-content">
+        @RenderBody()
+
+    </div>
+    <script src="~/Scripts/lib/jquery/jquery.js"></script>
+    <script src="~/Scripts/lib/popper.js/popper.js"></script>
+    <script src="~/Scripts/lib/bootstrap/bootstrap.js"></script>
+    <script src="~/Scripts/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+    <script src="~/Scripts/lib/moment/moment.js"></script>
+    <script src="~/Scripts/lib/jquery-ui/jquery-ui.js"></script>
+    <script src="~/Scripts/lib/jquery-switchbutton/jquery.switchButton.js"></script>
+    <script src="~/Scripts/lib/peity/jquery.peity.js"></script>
+    <script src="~/Scripts/lib/chartist/chartist.js"></script>
+    <script src="~/Scripts/lib/jquery.sparkline.bower/jquery.sparkline.min.js"></script>
+    <script src="~/Scripts/lib/d3/d3.js"></script>
+    <script src="~/Scripts/lib/rickshaw/rickshaw.min.js"></script>
+
+
+    <script src="~/Scripts/js/bracket.js"></script>
+    <script src="~/Scripts/js/ResizeSensor.js"></script>
+    <script src="~/Scripts/js/dashboard.js"></script>
+    <script>
+        $(function () {
+            'use strict'
+
+            // FOR DEMO ONLY
+            // menu collapsed by default during first page load or refresh with screen
+            // having a size between 992px and 1299px. This is intended on this page only
+            // for better viewing of widgets demo.
+            $(window).resize(function () {
+                minimizeMenu();
+            });
+
+            minimizeMenu();
+
+            function minimizeMenu() {
+                if (window.matchMedia('(min-width: 992px)').matches && window.matchMedia('(max-width: 1299px)').matches) {
+                    // show only the icons and hide left menu label by default
+                    $('.menu-item-label,.menu-item-arrow').addClass('op-lg-0-force d-lg-none');
+                    $('body').addClass('collapsed-menu');
+                    $('.show-sub + .br-menu-sub').slideUp();
+                } else if (window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass('collapsed-menu')) {
+                    $('.menu-item-label,.menu-item-arrow').removeClass('op-lg-0-force d-lg-none');
+                    $('body').removeClass('collapsed-menu');
+                    $('.show-sub + .br-menu-sub').slideDown();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.DAL\bin\Debug\ElectoralApp.DAL.exe.config
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.DAL\bin\Debug\ElectoralApp.DAL.exe
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.DAL\bin\Debug\ElectoralApp.DAL.pdb
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.DAL\bin\Debug\EntityFramework.dll
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.DAL\bin\Debug\EntityFramework.xml
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.DAL\obj\Debug\ElectoralApp.DAL.csproj.AssemblyReference.cache
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.DAL\obj\Debug\ElectoralApp.DAL.csproj.CoreCompileInputs.cache
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.DAL\obj\Debug\ElectoralApp.DAL.csproj.CopyComplete
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.DAL\obj\Debug\ElectoralApp.DAL.exe
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.DAL\obj\Debug\ElectoralApp.DAL.pdb

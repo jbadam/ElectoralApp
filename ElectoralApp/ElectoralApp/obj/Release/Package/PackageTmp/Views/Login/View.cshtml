@@ -1,0 +1,184 @@
+﻿@model IEnumerable<ElectoralApp.Models.UserModel>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Relation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RelationFirstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RelationLasttname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EpicId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommunityID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PollingBoothID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AltMobileNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssemblyConstituencyNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoginPwd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StateID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StateName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PinCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentUserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifledBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Relation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelationFirstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RelationLasttname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EpicId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommunityID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PollingBoothID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MobileNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AltMobileNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssemblyConstituencyNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoginPwd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StateID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StateName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PinCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParentUserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifledBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

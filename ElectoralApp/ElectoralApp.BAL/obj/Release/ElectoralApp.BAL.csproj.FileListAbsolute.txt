@@ -1,0 +1,12 @@
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.BAL\bin\Release\ElectoralApp.BAL.dll.config
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.BAL\bin\Release\ElectoralApp.BAL.dll
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.BAL\bin\Release\ElectoralApp.BAL.pdb
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.BAL\bin\Release\EntityFramework.dll
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.BAL\bin\Release\EntityFramework.SqlServer.dll
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.BAL\bin\Release\EntityFramework.xml
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.BAL\bin\Release\EntityFramework.SqlServer.xml
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.BAL\obj\Release\ElectoralApp.BAL.csproj.AssemblyReference.cache
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.BAL\obj\Release\ElectoralApp.BAL.csproj.CoreCompileInputs.cache
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.BAL\obj\Release\ElectoralApp.BAL.csproj.CopyComplete
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.BAL\obj\Release\ElectoralApp.BAL.dll
+D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.BAL\obj\Release\ElectoralApp.BAL.pdb

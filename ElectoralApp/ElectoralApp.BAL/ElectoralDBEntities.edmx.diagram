@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bbcf35531b904eedb12ad76e11166068" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="electoraldbModel.sysdiagram" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblAssemblyConstituency" Width="1.5" PointX="5.25" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblCaste" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblCommunity" Width="1.5" PointX="7.5" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblCommunityCordinator" Width="1.5" PointX="9.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblCommunityType" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblDistrict" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblElectoralRoll" Width="1.5" PointX="8.25" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblParliamentConstituency" Width="1.5" PointX="3" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblPoliticalParty" Width="1.5" PointX="2.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblPollingStation" Width="1.5" PointX="7.5" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblPollingStationSection" Width="1.5" PointX="4.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblPrivilege" Width="1.5" PointX="12.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblRequestAttribute" Width="1.5" PointX="17.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblRequestType" Width="1.5" PointX="15" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblRole" Width="1.5" PointX="12.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblRolePrivilege" Width="1.5" PointX="15" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblState" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblSubCaste" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblUser" Width="1.5" PointX="12.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblUserRole" Width="1.5" PointX="15" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblUserVisit" Width="1.5" PointX="15" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblVoter" Width="1.5" PointX="10.5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblVoterDemo" Width="1.5" PointX="6.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblVoterExt" Width="1.5" PointX="12.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblVoterRequest" Width="1.5" PointX="17.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="electoraldbModel.tblVoterRequestExt" Width="1.5" PointX="19.5" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="electoraldbModel.FK_tblAssemblyConstituency_ParliamentConstituency" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_tblAssemblyConstituency_tblDistrict" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_tblCommunity_tblAssemblyConstituency" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_tblPollingStation_tblAssemblyConstituency" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_tblVoter_tblAssemblyConstituency" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_tblSubCaste_tblCaste" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_tblCommunity_tblCommunityType" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_tblCommunityCordinator_tblCommunity" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_tblDistrict_tblState" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_tblVoter_tblElectoralRoll" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_ParlimentConstituency_tblState" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_tblRolePrivilege_tblPrivilege" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_tblRequestAttributes_tblRequestType" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_tblVoterRequestExt_tblRequestAttributes" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_tblVoterRequest_tblRequestType" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_tblRolePrivilege_tblRole" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_tblUserRole_tblRole" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_tblUserRole_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_tblUserVisit_tblUser" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_tblVoterRequest_tblUserVisit" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_tblVoterExt_tblVoter" ManuallyRouted="false" />
+        <AssociationConnector Association="electoraldbModel.FK_tblVoterRequestExt_tblVoterRequest" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="electoraldbModel.tblVoter_Stage_old" Width="1.5" PointX="15.75" PointY="14.75" />
+        <EntityTypeShape EntityType="electoraldbModel.tblSetting" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="electoraldbModel.FK_tblVoterExt_tblCommunity" />
+        <AssociationConnector Association="electoraldbModel.FK_tblVoterExt_tblVoter1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

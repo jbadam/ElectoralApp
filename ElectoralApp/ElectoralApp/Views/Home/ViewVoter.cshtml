@@ -1,0 +1,73 @@
+﻿@model ElectoralApp.Models.GridData
+    
+    @{
+        ViewBag.Title = "ViewVoter";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    <html>
+    <head>
+
+    </head>
+    <body>
+
+        <div class="br-mainpanel">
+            <div class="br-pageheader pd-y-15 pd-l-20">
+                <nav class="breadcrumb pd-0 mg-0 tx-12">
+                    <a class="breadcrumb-item" href="index.html">Bracket</a>
+                    <a class="breadcrumb-item" href="#">Search</a>
+                </nav>
+            </div><!-- br-pageheader -->
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="col-6 mt-2">
+                    <div class="card pd-0 bd-0 shadow-base">
+                        <div class="pd-x-30 pd-t-30 pd-b-15">
+
+                            <div class="table-wrapper">
+                                <table id="datatable1" class="table display responsive nowrap">
+                                    <tbody>
+                                        <tr>
+                                            <td>Voter ID</td>
+                                            <td>@Model.VoterEPICNo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>@Model.FirstName</td>
+                                            <td>@Model.LastName</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Relation Name</td>
+                                            <td>@Model.RLFName </td>
+                                            <td>@Model.RLLName </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mobile</td>
+                                            <td>@Model.VoterMobile1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Address</td>
+                                            <td>@Model.VoterAddress</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div><!-- table-wrapper -->
+
+
+                            <div class="form-layout-footer">
+                                <a href="#" class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium" data-toggle="modal" data-target="#modaldemo1">SMS</a>
+                                <button class="btn btn-secondary">Close</button>
+                                <a href="#" class="btn btn-danger tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium" data-toggle="modal" data-target="#modaldemo1">Whatsapp</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </body>
+</html>
+
+
+

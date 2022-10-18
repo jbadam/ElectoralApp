@@ -131,6 +131,33 @@ namespace ElectoralApp.Controllers
             }
 
         }
+        public ActionResult ViewVoter(string Mobile)
+        {
+            SearchModel searchModel = new SearchModel();
+
+            
+            searchModel.VoterMobile1 = Mobile;
+                      
+            searchModel.AgeMargin = 3;
+            searchModel.LERId = 1;
+            searchModel.vLACNo = null;
+           
+
+            var ListData = (from ls in _searchRepository.SearchVoterListNew(searchModel)
+                               select new GridData
+                               {
+                                   VoterEPICNo = ls.EPICNo,
+                                   FirstName = ls.FirstName,
+                                   LastName = ls.LastName,
+                                   RLFName = ls.RelationFirstName,
+                                   RLLName = ls.RelationLastName,
+                                   Age = ls.Age,
+                                   VoterMobile1 = ls.MobileNo,
+                                   VoterAddress = ls.Address
+                               }).FirstOrDefault();
+
+            return View(ListData);
+        }
 
 
 

@@ -16,6 +16,9 @@ namespace ElectoralApp.BAL
     {
         public long Id { get; set; }
         public long VoterId { get; set; }
+        public Nullable<long> CommunityId { get; set; }
+        public string CurrentAddress { get; set; }
+        public Nullable<long> OldCommunityId { get; set; }
         public bool IsAccurate { get; set; }
         public Nullable<bool> IsHead { get; set; }
         public string HeadMobileNo { get; set; }
@@ -23,7 +26,7 @@ namespace ElectoralApp.BAL
         public string WhatsAppNo { get; set; }
         public Nullable<int> SubCasteId { get; set; }
         public Nullable<int> PoliticalPartyId { get; set; }
-        public Nullable<bool> IsNRIVote { get; set; }
+        public int VoterTypeId { get; set; }
         public string GeoTagInfo { get; set; }
         public string Notes { get; set; }
         public string Remarks { get; set; }
@@ -33,11 +36,10 @@ namespace ElectoralApp.BAL
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<int> ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
-        public Nullable<long> CommunityId { get; set; }
-        public Nullable<long> OldCommunityId { get; set; }
     
-        public virtual tblVoter tblVoter { get; set; }
         public virtual tblCommunity tblCommunity { get; set; }
         public virtual tblCommunity tblCommunity1 { get; set; }
+        public virtual tblVoter tblVoter { get; set; }
+        public virtual tblVoterType tblVoterType { get; set; }
     }
 }

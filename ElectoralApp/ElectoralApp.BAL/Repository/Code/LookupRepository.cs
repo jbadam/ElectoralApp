@@ -1,4 +1,5 @@
 ﻿using ElectoralApp.BAL.Repository.Interfaces;
+using ElectoralApp.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,8 @@ namespace ElectoralApp.BAL.Repository.Code
 {
     public class LookupRepository : ILookupReposiotry
     {
-        private readonly electoraldbEntities _context;
-        public LookupRepository(electoraldbEntities context)
+        private readonly ElectoralDBEntities _context;
+        public LookupRepository(ElectoralDBEntities context)
         {
             _context = context;
         }

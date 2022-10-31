@@ -11,15 +11,11 @@ namespace ElectoralApp.BAL
 {
     using System;
     
-    public partial class uspGetVoters_Result
+    public partial class uspGetVoters1_Result
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string EPICNo { get; set; }
-        public int Age { get; set; }
-        public string Address { get; set; }
-        public string RelationFirstName { get; set; }
-        public string RelationLastName { get; set; }
-        public string MobileNo { get; set; }
+        public long AssemblyConstituencyId { get; set; }
+        public Nullable<long> CityId { get; set; }
+        public string WardNo { get; set; }
+        public long PollingStationId { get; set; }
     }
 }

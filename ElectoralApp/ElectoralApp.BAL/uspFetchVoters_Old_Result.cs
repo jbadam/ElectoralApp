@@ -10,45 +10,33 @@
 namespace ElectoralApp.BAL
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tblVoter
+    public partial class uspFetchVoters_Old_Result
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblVoter()
-        {
-            this.tblVoterExts = new HashSet<tblVoterExt>();
-        }
-    
-        public long Id { get; set; }
         public long ERId { get; set; }
         public long AssemblyConstituencyId { get; set; }
+        public string Name { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string WardNo { get; set; }
         public Nullable<int> WardSNo { get; set; }
         public long PollingStationId { get; set; }
         public int SerialNo { get; set; }
         public Nullable<long> PSSId { get; set; }
+        public Nullable<int> SectionNo { get; set; }
+        public string SectionName { get; set; }
         public string EPICNo { get; set; }
         public string OldEPICNo { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string FirstNameTE { get; set; }
-        public string LastNameTE { get; set; }
         public string Relation { get; set; }
         public string RelationFirstName { get; set; }
         public string RelationLastName { get; set; }
-        public string RelationFirstNameTE { get; set; }
-        public string RelationLastNameTE { get; set; }
-        public string RelationEPICNo { get; set; }
-        public Nullable<System.DateTime> DateOfBirth { get; set; }
         public int Age { get; set; }
-        public string Gender { get; set; }
         public string Address { get; set; }
-        public string AddressTE { get; set; }
         public string MobileNo { get; set; }
-    
-        public virtual tblElectoralRoll tblElectoralRoll { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblVoterExt> tblVoterExts { get; set; }
+        public Nullable<long> CommunityId { get; set; }
+        public string Community { get; set; }
+        public string DoorNo { get; set; }
+        public string Locality { get; set; }
+        public string City { get; set; }
     }
 }

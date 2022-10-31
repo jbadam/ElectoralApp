@@ -18,8 +18,8 @@ namespace ElectoralApp.Controllers
 
         public LoginController()
         {
-            _userRepository = new UserRepository(new electoraldbEntities());
-            _lookupRepository = new LookupRepository(new electoraldbEntities());
+            _userRepository = new UserRepository(new ElectoralDBEntities());
+            _lookupRepository = new LookupRepository(new ElectoralDBEntities());
         }
         public LoginController(IUserRepository userRepository, ILookupReposiotry lookupReposiotry)
         {
@@ -71,15 +71,15 @@ namespace ElectoralApp.Controllers
                                  RelationFirstname = ls.RelationFirstName,
                                  RelationLasttname = ls.RelationLastName,
                                  Email = ls.Email,
-                                 StateID = ls.State,
+                                // StateID = ls.State,
                                  AssemblyConstituencyNo =(int)ls.AssemblyConstituencyId,
-                                 Active=ls.Status,
+                                // Active=ls.Status,
                                  MobileNo = ls.MobileNo,
                                  AltMobileNo =ls.AltMobileNo,
-                                 EpicId=ls.EPICId,
+                                // EpicId=ls.EPICId,
                                  Address=ls.Address,
                                  RoleId=(int)ls1.RoleId,
-                                 PollingBoothID= (int)ls.PollingBoothId,
+                                // PollingBoothID= (int)ls.PollingBoothId,
                                  Age=(int)ls.Age,
                                  CommunityID= Convert.ToInt32(ls.CommunityName.ToString())
                                  
@@ -143,20 +143,20 @@ namespace ElectoralApp.Controllers
                 tbluserEntities.LastName = model.LastName;
                 tbluserEntities.LoginPwd = model.LoginPwd;
                 tbluserEntities.ParentUserId = 1;
-                tbluserEntities.PinCode = model.PinCode;
+               // tbluserEntities.PinCode = model.PinCode;
                 tbluserEntities.MobileNo = model.MobileNo;
-                tbluserEntities.State = model.StateID;
+                //tbluserEntities.State = model.StateID;
                 tbluserEntities.AssemblyConstituencyId = model.AssemblyConstituencyNo;
                 tbluserEntities.Gender = model.Gender;
                 tbluserEntities.Relation = model.Relation;
                 tbluserEntities.RelationFirstName = model.RelationFirstname;
                 tbluserEntities.RelationLastName = model.RelationLasttname;
-                tbluserEntities.Status = model.Active;
+               // tbluserEntities.Status = model.Active;
                 tbluserEntities.LoginPwd = "XXXX";
                 tbluserEntities.Age = model.Age;
-                tbluserEntities.EPICId = model.EpicId;
+               // tbluserEntities.EPICId = model.EpicId;
                 tbluserEntities.CommunityName = model.CommunityID.ToString();
-                tbluserEntities.PollingBoothId = model.PollingBoothID;
+               // tbluserEntities.PollingBoothId = model.PollingBoothID;
 
                 long result = 0;
                 if (model.Id > 0)

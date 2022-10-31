@@ -12,24 +12,18 @@ namespace ElectoralApp.BAL
     using System;
     using System.Collections.Generic;
     
-    public partial class tblElectoralRoll
+    public partial class tblVoterType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblElectoralRoll()
+        public tblVoterType()
         {
-            this.tblVoters = new HashSet<tblVoter>();
+            this.tblVoterExts = new HashSet<tblVoterExt>();
         }
     
-        public long Id { get; set; }
-        public int RevisionYear { get; set; }
-        public Nullable<System.DateTime> QualifyingDate { get; set; }
-        public System.DateTime PublishDate { get; set; }
-        public string RevisionType { get; set; }
-        public string RollSummary { get; set; }
-        public string CreatedBy { get; set; }
-        public System.DateTime CreatedDate { get; set; }
+        public int Id { get; set; }
+        public string VoterType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblVoter> tblVoters { get; set; }
+        public virtual ICollection<tblVoterExt> tblVoterExts { get; set; }
     }
 }

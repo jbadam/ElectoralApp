@@ -20,8 +20,8 @@ namespace ElectoralApp.Controllers
         public HomeController()
         {
             
-            _lookupRepository = new LookupRepository(new electoraldbEntities());
-            _searchRepository = new SearchRepository(new electoraldbEntities());
+            _lookupRepository = new LookupRepository(new ElectoralDBEntities());
+            _searchRepository = new SearchRepository(new ElectoralDBEntities());
         }
         public HomeController(ISearchRepository searchRepository, ILookupReposiotry lookupReposiotry)
         {

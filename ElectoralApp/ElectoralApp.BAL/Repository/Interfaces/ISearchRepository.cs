@@ -14,6 +14,6 @@ namespace ElectoralApp.BAL.Repository.Interfaces
 
         ObjectResult<uspGetVoters_Result> SearchVoterList(SearchModel searchModel);
 
-        ObjectResult<uspGetVotersNew_Result> SearchVoterListNew(SearchModel searchModel);
+        ObjectResult<uspGetVoters_Result> SearchVoterListNew(SearchModel searchModel);
     }
 }

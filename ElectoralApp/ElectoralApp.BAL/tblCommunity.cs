@@ -24,15 +24,15 @@ namespace ElectoralApp.BAL
     
         public long Id { get; set; }
         public int CommunityTypeId { get; set; }
-        public int ACNo { get; set; }
+        public long AssemblyConstituencyId { get; set; }
         public string Name { get; set; }
+        public string DoorNo { get; set; }
         public string Locality { get; set; }
         public string Landmark { get; set; }
+        public Nullable<long> CityId { get; set; }
         public string City { get; set; }
-        public string PinCode { get; set; }
-        public string DoorNo { get; set; }
+        public string Pincode { get; set; }
     
-        public virtual tblAssemblyConstituency tblAssemblyConstituency { get; set; }
         public virtual tblCommunityType tblCommunityType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblCommunityCordinator> tblCommunityCordinators { get; set; }

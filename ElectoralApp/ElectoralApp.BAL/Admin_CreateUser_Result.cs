@@ -11,9 +11,9 @@ namespace ElectoralApp.BAL
 {
     using System;
     
-    public partial class uspFindVoters_Result
+    public partial class Admin_CreateUser_Result
     {
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
+        public string Status { get; set; }
+        public string Message { get; set; }
     }
 }

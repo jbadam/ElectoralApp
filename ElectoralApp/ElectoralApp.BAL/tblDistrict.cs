@@ -20,7 +20,7 @@ namespace ElectoralApp.BAL
             this.tblAssemblyConstituencies = new HashSet<tblAssemblyConstituency>();
         }
     
-        public int Id { get; set; }
+        public long Id { get; set; }
         public int StateId { get; set; }
         public string Name { get; set; }
     

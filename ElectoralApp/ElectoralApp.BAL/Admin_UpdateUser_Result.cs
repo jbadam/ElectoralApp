@@ -11,15 +11,9 @@ namespace ElectoralApp.BAL
 {
     using System;
     
-    public partial class uspGetVoters_Result
+    public partial class Admin_UpdateUser_Result
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string EPICNo { get; set; }
-        public int Age { get; set; }
-        public string Address { get; set; }
-        public string RelationFirstName { get; set; }
-        public string RelationLastName { get; set; }
-        public string MobileNo { get; set; }
+        public string Status { get; set; }
+        public string Message { get; set; }
     }
 }

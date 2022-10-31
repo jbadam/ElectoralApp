@@ -11,10 +11,10 @@ namespace ElectoralApp.BAL.Repository.Code
     public class UserRepository : IUserRepository
     {
 
-        private readonly electoraldbEntities _context;
+        private readonly ElectoralDBEntities _context;
         private bool disposedValue;
 
-        public UserRepository(electoraldbEntities context)
+        public UserRepository(ElectoralDBEntities context)
         {
             _context = context;
         }

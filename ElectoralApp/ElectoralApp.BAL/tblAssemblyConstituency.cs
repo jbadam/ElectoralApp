@@ -14,28 +14,14 @@ namespace ElectoralApp.BAL
     
     public partial class tblAssemblyConstituency
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblAssemblyConstituency()
-        {
-            this.tblCommunities = new HashSet<tblCommunity>();
-            this.tblPollingStations = new HashSet<tblPollingStation>();
-            this.tblVoters = new HashSet<tblVoter>();
-        }
-    
+        public long AssemblyConstituencyId { get; set; }
+        public long DistrictId { get; set; }
+        public long ParliamentConstituencyId { get; set; }
         public int ACNo { get; set; }
-        public int DistrictId { get; set; }
-        public int PCNo { get; set; }
         public string Name { get; set; }
         public string NameTE { get; set; }
         public Nullable<int> ReservedFor { get; set; }
     
-        public virtual tblParliamentConstituency tblParliamentConstituency { get; set; }
         public virtual tblDistrict tblDistrict { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblCommunity> tblCommunities { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblPollingStation> tblPollingStations { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblVoter> tblVoters { get; set; }
     }
 }

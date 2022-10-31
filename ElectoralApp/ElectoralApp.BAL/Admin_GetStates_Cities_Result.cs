@@ -11,13 +11,9 @@ namespace ElectoralApp.BAL
 {
     using System;
     
-    public partial class uspGetExactFNameSimilarLName_Result
+    public partial class Admin_GetStates_Cities_Result
     {
-        public string EPICNo { get; set; }
-        public string firstname { get; set; }
-        public string lastname { get; set; }
-        public string EPICNo1 { get; set; }
-        public string firstname1 { get; set; }
-        public string lastname1 { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -10,18 +10,12 @@
 namespace ElectoralApp.BAL
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class uspGetVotersNew_Result
+    public partial class tblLastName
     {
-        public string FirstName { get; set; }
+        public int Id { get; set; }
         public string LastName { get; set; }
-        public string EPICNo { get; set; }
-        public int Age { get; set; }
-        public string Address { get; set; }
-        public string RelationFirstName { get; set; }
-        public string RelationLastName { get; set; }
-        public string MobileNo { get; set; }
-        public string City { get; set; }
-        public string Community { get; set; }
+        public int SubCasteId { get; set; }
     }
 }

@@ -11,9 +11,9 @@ namespace ElectoralApp.BAL.Repository.Code
 {
     public class SearchRepository : ISearchRepository
     {
-        private readonly electoraldbEntities _context;
+        private readonly ElectoralDBEntities _context;
 
-        public SearchRepository(electoraldbEntities context)
+        public SearchRepository(ElectoralDBEntities context)
         {
             _context = context;
         }
@@ -28,16 +28,20 @@ namespace ElectoralApp.BAL.Repository.Code
            return _context.tblVoters.ToList();
         }
 
-        public ObjectResult<uspGetVotersNew_Result> SearchVoterListNew(SearchModel searchModel)
+        public ObjectResult<uspGetVoters_Result> SearchVoterListNew(SearchModel searchModel)
         {
-             //return _context.uspGetVoters(searchModel.FirstName, searchModel.LastName, searchModel.RLFName,
-             //                            searchModel.VoterEPICNo, searchModel.VoterAddress, searchModel.VoterMobile1, searchModel.Age, false);
+            //return _context.uspGetVoters(searchModel.FirstName, searchModel.LastName, searchModel.RLFName,
+            //                            searchModel.VoterEPICNo, searchModel.VoterAddress, searchModel.VoterMobile1, searchModel.Age, false);
 
-            return _context.uspGetVotersNew(searchModel.FirstName, searchModel.LastName, searchModel.RLLName,
-                                        searchModel.VoterEPICNo,searchModel.VoterOldEPIC, searchModel.VoterAddress, searchModel.VoterMobile1, 
-                                        searchModel.Age,searchModel.RLFName,searchModel.VoterCity,searchModel.VoterCommunity,
-                                        searchModel.UseSoundEx,searchModel.AgeMargin,searchModel.LERId,searchModel.vLACNo);
+            //return _context.uspGetVoters(searchModel.FirstName, searchModel.LastName, searchModel.RLLName,
+            //                            searchModel.VoterEPICNo,searchModel.VoterOldEPIC, searchModel.VoterAddress, searchModel.VoterMobile1, 
+            //                            searchModel.Age,searchModel.RLFName,searchModel.VoterCity,searchModel.VoterCommunity,
+            //                            searchModel.UseSoundEx,searchModel.AgeMargin,searchModel.LERId,searchModel.vLACNo);
 
+            return _context.uspGetVoters(searchModel.FirstName, searchModel.LastName, searchModel.RLLName,
+                                       searchModel.VoterEPICNo, searchModel.VoterOldEPIC, searchModel.VoterAddress, searchModel.VoterMobile1,
+                                       searchModel.Age, searchModel.RLFName, searchModel.UseSoundEx, searchModel.AgeMargin,
+                                       searchModel.LERId, searchModel.vLACNo);
 
 
         }

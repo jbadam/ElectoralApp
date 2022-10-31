@@ -10,24 +10,14 @@
 namespace ElectoralApp.BAL
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tblUser
+    public partial class Admin_UserinfoByUserId_Result
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblUser()
-        {
-            this.tblUserRoles = new HashSet<tblUserRole>();
-            this.tblUserVisits = new HashSet<tblUserVisit>();
-        }
-    
-        public long Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string MobileNo { get; set; }
         public string AltMobileNo { get; set; }
         public string Email { get; set; }
-        public string LoginPwd { get; set; }
         public string Address { get; set; }
         public Nullable<long> CityId { get; set; }
         public Nullable<int> StateId { get; set; }
@@ -42,15 +32,5 @@ namespace ElectoralApp.BAL
         public string CommunityName { get; set; }
         public Nullable<long> PollingStationId { get; set; }
         public Nullable<long> AssemblyConstituencyId { get; set; }
-        public Nullable<bool> Status { get; set; }
-        public string CreatedBy { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
-        public string ModifledBy { get; set; }
-        public Nullable<System.DateTime> ModifiedDate { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblUserRole> tblUserRoles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblUserVisit> tblUserVisits { get; set; }
     }
 }

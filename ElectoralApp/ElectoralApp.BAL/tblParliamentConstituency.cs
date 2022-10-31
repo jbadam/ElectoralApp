@@ -14,19 +14,12 @@ namespace ElectoralApp.BAL
     
     public partial class tblParliamentConstituency
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblParliamentConstituency()
-        {
-            this.tblAssemblyConstituencies = new HashSet<tblAssemblyConstituency>();
-        }
-    
-        public int PCNo { get; set; }
+        public long ParliamentConstituencyId { get; set; }
         public int StateId { get; set; }
+        public int PCNo { get; set; }
         public string Name { get; set; }
         public Nullable<int> ReservedFor { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAssemblyConstituency> tblAssemblyConstituencies { get; set; }
         public virtual tblState tblState { get; set; }
     }
 }

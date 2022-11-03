@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="electoraldbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="ElectoralDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
@@ -12,11 +12,12 @@
   </EntityType>
   <EntityType Name="tblAssemblyConstituency">
     <Key>
-      <PropertyRef Name="ACNo" />
+      <PropertyRef Name="AssemblyConstituencyId" />
     </Key>
+    <Property Name="AssemblyConstituencyId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DistrictId" Type="bigint" Nullable="false" />
+    <Property Name="ParliamentConstituencyId" Type="bigint" Nullable="false" />
     <Property Name="ACNo" Type="int" Nullable="false" />
-    <Property Name="DistrictId" Type="int" Nullable="false" />
-    <Property Name="PCNo" Type="int" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="NameTE" Type="nvarchar" MaxLength="128" />
     <Property Name="ReservedFor" Type="int" />
@@ -28,19 +29,31 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="tblCity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DistrictId" Type="bigint" Nullable="false" />
+    <Property Name="AssemblyConstituencyId" Type="bigint" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mandal" Type="nvarchar" MaxLength="50" />
+    <Property Name="Pincode" Type="nvarchar" MaxLength="6" />
+  </EntityType>
   <EntityType Name="tblCommunity">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CommunityTypeId" Type="int" Nullable="false" />
-    <Property Name="ACNo" Type="int" Nullable="false" />
+    <Property Name="AssemblyConstituencyId" Type="bigint" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="DoorNo" Type="nvarchar" MaxLength="50" />
     <Property Name="Locality" Type="nvarchar" MaxLength="50" />
     <Property Name="Landmark" Type="nvarchar" MaxLength="50" />
+    <Property Name="CityId" Type="bigint" />
     <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="PinCode" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="Pincode" Type="char" MaxLength="6" Nullable="false" />
   </EntityType>
   <EntityType Name="tblCommunityCordinator">
     <Key>
@@ -64,7 +77,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StateId" Type="int" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
@@ -72,7 +85,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RevisionYear" Type="int" Nullable="false" />
     <Property Name="QualifyingDate" Type="date" />
     <Property Name="PublishDate" Type="date" Nullable="false" />
@@ -81,12 +94,21 @@
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="tblMandal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DistrictId" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="tblParliamentConstituency">
     <Key>
-      <PropertyRef Name="PCNo" />
+      <PropertyRef Name="ParliamentConstituencyId" />
     </Key>
-    <Property Name="PCNo" Type="int" Nullable="false" />
+    <Property Name="ParliamentConstituencyId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StateId" Type="int" Nullable="false" />
+    <Property Name="PCNo" Type="int" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="ReservedFor" Type="int" />
   </EntityType>
@@ -103,18 +125,20 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ACNo" Type="int" Nullable="false" />
+    <Property Name="AssemblyConstituencyId" Type="bigint" Nullable="false" />
+    <Property Name="WardId" Type="bigint" />
     <Property Name="StationNo" Type="int" Nullable="false" />
     <Property Name="StationName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="CityId" Type="bigint" />
     <Property Name="StationNameTE" Type="nvarchar" MaxLength="512" Nullable="false" />
     <Property Name="StationAddress" Type="nvarchar" MaxLength="512" Nullable="false" />
     <Property Name="StationAddressTE" Type="nvarchar" MaxLength="512" Nullable="false" />
     <Property Name="MainTown" Type="nvarchar" MaxLength="50" />
     <Property Name="PoliceStation" Type="nvarchar" MaxLength="50" />
-    <Property Name="Mandal" Type="nvarchar" MaxLength="50" />
+    <Property Name="MandalId" Type="bigint" />
     <Property Name="RevenueDivision" Type="nvarchar" MaxLength="50" />
-    <Property Name="District" Type="nvarchar" MaxLength="50" />
-    <Property Name="PinCode" Type="char" MaxLength="6" />
+    <Property Name="DistrictId" Type="bigint" />
+    <Property Name="Pincode" Type="char" MaxLength="6" />
     <Property Name="StartSerialNo" Type="int" />
     <Property Name="EndSerialNo" Type="int" />
     <Property Name="TotalElectors" Type="int" />
@@ -212,24 +236,24 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
     <Property Name="Email" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="LoginPwd" Type="nvarchar" MaxLength="64" Nullable="false" />
     <Property Name="Address" Type="nvarchar" MaxLength="512" />
-    <Property Name="City" Type="nvarchar" MaxLength="50" />
-    <Property Name="State" Type="nvarchar" MaxLength="50" />
-    <Property Name="PinCode" Type="char" MaxLength="6" />
+    <Property Name="CityId" Type="bigint" />
+    <Property Name="StateId" Type="int" />
+    <Property Name="Pincode" Type="char" MaxLength="6" />
     <Property Name="ParentUserId" Type="bigint" />
-    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
-    <Property Name="CreatedDate" Type="datetime" />
-    <Property Name="ModifledBy" Type="nvarchar" MaxLength="50" />
-    <Property Name="ModifiedDate" Type="datetime" />
     <Property Name="Gender" Type="nvarchar" MaxLength="50" />
     <Property Name="Relation" Type="nvarchar" MaxLength="50" />
     <Property Name="RelationFirstName" Type="nvarchar" MaxLength="50" />
     <Property Name="RelationLastName" Type="nvarchar" MaxLength="50" />
     <Property Name="Age" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="EPICId" Type="nvarchar" MaxLength="50" />
+    <Property Name="EPICNo" Type="nvarchar" MaxLength="50" />
     <Property Name="CommunityName" Type="nvarchar" MaxLength="50" />
-    <Property Name="PollingBoothId" Type="int" />
-    <Property Name="AssemblyConstituencyId" Type="int" />
-    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="PollingStationId" Type="bigint" />
+    <Property Name="AssemblyConstituencyId" Type="bigint" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifledBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
   </EntityType>
   <EntityType Name="tblUserRole">
     <Key>
@@ -259,13 +283,13 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ERId" Type="int" Nullable="false" />
-    <Property Name="ACNo" Type="int" Nullable="false" />
+    <Property Name="ERId" Type="bigint" Nullable="false" />
+    <Property Name="AssemblyConstituencyId" Type="bigint" Nullable="false" />
     <Property Name="WardNo" Type="nvarchar" MaxLength="5" />
     <Property Name="WardSNo" Type="int" />
-    <Property Name="PartNo" Type="int" Nullable="false" />
+    <Property Name="PollingStationId" Type="bigint" Nullable="false" />
     <Property Name="SerialNo" Type="int" Nullable="false" />
-    <Property Name="PSSId" Type="int" />
+    <Property Name="PSSId" Type="bigint" />
     <Property Name="EPICNo" Type="nvarchar" MaxLength="15" Nullable="false" />
     <Property Name="OldEPICNo" Type="nvarchar" MaxLength="15" />
     <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -319,31 +343,6 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
     <Property Name="MetaVLName" Type="varchar" MaxLength="128" StoreGeneratedPattern="Computed" />
     <Property Name="MetaRLFName" Type="varchar" MaxLength="128" StoreGeneratedPattern="Computed" />
   </EntityType>
-  <EntityType Name="tblVoterDemo">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ERId" Type="int" Nullable="false" />
-    <Property Name="ACNo" Type="int" Nullable="false" />
-    <Property Name="EPICNo" Type="nvarchar" MaxLength="15" />
-    <Property Name="SerialNo" Type="int" Nullable="false" />
-    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
-    <Property Name="Relation" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="RelationName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="RelationEPICNo" Type="nvarchar" MaxLength="15" />
-    <Property Name="DateOfBirth" Type="date" />
-    <Property Name="Age" Type="int" Nullable="false" />
-    <Property Name="Gender" Type="nvarchar" MaxLength="10" Nullable="false" />
-    <Property Name="Address" Type="nvarchar" MaxLength="512" />
-    <Property Name="PartNo" Type="int" Nullable="false" />
-    <Property Name="PSSId" Type="int" />
-    <Property Name="WardNo" Type="nvarchar" MaxLength="5" />
-    <Property Name="MobileNo" Type="nvarchar" MaxLength="20" />
-    <Property Name="DoubleMetaphone" Type="varchar" MaxLength="128" StoreGeneratedPattern="Computed" />
-    <Property Name="DoubleMetaphone1" Type="varchar" MaxLength="128" StoreGeneratedPattern="Computed" />
-  </EntityType>
   <EntityType Name="tblVoterExt">
     <Key>
       <PropertyRef Name="Id" />
@@ -351,6 +350,7 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
     <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="VoterId" Type="bigint" Nullable="false" />
     <Property Name="CommunityId" Type="bigint" />
+    <Property Name="CurrentAddress" Type="nvarchar" MaxLength="50" />
     <Property Name="OldCommunityId" Type="bigint" />
     <Property Name="IsAccurate" Type="bit" Nullable="false" />
     <Property Name="IsHead" Type="bit" />
@@ -359,7 +359,7 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
     <Property Name="WhatsAppNo" Type="nvarchar" MaxLength="20" />
     <Property Name="SubCasteId" Type="int" />
     <Property Name="PoliticalPartyId" Type="int" />
-    <Property Name="IsNRIVote" Type="bit" />
+    <Property Name="VoterTypeId" Type="int" Nullable="false" />
     <Property Name="GeoTagInfo" Type="nvarchar" MaxLength="100" />
     <Property Name="Notes" Type="nvarchar" MaxLength="512" />
     <Property Name="Remarks" Type="nvarchar" MaxLength="128" />
@@ -391,6 +391,74 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
     <Property Name="ReqAttrValue" Type="nvarchar" MaxLength="128" />
     <Property Name="PreviousValue" Type="nvarchar" MaxLength="128" />
   </EntityType>
+  <EntityType Name="tblVoterType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VoterType" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblWard">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityId" Type="bigint" Nullable="false" />
+    <Property Name="WardNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="WardName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LocalType" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'electoraldb.electoraladmin.tblLastName' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblLastName">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="SubCasteId" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SubCasteId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'electoraldb.dbo.vw_Get_Voter_Search_Data' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Get_Voter_Search_Data">
+    <Key>
+      <PropertyRef Name="ERId" />
+      <PropertyRef Name="AssemblyConstituencyId" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="PollingStationId" />
+      <PropertyRef Name="SerialNo" />
+      <PropertyRef Name="EPICNo" />
+      <PropertyRef Name="Relation" />
+      <PropertyRef Name="Age" />
+    </Key>
+    <Property Name="ERId" Type="bigint" Nullable="false" />
+    <Property Name="AssemblyConstituencyId" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="WardNo" Type="nvarchar" MaxLength="5" />
+    <Property Name="WardSNo" Type="int" />
+    <Property Name="PollingStationId" Type="bigint" Nullable="false" />
+    <Property Name="SerialNo" Type="int" Nullable="false" />
+    <Property Name="PSSId" Type="bigint" />
+    <Property Name="SectionNo" Type="int" />
+    <Property Name="SectionName" Type="nvarchar" MaxLength="255" />
+    <Property Name="EPICNo" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="OldEPICNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="Relation" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="RelationFirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="RelationLastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="512" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="20" />
+    <Property Name="CommunityId" Type="bigint" />
+    <Property Name="Community" Type="nvarchar" MaxLength="128" />
+    <Property Name="DoorNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Locality" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <Association Name="FK_ParlimentConstituency_tblState">
     <End Role="tblState" Type="Self.tblState" Multiplicity="1" />
     <End Role="tblParliamentConstituency" Type="Self.tblParliamentConstituency" Multiplicity="*" />
@@ -403,18 +471,6 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_tblAssemblyConstituency_ParliamentConstituency">
-    <End Role="tblParliamentConstituency" Type="Self.tblParliamentConstituency" Multiplicity="1" />
-    <End Role="tblAssemblyConstituency" Type="Self.tblAssemblyConstituency" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblParliamentConstituency">
-        <PropertyRef Name="PCNo" />
-      </Principal>
-      <Dependent Role="tblAssemblyConstituency">
-        <PropertyRef Name="PCNo" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_tblAssemblyConstituency_tblDistrict">
     <End Role="tblDistrict" Type="Self.tblDistrict" Multiplicity="1" />
     <End Role="tblAssemblyConstituency" Type="Self.tblAssemblyConstituency" Multiplicity="*" />
@@ -424,18 +480,6 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
       </Principal>
       <Dependent Role="tblAssemblyConstituency">
         <PropertyRef Name="DistrictId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tblCommunity_tblAssemblyConstituency">
-    <End Role="tblAssemblyConstituency" Type="Self.tblAssemblyConstituency" Multiplicity="1" />
-    <End Role="tblCommunity" Type="Self.tblCommunity" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblAssemblyConstituency">
-        <PropertyRef Name="ACNo" />
-      </Principal>
-      <Dependent Role="tblCommunity">
-        <PropertyRef Name="ACNo" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -472,18 +516,6 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
       </Principal>
       <Dependent Role="tblDistrict">
         <PropertyRef Name="StateId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tblPollingStation_tblAssemblyConstituency">
-    <End Role="tblAssemblyConstituency" Type="Self.tblAssemblyConstituency" Multiplicity="1" />
-    <End Role="tblPollingStation" Type="Self.tblPollingStation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblAssemblyConstituency">
-        <PropertyRef Name="ACNo" />
-      </Principal>
-      <Dependent Role="tblPollingStation">
-        <PropertyRef Name="ACNo" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -571,18 +603,6 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_tblVoter_tblAssemblyConstituency">
-    <End Role="tblAssemblyConstituency" Type="Self.tblAssemblyConstituency" Multiplicity="1" />
-    <End Role="tblVoter" Type="Self.tblVoter" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblAssemblyConstituency">
-        <PropertyRef Name="ACNo" />
-      </Principal>
-      <Dependent Role="tblVoter">
-        <PropertyRef Name="ACNo" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_tblVoter_tblElectoralRoll">
     <End Role="tblElectoralRoll" Type="Self.tblElectoralRoll" Multiplicity="1" />
     <End Role="tblVoter" Type="Self.tblVoter" Multiplicity="*" />
@@ -603,11 +623,11 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="tblVoterExt">
-        <PropertyRef Name="OldCommunityId" />
+        <PropertyRef Name="CommunityId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_tblVoterExt_tblVoter">
+  <Association Name="FK_tblVoterExt_tblCommunity1">
     <End Role="tblCommunity" Type="Self.tblCommunity" Multiplicity="0..1" />
     <End Role="tblVoterExt" Type="Self.tblVoterExt" Multiplicity="*" />
     <ReferentialConstraint>
@@ -615,11 +635,11 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="tblVoterExt">
-        <PropertyRef Name="CommunityId" />
+        <PropertyRef Name="OldCommunityId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_tblVoterExt_tblVoter1">
+  <Association Name="FK_tblVoterExt_tblVoter">
     <End Role="tblVoter" Type="Self.tblVoter" Multiplicity="1" />
     <End Role="tblVoterExt" Type="Self.tblVoterExt" Multiplicity="*" />
     <ReferentialConstraint>
@@ -628,6 +648,18 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
       </Principal>
       <Dependent Role="tblVoterExt">
         <PropertyRef Name="VoterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblVoterExt_tblVoterType">
+    <End Role="tblVoterType" Type="Self.tblVoterType" Multiplicity="1" />
+    <End Role="tblVoterExt" Type="Self.tblVoterExt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblVoterType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblVoterExt">
+        <PropertyRef Name="VoterTypeId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -679,10 +711,48 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="Admin_CreateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="loginUserId" Type="bigint" Mode="In" />
+    <Parameter Name="userDataJsonstr" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Admin_GetCities" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="Admin_GetStates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="Admin_GetStates_Cities" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="Admin_GetUserList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="bigint" Mode="In" />
+    <Parameter Name="fname" Type="nvarchar" Mode="In" />
+    <Parameter Name="lname" Type="nvarchar" Mode="In" />
+    <Parameter Name="mobileno" Type="nvarchar" Mode="In" />
+    <Parameter Name="stateId" Type="int" Mode="In" />
+    <Parameter Name="cityId" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="Admin_UpdateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="bigint" Mode="In" />
+    <Parameter Name="loginUserId" Type="bigint" Mode="In" />
+    <Parameter Name="userDataJsonstr" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Admin_UserinfoByUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="Admin_UserpageDropdowndata" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="bigint" Mode="In" />
+  </Function>
   <Function Name="dbl_metaphone" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
     <Parameter Name="String" Type="varchar" Mode="In" />
   </Function>
   <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="GetCitiesByACno" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ACId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetConstituenciesByUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="bigint" Mode="In" />
+  </Function>
   <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
     <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -713,6 +783,40 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
     <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="uspFetchVoters" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VoterFirstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterLastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="RLName" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterEPICNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterOldEPICNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterMobile" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterAge" Type="int" Mode="In" />
+    <Parameter Name="VoterRLFName" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterCity" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterCommunity" Type="nvarchar" Mode="In" />
+    <Parameter Name="UseSoundex" Type="bit" Mode="In" />
+    <Parameter Name="AgeMargin" Type="int" Mode="In" />
+    <Parameter Name="ElectRollId" Type="int" Mode="In" />
+    <Parameter Name="AssyConstId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="uspFetchVoters_Old" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VoterFirstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterLastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="RLName" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterEPICNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterOldEPICNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterMobile" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterAge" Type="int" Mode="In" />
+    <Parameter Name="VoterRLFName" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterCity" Type="nvarchar" Mode="In" />
+    <Parameter Name="VoterCommunity" Type="nvarchar" Mode="In" />
+    <Parameter Name="UseSoundex" Type="bit" Mode="In" />
+    <Parameter Name="AgeMargin" Type="int" Mode="In" />
+    <Parameter Name="ElectRollId" Type="int" Mode="In" />
+    <Parameter Name="AssyConstId" Type="int" Mode="In" />
+  </Function>
   <Function Name="uspGetConditionalDuplicateVoters" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="uspGetDuplicateVoters" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="uspGetExactFirstNameSimilarLastName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -729,8 +833,14 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
     <Parameter Name="VoterRLFName" Type="nvarchar" Mode="In" />
     <Parameter Name="UseSoundex" Type="bit" Mode="In" />
     <Parameter Name="AgeMargin" Type="int" Mode="In" />
-    <Parameter Name="VLERId" Type="int" Mode="In" />
-    <Parameter Name="VLACNo" Type="int" Mode="In" />
+    <Parameter Name="ElectRollId" Type="int" Mode="In" />
+    <Parameter Name="AssyConstId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="uspGetVoters1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AssyConstId" Type="int" Mode="In" />
+    <Parameter Name="VoterCityId" Type="int" Mode="In" />
+    <Parameter Name="VoterWardId" Type="int" Mode="In" />
+    <Parameter Name="VoterPollingBoothId" Type="int" Mode="In" />
   </Function>
   <Function Name="uspGetVotersNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="VoterFirstName" Type="nvarchar" Mode="In" />
@@ -746,22 +856,23 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
     <Parameter Name="VoterCommunity" Type="nvarchar" Mode="In" />
     <Parameter Name="UseSoundex" Type="bit" Mode="In" />
     <Parameter Name="AgeMargin" Type="int" Mode="In" />
-    <Parameter Name="VLERId" Type="int" Mode="In" />
-    <Parameter Name="VLACNo" Type="int" Mode="In" />
+    <Parameter Name="AssyConstId" Type="int" Mode="In" />
   </Function>
   <Function Name="Test_Vote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="electoraladmin" />
   <Function Name="uspFindVoters" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="electoraladmin">
     <Parameter Name="FName" Type="varchar" Mode="In" />
   </Function>
-  <EntityContainer Name="electoraldbModelStoreContainer">
+  <EntityContainer Name="ElectoralDBModelStoreContainer">
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblAssemblyConstituency" EntityType="Self.tblAssemblyConstituency" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblCaste" EntityType="Self.tblCaste" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCity" EntityType="Self.tblCity" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblCommunity" EntityType="Self.tblCommunity" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblCommunityCordinator" EntityType="Self.tblCommunityCordinator" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblCommunityType" EntityType="Self.tblCommunityType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblDistrict" EntityType="Self.tblDistrict" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblElectoralRoll" EntityType="Self.tblElectoralRoll" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMandal" EntityType="Self.tblMandal" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblParliamentConstituency" EntityType="Self.tblParliamentConstituency" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblPoliticalParty" EntityType="Self.tblPoliticalParty" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblPollingStation" EntityType="Self.tblPollingStation" Schema="dbo" store:Type="Tables" />
@@ -778,31 +889,60 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
     <EntitySet Name="tblUserVisit" EntityType="Self.tblUserVisit" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblVoter" EntityType="Self.tblVoter" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblVoter_Stage_old" EntityType="Self.tblVoter_Stage_old" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tblVoterDemo" EntityType="Self.tblVoterDemo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblVoterExt" EntityType="Self.tblVoterExt" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblVoterRequest" EntityType="Self.tblVoterRequest" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblVoterRequestExt" EntityType="Self.tblVoterRequestExt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblVoterType" EntityType="Self.tblVoterType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWard" EntityType="Self.tblWard" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblSetting" EntityType="Self.tblSetting" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [tblSetting].[Id] AS [Id], 
     [tblSetting].[AgeLimit] AS [AgeLimit]
     FROM [dbo].[tblSetting] AS [tblSetting]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="tblLastName" EntityType="Self.tblLastName" store:Type="Tables" store:Schema="electoraladmin">
+      <DefiningQuery>SELECT 
+    [tblLastName].[Id] AS [Id], 
+    [tblLastName].[LastName] AS [LastName], 
+    [tblLastName].[SubCasteId] AS [SubCasteId]
+    FROM [electoraladmin].[tblLastName] AS [tblLastName]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Get_Voter_Search_Data" EntityType="Self.vw_Get_Voter_Search_Data" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Get_Voter_Search_Data].[ERId] AS [ERId], 
+    [vw_Get_Voter_Search_Data].[AssemblyConstituencyId] AS [AssemblyConstituencyId], 
+    [vw_Get_Voter_Search_Data].[Name] AS [Name], 
+    [vw_Get_Voter_Search_Data].[FirstName] AS [FirstName], 
+    [vw_Get_Voter_Search_Data].[LastName] AS [LastName], 
+    [vw_Get_Voter_Search_Data].[WardNo] AS [WardNo], 
+    [vw_Get_Voter_Search_Data].[WardSNo] AS [WardSNo], 
+    [vw_Get_Voter_Search_Data].[PollingStationId] AS [PollingStationId], 
+    [vw_Get_Voter_Search_Data].[SerialNo] AS [SerialNo], 
+    [vw_Get_Voter_Search_Data].[PSSId] AS [PSSId], 
+    [vw_Get_Voter_Search_Data].[SectionNo] AS [SectionNo], 
+    [vw_Get_Voter_Search_Data].[SectionName] AS [SectionName], 
+    [vw_Get_Voter_Search_Data].[EPICNo] AS [EPICNo], 
+    [vw_Get_Voter_Search_Data].[OldEPICNo] AS [OldEPICNo], 
+    [vw_Get_Voter_Search_Data].[Relation] AS [Relation], 
+    [vw_Get_Voter_Search_Data].[RelationFirstName] AS [RelationFirstName], 
+    [vw_Get_Voter_Search_Data].[RelationLastName] AS [RelationLastName], 
+    [vw_Get_Voter_Search_Data].[Age] AS [Age], 
+    [vw_Get_Voter_Search_Data].[Address] AS [Address], 
+    [vw_Get_Voter_Search_Data].[MobileNo] AS [MobileNo], 
+    [vw_Get_Voter_Search_Data].[CommunityId] AS [CommunityId], 
+    [vw_Get_Voter_Search_Data].[Community] AS [Community], 
+    [vw_Get_Voter_Search_Data].[DoorNo] AS [DoorNo], 
+    [vw_Get_Voter_Search_Data].[Locality] AS [Locality], 
+    [vw_Get_Voter_Search_Data].[City] AS [City]
+    FROM [dbo].[vw_Get_Voter_Search_Data] AS [vw_Get_Voter_Search_Data]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK_ParlimentConstituency_tblState" Association="Self.FK_ParlimentConstituency_tblState">
       <End Role="tblState" EntitySet="tblState" />
       <End Role="tblParliamentConstituency" EntitySet="tblParliamentConstituency" />
     </AssociationSet>
-    <AssociationSet Name="FK_tblAssemblyConstituency_ParliamentConstituency" Association="Self.FK_tblAssemblyConstituency_ParliamentConstituency">
-      <End Role="tblParliamentConstituency" EntitySet="tblParliamentConstituency" />
-      <End Role="tblAssemblyConstituency" EntitySet="tblAssemblyConstituency" />
-    </AssociationSet>
     <AssociationSet Name="FK_tblAssemblyConstituency_tblDistrict" Association="Self.FK_tblAssemblyConstituency_tblDistrict">
       <End Role="tblDistrict" EntitySet="tblDistrict" />
       <End Role="tblAssemblyConstituency" EntitySet="tblAssemblyConstituency" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tblCommunity_tblAssemblyConstituency" Association="Self.FK_tblCommunity_tblAssemblyConstituency">
-      <End Role="tblAssemblyConstituency" EntitySet="tblAssemblyConstituency" />
-      <End Role="tblCommunity" EntitySet="tblCommunity" />
     </AssociationSet>
     <AssociationSet Name="FK_tblCommunity_tblCommunityType" Association="Self.FK_tblCommunity_tblCommunityType">
       <End Role="tblCommunityType" EntitySet="tblCommunityType" />
@@ -815,10 +955,6 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
     <AssociationSet Name="FK_tblDistrict_tblState" Association="Self.FK_tblDistrict_tblState">
       <End Role="tblState" EntitySet="tblState" />
       <End Role="tblDistrict" EntitySet="tblDistrict" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tblPollingStation_tblAssemblyConstituency" Association="Self.FK_tblPollingStation_tblAssemblyConstituency">
-      <End Role="tblAssemblyConstituency" EntitySet="tblAssemblyConstituency" />
-      <End Role="tblPollingStation" EntitySet="tblPollingStation" />
     </AssociationSet>
     <AssociationSet Name="FK_tblRequestAttributes_tblRequestType" Association="Self.FK_tblRequestAttributes_tblRequestType">
       <End Role="tblRequestType" EntitySet="tblRequestType" />
@@ -848,10 +984,6 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
       <End Role="tblUser" EntitySet="tblUser" />
       <End Role="tblUserVisit" EntitySet="tblUserVisit" />
     </AssociationSet>
-    <AssociationSet Name="FK_tblVoter_tblAssemblyConstituency" Association="Self.FK_tblVoter_tblAssemblyConstituency">
-      <End Role="tblAssemblyConstituency" EntitySet="tblAssemblyConstituency" />
-      <End Role="tblVoter" EntitySet="tblVoter" />
-    </AssociationSet>
     <AssociationSet Name="FK_tblVoter_tblElectoralRoll" Association="Self.FK_tblVoter_tblElectoralRoll">
       <End Role="tblElectoralRoll" EntitySet="tblElectoralRoll" />
       <End Role="tblVoter" EntitySet="tblVoter" />
@@ -860,12 +992,16 @@ warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primar
       <End Role="tblCommunity" EntitySet="tblCommunity" />
       <End Role="tblVoterExt" EntitySet="tblVoterExt" />
     </AssociationSet>
-    <AssociationSet Name="FK_tblVoterExt_tblVoter" Association="Self.FK_tblVoterExt_tblVoter">
+    <AssociationSet Name="FK_tblVoterExt_tblCommunity1" Association="Self.FK_tblVoterExt_tblCommunity1">
       <End Role="tblCommunity" EntitySet="tblCommunity" />
       <End Role="tblVoterExt" EntitySet="tblVoterExt" />
     </AssociationSet>
-    <AssociationSet Name="FK_tblVoterExt_tblVoter1" Association="Self.FK_tblVoterExt_tblVoter1">
+    <AssociationSet Name="FK_tblVoterExt_tblVoter" Association="Self.FK_tblVoterExt_tblVoter">
       <End Role="tblVoter" EntitySet="tblVoter" />
+      <End Role="tblVoterExt" EntitySet="tblVoterExt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblVoterExt_tblVoterType" Association="Self.FK_tblVoterExt_tblVoterType">
+      <End Role="tblVoterType" EntitySet="tblVoterType" />
       <End Role="tblVoterExt" EntitySet="tblVoterExt" />
     </AssociationSet>
     <AssociationSet Name="FK_tblVoterRequest_tblRequestType" Association="Self.FK_tblVoterRequest_tblRequestType">

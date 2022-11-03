@@ -287,7 +287,7 @@
                     .Sanitized(false)
                     .SetWidth(30)
                    // .RenderValueAs(o => Html.ActionLink("View", "View", new { id = o.VoterMobile1 }));
-                   .RenderValueAs(d => Html.ActionLink("View Voter", "ViewVoter", new { Mobile = d.VoterMobile1 }, new { @class = "modal-link" }));
+                   .RenderValueAs(d => Html.ActionLink("View", "ViewVoter", new { Mobile = d.VoterMobile1 }, new { @class = "modal-link" }));
                }).WithPaging(10).Sortable(true).Filterable(true)
                 </div>
             </div>

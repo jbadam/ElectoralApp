@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="electoraldbModelStoreContainer" CdmEntityContainer="electoraldbEntities">
+  <EntityContainerMapping StorageEntityContainer="ElectoralDBModelStoreContainer" CdmEntityContainer="ElectoralDBEntities">
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="electoraldbModel.sysdiagram">
+      <EntityTypeMapping TypeName="ElectoralDBModel.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -13,11 +13,12 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblAssemblyConstituencies">
-      <EntityTypeMapping TypeName="electoraldbModel.tblAssemblyConstituency">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblAssemblyConstituency">
         <MappingFragment StoreEntitySet="tblAssemblyConstituency">
-          <ScalarProperty Name="ACNo" ColumnName="ACNo" />
+          <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
           <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
-          <ScalarProperty Name="PCNo" ColumnName="PCNo" />
+          <ScalarProperty Name="ParliamentConstituencyId" ColumnName="ParliamentConstituencyId" />
+          <ScalarProperty Name="ACNo" ColumnName="ACNo" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="NameTE" ColumnName="NameTE" />
           <ScalarProperty Name="ReservedFor" ColumnName="ReservedFor" />
@@ -25,30 +26,43 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblCastes">
-      <EntityTypeMapping TypeName="electoraldbModel.tblCaste">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblCaste">
         <MappingFragment StoreEntitySet="tblCaste">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tblCities">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblCity">
+        <MappingFragment StoreEntitySet="tblCity">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Mandal" ColumnName="Mandal" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tblCommunities">
-      <EntityTypeMapping TypeName="electoraldbModel.tblCommunity">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblCommunity">
         <MappingFragment StoreEntitySet="tblCommunity">
-          <ScalarProperty Name="DoorNo" ColumnName="DoorNo" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CommunityTypeId" ColumnName="CommunityTypeId" />
-          <ScalarProperty Name="ACNo" ColumnName="ACNo" />
+          <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DoorNo" ColumnName="DoorNo" />
           <ScalarProperty Name="Locality" ColumnName="Locality" />
           <ScalarProperty Name="Landmark" ColumnName="Landmark" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
           <ScalarProperty Name="City" ColumnName="City" />
-          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblCommunityCordinators">
-      <EntityTypeMapping TypeName="electoraldbModel.tblCommunityCordinator">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblCommunityCordinator">
         <MappingFragment StoreEntitySet="tblCommunityCordinator">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CommunityId" ColumnName="CommunityId" />
@@ -60,7 +74,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblCommunityTypes">
-      <EntityTypeMapping TypeName="electoraldbModel.tblCommunityType">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblCommunityType">
         <MappingFragment StoreEntitySet="tblCommunityType">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -68,7 +82,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblDistricts">
-      <EntityTypeMapping TypeName="electoraldbModel.tblDistrict">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblDistrict">
         <MappingFragment StoreEntitySet="tblDistrict">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="StateId" ColumnName="StateId" />
@@ -77,7 +91,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblElectoralRolls">
-      <EntityTypeMapping TypeName="electoraldbModel.tblElectoralRoll">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblElectoralRoll">
         <MappingFragment StoreEntitySet="tblElectoralRoll">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="RevisionYear" ColumnName="RevisionYear" />
@@ -90,18 +104,28 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tblMandals">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblMandal">
+        <MappingFragment StoreEntitySet="tblMandal">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tblParliamentConstituencies">
-      <EntityTypeMapping TypeName="electoraldbModel.tblParliamentConstituency">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblParliamentConstituency">
         <MappingFragment StoreEntitySet="tblParliamentConstituency">
-          <ScalarProperty Name="PCNo" ColumnName="PCNo" />
+          <ScalarProperty Name="ParliamentConstituencyId" ColumnName="ParliamentConstituencyId" />
           <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="PCNo" ColumnName="PCNo" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ReservedFor" ColumnName="ReservedFor" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblPoliticalParties">
-      <EntityTypeMapping TypeName="electoraldbModel.tblPoliticalParty">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblPoliticalParty">
         <MappingFragment StoreEntitySet="tblPoliticalParty">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -110,21 +134,23 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblPollingStations">
-      <EntityTypeMapping TypeName="electoraldbModel.tblPollingStation">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblPollingStation">
         <MappingFragment StoreEntitySet="tblPollingStation">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ACNo" ColumnName="ACNo" />
+          <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
+          <ScalarProperty Name="WardId" ColumnName="WardId" />
           <ScalarProperty Name="StationNo" ColumnName="StationNo" />
           <ScalarProperty Name="StationName" ColumnName="StationName" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
           <ScalarProperty Name="StationNameTE" ColumnName="StationNameTE" />
           <ScalarProperty Name="StationAddress" ColumnName="StationAddress" />
           <ScalarProperty Name="StationAddressTE" ColumnName="StationAddressTE" />
           <ScalarProperty Name="MainTown" ColumnName="MainTown" />
           <ScalarProperty Name="PoliceStation" ColumnName="PoliceStation" />
-          <ScalarProperty Name="Mandal" ColumnName="Mandal" />
+          <ScalarProperty Name="MandalId" ColumnName="MandalId" />
           <ScalarProperty Name="RevenueDivision" ColumnName="RevenueDivision" />
-          <ScalarProperty Name="District" ColumnName="District" />
-          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
           <ScalarProperty Name="StartSerialNo" ColumnName="StartSerialNo" />
           <ScalarProperty Name="EndSerialNo" ColumnName="EndSerialNo" />
           <ScalarProperty Name="TotalElectors" ColumnName="TotalElectors" />
@@ -135,7 +161,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblPollingStationSections">
-      <EntityTypeMapping TypeName="electoraldbModel.tblPollingStationSection">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblPollingStationSection">
         <MappingFragment StoreEntitySet="tblPollingStationSection">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="PollingStationId" ColumnName="PollingStationId" />
@@ -146,7 +172,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblPrivileges">
-      <EntityTypeMapping TypeName="electoraldbModel.tblPrivilege">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblPrivilege">
         <MappingFragment StoreEntitySet="tblPrivilege">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -158,7 +184,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblRequestAttributes">
-      <EntityTypeMapping TypeName="electoraldbModel.tblRequestAttribute">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblRequestAttribute">
         <MappingFragment StoreEntitySet="tblRequestAttributes">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="RequestTypeId" ColumnName="RequestTypeId" />
@@ -167,7 +193,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblRequestTypes">
-      <EntityTypeMapping TypeName="electoraldbModel.tblRequestType">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblRequestType">
         <MappingFragment StoreEntitySet="tblRequestType">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -176,7 +202,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblRoles">
-      <EntityTypeMapping TypeName="electoraldbModel.tblRole">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblRole">
         <MappingFragment StoreEntitySet="tblRole">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -184,7 +210,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblRolePrivileges">
-      <EntityTypeMapping TypeName="electoraldbModel.tblRolePrivilege">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblRolePrivilege">
         <MappingFragment StoreEntitySet="tblRolePrivilege">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
@@ -193,7 +219,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblStates">
-      <EntityTypeMapping TypeName="electoraldbModel.tblState">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblState">
         <MappingFragment StoreEntitySet="tblState">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -202,7 +228,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblSubCastes">
-      <EntityTypeMapping TypeName="electoraldbModel.tblSubCaste">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblSubCaste">
         <MappingFragment StoreEntitySet="tblSubCaste">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CasteId" ColumnName="CasteId" />
@@ -211,18 +237,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblUsers">
-      <EntityTypeMapping TypeName="electoraldbModel.tblUser">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblUser">
         <MappingFragment StoreEntitySet="tblUser">
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
-          <ScalarProperty Name="PollingBoothId" ColumnName="PollingBoothId" />
-          <ScalarProperty Name="CommunityName" ColumnName="CommunityName" />
-          <ScalarProperty Name="EPICId" ColumnName="EPICId" />
-          <ScalarProperty Name="Age" ColumnName="Age" />
-          <ScalarProperty Name="RelationLastName" ColumnName="RelationLastName" />
-          <ScalarProperty Name="RelationFirstName" ColumnName="RelationFirstName" />
-          <ScalarProperty Name="Relation" ColumnName="Relation" />
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -231,10 +247,20 @@
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="LoginPwd" ColumnName="LoginPwd" />
           <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="City" ColumnName="City" />
-          <ScalarProperty Name="State" ColumnName="State" />
-          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
           <ScalarProperty Name="ParentUserId" ColumnName="ParentUserId" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Relation" ColumnName="Relation" />
+          <ScalarProperty Name="RelationFirstName" ColumnName="RelationFirstName" />
+          <ScalarProperty Name="RelationLastName" ColumnName="RelationLastName" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="EPICNo" ColumnName="EPICNo" />
+          <ScalarProperty Name="CommunityName" ColumnName="CommunityName" />
+          <ScalarProperty Name="PollingStationId" ColumnName="PollingStationId" />
+          <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="ModifledBy" ColumnName="ModifledBy" />
@@ -243,7 +269,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblUserRoles">
-      <EntityTypeMapping TypeName="electoraldbModel.tblUserRole">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblUserRole">
         <MappingFragment StoreEntitySet="tblUserRole">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -252,7 +278,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblUserVisits">
-      <EntityTypeMapping TypeName="electoraldbModel.tblUserVisit">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblUserVisit">
         <MappingFragment StoreEntitySet="tblUserVisit">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -268,8 +294,40 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblVoters">
-      <EntityTypeMapping TypeName="electoraldbModel.tblVoter">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblVoter">
         <MappingFragment StoreEntitySet="tblVoter">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ERId" ColumnName="ERId" />
+          <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
+          <ScalarProperty Name="WardNo" ColumnName="WardNo" />
+          <ScalarProperty Name="WardSNo" ColumnName="WardSNo" />
+          <ScalarProperty Name="PollingStationId" ColumnName="PollingStationId" />
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="PSSId" ColumnName="PSSId" />
+          <ScalarProperty Name="EPICNo" ColumnName="EPICNo" />
+          <ScalarProperty Name="OldEPICNo" ColumnName="OldEPICNo" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstNameTE" ColumnName="FirstNameTE" />
+          <ScalarProperty Name="LastNameTE" ColumnName="LastNameTE" />
+          <ScalarProperty Name="Relation" ColumnName="Relation" />
+          <ScalarProperty Name="RelationFirstName" ColumnName="RelationFirstName" />
+          <ScalarProperty Name="RelationLastName" ColumnName="RelationLastName" />
+          <ScalarProperty Name="RelationFirstNameTE" ColumnName="RelationFirstNameTE" />
+          <ScalarProperty Name="RelationLastNameTE" ColumnName="RelationLastNameTE" />
+          <ScalarProperty Name="RelationEPICNo" ColumnName="RelationEPICNo" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="AddressTE" ColumnName="AddressTE" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblVoter_Stage_old">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblVoter_Stage_old">
+        <MappingFragment StoreEntitySet="tblVoter_Stage_old">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ERId" ColumnName="ERId" />
           <ScalarProperty Name="ACNo" ColumnName="ACNo" />
@@ -296,42 +354,20 @@
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="AddressTE" ColumnName="AddressTE" />
           <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblVoterDemoes">
-      <EntityTypeMapping TypeName="electoraldbModel.tblVoterDemo">
-        <MappingFragment StoreEntitySet="tblVoterDemo">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ERId" ColumnName="ERId" />
-          <ScalarProperty Name="ACNo" ColumnName="ACNo" />
-          <ScalarProperty Name="EPICNo" ColumnName="EPICNo" />
-          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="Relation" ColumnName="Relation" />
-          <ScalarProperty Name="RelationName" ColumnName="RelationName" />
-          <ScalarProperty Name="RelationEPICNo" ColumnName="RelationEPICNo" />
-          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-          <ScalarProperty Name="Age" ColumnName="Age" />
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="PartNo" ColumnName="PartNo" />
-          <ScalarProperty Name="PSSId" ColumnName="PSSId" />
-          <ScalarProperty Name="WardNo" ColumnName="WardNo" />
-          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
-          <ScalarProperty Name="DoubleMetaphone" ColumnName="DoubleMetaphone" />
-          <ScalarProperty Name="DoubleMetaphone1" ColumnName="DoubleMetaphone1" />
+          <ScalarProperty Name="MetaVFName" ColumnName="MetaVFName" />
+          <ScalarProperty Name="MetaVLName" ColumnName="MetaVLName" />
+          <ScalarProperty Name="MetaRLFName" ColumnName="MetaRLFName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblVoterExts">
-      <EntityTypeMapping TypeName="electoraldbModel.tblVoterExt">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblVoterExt">
         <MappingFragment StoreEntitySet="tblVoterExt">
-          <ScalarProperty Name="OldCommunityId" ColumnName="OldCommunityId" />
-          <ScalarProperty Name="CommunityId" ColumnName="CommunityId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="VoterId" ColumnName="VoterId" />
+          <ScalarProperty Name="CommunityId" ColumnName="CommunityId" />
+          <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+          <ScalarProperty Name="OldCommunityId" ColumnName="OldCommunityId" />
           <ScalarProperty Name="IsAccurate" ColumnName="IsAccurate" />
           <ScalarProperty Name="IsHead" ColumnName="IsHead" />
           <ScalarProperty Name="HeadMobileNo" ColumnName="HeadMobileNo" />
@@ -339,7 +375,7 @@
           <ScalarProperty Name="WhatsAppNo" ColumnName="WhatsAppNo" />
           <ScalarProperty Name="SubCasteId" ColumnName="SubCasteId" />
           <ScalarProperty Name="PoliticalPartyId" ColumnName="PoliticalPartyId" />
-          <ScalarProperty Name="IsNRIVote" ColumnName="IsNRIVote" />
+          <ScalarProperty Name="VoterTypeId" ColumnName="VoterTypeId" />
           <ScalarProperty Name="GeoTagInfo" ColumnName="GeoTagInfo" />
           <ScalarProperty Name="Notes" ColumnName="Notes" />
           <ScalarProperty Name="Remarks" ColumnName="Remarks" />
@@ -353,7 +389,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblVoterRequests">
-      <EntityTypeMapping TypeName="electoraldbModel.tblVoterRequest">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblVoterRequest">
         <MappingFragment StoreEntitySet="tblVoterRequest">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="UserVisitId" ColumnName="UserVisitId" />
@@ -365,7 +401,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblVoterRequestExts">
-      <EntityTypeMapping TypeName="electoraldbModel.tblVoterRequestExt">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblVoterRequestExt">
         <MappingFragment StoreEntitySet="tblVoterRequestExt">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="VoterRequestId" ColumnName="VoterRequestId" />
@@ -375,20 +411,186 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="electoraldbModel.Store.sp_alterdiagram" />
-    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="electoraldbModel.Store.sp_creatediagram" />
-    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="electoraldbModel.Store.sp_dropdiagram" />
-    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="electoraldbModel.Store.sp_helpdiagramdefinition">
+    <EntitySetMapping Name="tblVoterTypes">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblVoterType">
+        <MappingFragment StoreEntitySet="tblVoterType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="VoterType" ColumnName="VoterType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblWards">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblWard">
+        <MappingFragment StoreEntitySet="tblWard">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="WardNo" ColumnName="WardNo" />
+          <ScalarProperty Name="WardName" ColumnName="WardName" />
+          <ScalarProperty Name="LocalType" ColumnName="LocalType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSettings">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblSetting">
+        <MappingFragment StoreEntitySet="tblSetting">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AgeLimit" ColumnName="AgeLimit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLastNames">
+      <EntityTypeMapping TypeName="ElectoralDBModel.tblLastName">
+        <MappingFragment StoreEntitySet="tblLastName">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="SubCasteId" ColumnName="SubCasteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Get_Voter_Search_Data">
+      <EntityTypeMapping TypeName="ElectoralDBModel.vw_Get_Voter_Search_Data">
+        <MappingFragment StoreEntitySet="vw_Get_Voter_Search_Data">
+          <ScalarProperty Name="ERId" ColumnName="ERId" />
+          <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="WardNo" ColumnName="WardNo" />
+          <ScalarProperty Name="WardSNo" ColumnName="WardSNo" />
+          <ScalarProperty Name="PollingStationId" ColumnName="PollingStationId" />
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="PSSId" ColumnName="PSSId" />
+          <ScalarProperty Name="SectionNo" ColumnName="SectionNo" />
+          <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+          <ScalarProperty Name="EPICNo" ColumnName="EPICNo" />
+          <ScalarProperty Name="OldEPICNo" ColumnName="OldEPICNo" />
+          <ScalarProperty Name="Relation" ColumnName="Relation" />
+          <ScalarProperty Name="RelationFirstName" ColumnName="RelationFirstName" />
+          <ScalarProperty Name="RelationLastName" ColumnName="RelationLastName" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="CommunityId" ColumnName="CommunityId" />
+          <ScalarProperty Name="Community" ColumnName="Community" />
+          <ScalarProperty Name="DoorNo" ColumnName="DoorNo" />
+          <ScalarProperty Name="Locality" ColumnName="Locality" />
+          <ScalarProperty Name="City" ColumnName="City" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Admin_CreateUser" FunctionName="ElectoralDBModel.Store.Admin_CreateUser">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="electoraldbModel.sp_helpdiagramdefinition_Result">
+        <ComplexTypeMapping TypeName="ElectoralDBModel.Admin_CreateUser_Result">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Admin_GetCities" FunctionName="ElectoralDBModel.Store.Admin_GetCities">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ElectoralDBModel.Admin_GetCities_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Admin_GetStates" FunctionName="ElectoralDBModel.Store.Admin_GetStates">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ElectoralDBModel.Admin_GetStates_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Admin_GetStates_Cities" FunctionName="ElectoralDBModel.Store.Admin_GetStates_Cities">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ElectoralDBModel.Admin_GetStates_Cities_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Admin_GetUserList" FunctionName="ElectoralDBModel.Store.Admin_GetUserList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ElectoralDBModel.Admin_GetUserList_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="EpicNo" ColumnName="EpicNo" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="State" ColumnName="State" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Admin_UpdateUser" FunctionName="ElectoralDBModel.Store.Admin_UpdateUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ElectoralDBModel.Admin_UpdateUser_Result">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Admin_UserinfoByUserId" FunctionName="ElectoralDBModel.Store.Admin_UserinfoByUserId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ElectoralDBModel.Admin_UserinfoByUserId_Result">
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="AltMobileNo" ColumnName="AltMobileNo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="ParentUserId" ColumnName="ParentUserId" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Relation" ColumnName="Relation" />
+          <ScalarProperty Name="RelationFirstName" ColumnName="RelationFirstName" />
+          <ScalarProperty Name="RelationLastName" ColumnName="RelationLastName" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="EPICNo" ColumnName="EPICNo" />
+          <ScalarProperty Name="CommunityName" ColumnName="CommunityName" />
+          <ScalarProperty Name="PollingStationId" ColumnName="PollingStationId" />
+          <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Admin_UserpageDropdowndata" FunctionName="ElectoralDBModel.Store.Admin_UserpageDropdowndata">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ElectoralDBModel.Admin_UserpageDropdowndata_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetCitiesByACno" FunctionName="ElectoralDBModel.Store.GetCitiesByACno">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ElectoralDBModel.GetCitiesByACno_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetConstituenciesByUserId" FunctionName="ElectoralDBModel.Store.GetConstituenciesByUserId" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ElectoralDBModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ElectoralDBModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ElectoralDBModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ElectoralDBModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ElectoralDBModel.sp_helpdiagramdefinition_Result">
           <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="definition" ColumnName="definition" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="electoraldbModel.Store.sp_helpdiagrams">
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ElectoralDBModel.Store.sp_helpdiagrams">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="electoraldbModel.sp_helpdiagrams_Result">
+        <ComplexTypeMapping TypeName="ElectoralDBModel.sp_helpdiagrams_Result">
           <ScalarProperty Name="Database" ColumnName="Database" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -397,97 +599,43 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="electoraldbModel.Store.sp_renamediagram" />
-    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="electoraldbModel.Store.sp_upgraddiagrams" />
-    <FunctionImportMapping FunctionImportName="uspGetVoters" FunctionName="electoraldbModel.Store.uspGetVoters">
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ElectoralDBModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ElectoralDBModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="uspFetchVoters" FunctionName="ElectoralDBModel.Store.uspFetchVoters" />
+    <FunctionImportMapping FunctionImportName="uspFetchVoters_Old" FunctionName="ElectoralDBModel.Store.uspFetchVoters_Old">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="electoraldbModel.uspGetVoters_Result">
-          <ScalarProperty Name="Id" ColumnName="Id" />
+        <ComplexTypeMapping TypeName="ElectoralDBModel.uspFetchVoters_Old_Result">
           <ScalarProperty Name="ERId" ColumnName="ERId" />
-          <ScalarProperty Name="ACNo" ColumnName="ACNo" />
-          <ScalarProperty Name="WardNo" ColumnName="WardNo" />
-          <ScalarProperty Name="WardSNo" ColumnName="WardSNo" />
-          <ScalarProperty Name="PartNo" ColumnName="PartNo" />
-          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
-          <ScalarProperty Name="PSSId" ColumnName="PSSId" />
-          <ScalarProperty Name="EPICNo" ColumnName="EPICNo" />
-          <ScalarProperty Name="OldEPICNo" ColumnName="OldEPICNo" />
+          <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="FirstNameTE" ColumnName="FirstNameTE" />
-          <ScalarProperty Name="LastNameTE" ColumnName="LastNameTE" />
+          <ScalarProperty Name="WardNo" ColumnName="WardNo" />
+          <ScalarProperty Name="WardSNo" ColumnName="WardSNo" />
+          <ScalarProperty Name="PollingStationId" ColumnName="PollingStationId" />
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="PSSId" ColumnName="PSSId" />
+          <ScalarProperty Name="SectionNo" ColumnName="SectionNo" />
+          <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+          <ScalarProperty Name="EPICNo" ColumnName="EPICNo" />
+          <ScalarProperty Name="OldEPICNo" ColumnName="OldEPICNo" />
           <ScalarProperty Name="Relation" ColumnName="Relation" />
           <ScalarProperty Name="RelationFirstName" ColumnName="RelationFirstName" />
           <ScalarProperty Name="RelationLastName" ColumnName="RelationLastName" />
-          <ScalarProperty Name="RelationFirstNameTE" ColumnName="RelationFirstNameTE" />
-          <ScalarProperty Name="RelationLastNameTE" ColumnName="RelationLastNameTE" />
-          <ScalarProperty Name="RelationEPICNo" ColumnName="RelationEPICNo" />
-          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
           <ScalarProperty Name="Age" ColumnName="Age" />
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="AddressTE" ColumnName="AddressTE" />
           <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
-          <ScalarProperty Name="MetaVFName" ColumnName="MetaVFName" />
-          <ScalarProperty Name="MetaVLName" ColumnName="MetaVLName" />
-          <ScalarProperty Name="MetaRLFName" ColumnName="MetaRLFName" />
+          <ScalarProperty Name="CommunityId" ColumnName="CommunityId" />
+          <ScalarProperty Name="Community" ColumnName="Community" />
+          <ScalarProperty Name="DoorNo" ColumnName="DoorNo" />
+          <ScalarProperty Name="Locality" ColumnName="Locality" />
+          <ScalarProperty Name="City" ColumnName="City" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspFindVoters" FunctionName="electoraldbModel.Store.uspFindVoters">
+    <FunctionImportMapping FunctionImportName="uspGetConditionalDuplicateVoters" FunctionName="ElectoralDBModel.Store.uspGetConditionalDuplicateVoters">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="electoraldbModel.uspFindVoters_Result">
-          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
-          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <EntitySetMapping Name="tblVoter_Stage_old">
-      <EntityTypeMapping TypeName="electoraldbModel.tblVoter_Stage_old">
-        <MappingFragment StoreEntitySet="tblVoter_Stage_old">
-          <ScalarProperty Name="MetaRLFName" ColumnName="MetaRLFName" />
-          <ScalarProperty Name="MetaVLName" ColumnName="MetaVLName" />
-          <ScalarProperty Name="MetaVFName" ColumnName="MetaVFName" />
-          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
-          <ScalarProperty Name="AddressTE" ColumnName="AddressTE" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
-          <ScalarProperty Name="Age" ColumnName="Age" />
-          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-          <ScalarProperty Name="RelationEPICNo" ColumnName="RelationEPICNo" />
-          <ScalarProperty Name="RelationLastNameTE" ColumnName="RelationLastNameTE" />
-          <ScalarProperty Name="RelationFirstNameTE" ColumnName="RelationFirstNameTE" />
-          <ScalarProperty Name="RelationLastName" ColumnName="RelationLastName" />
-          <ScalarProperty Name="RelationFirstName" ColumnName="RelationFirstName" />
-          <ScalarProperty Name="Relation" ColumnName="Relation" />
-          <ScalarProperty Name="LastNameTE" ColumnName="LastNameTE" />
-          <ScalarProperty Name="FirstNameTE" ColumnName="FirstNameTE" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="OldEPICNo" ColumnName="OldEPICNo" />
-          <ScalarProperty Name="EPICNo" ColumnName="EPICNo" />
-          <ScalarProperty Name="PSSId" ColumnName="PSSId" />
-          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
-          <ScalarProperty Name="PartNo" ColumnName="PartNo" />
-          <ScalarProperty Name="WardSNo" ColumnName="WardSNo" />
-          <ScalarProperty Name="WardNo" ColumnName="WardNo" />
-          <ScalarProperty Name="ACNo" ColumnName="ACNo" />
-          <ScalarProperty Name="ERId" ColumnName="ERId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblSettings">
-      <EntityTypeMapping TypeName="electoraldbModel.tblSetting">
-        <MappingFragment StoreEntitySet="tblSetting">
-          <ScalarProperty Name="AgeLimit" ColumnName="AgeLimit" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="uspGetConditionalDuplicateVoters" FunctionName="electoraldbModel.Store.uspGetConditionalDuplicateVoters">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="electoraldbModel.uspGetConditionalDuplicateVoters_Result">
+        <ComplexTypeMapping TypeName="ElectoralDBModel.uspGetConditionalDuplicateVoters_Result">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="Firstname" ColumnName="Firstname" />
           <ScalarProperty Name="Lastname" ColumnName="Lastname" />
@@ -499,9 +647,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetDuplicateVoters" FunctionName="electoraldbModel.Store.uspGetDuplicateVoters">
+    <FunctionImportMapping FunctionImportName="uspGetDuplicateVoters" FunctionName="ElectoralDBModel.Store.uspGetDuplicateVoters">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="electoraldbModel.uspGetDuplicateVoters_Result">
+        <ComplexTypeMapping TypeName="ElectoralDBModel.uspGetDuplicateVoters_Result">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="First_Name" ColumnName="First Name" />
           <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
@@ -515,9 +663,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetExactFirstNameSimilarLastName" FunctionName="electoraldbModel.Store.uspGetExactFirstNameSimilarLastName">
+    <FunctionImportMapping FunctionImportName="uspGetExactFirstNameSimilarLastName" FunctionName="ElectoralDBModel.Store.uspGetExactFirstNameSimilarLastName">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="electoraldbModel.uspGetExactFirstNameSimilarLastName_Result">
+        <ComplexTypeMapping TypeName="ElectoralDBModel.uspGetExactFirstNameSimilarLastName_Result">
           <ScalarProperty Name="EPIC_No" ColumnName="EPIC No" />
           <ScalarProperty Name="First_Name" ColumnName="First Name" />
           <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
@@ -531,9 +679,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetExactLastNameSimilarFirstName" FunctionName="electoraldbModel.Store.uspGetExactLastNameSimilarFirstName">
+    <FunctionImportMapping FunctionImportName="uspGetExactLastNameSimilarFirstName" FunctionName="ElectoralDBModel.Store.uspGetExactLastNameSimilarFirstName">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="electoraldbModel.uspGetExactLastNameSimilarFirstName_Result">
+        <ComplexTypeMapping TypeName="ElectoralDBModel.uspGetExactLastNameSimilarFirstName_Result">
           <ScalarProperty Name="EPIC_No" ColumnName="EPIC No" />
           <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
           <ScalarProperty Name="First_Name" ColumnName="First Name" />
@@ -547,9 +695,9 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="uspGetVotersNew" FunctionName="electoraldbModel.Store.uspGetVotersNew">
+    <FunctionImportMapping FunctionImportName="uspGetVoters" FunctionName="ElectoralDBModel.Store.uspGetVoters">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="electoraldbModel.uspGetVotersNew_Result">
+        <ComplexTypeMapping TypeName="ElectoralDBModel.uspGetVoters_Result">
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="EPICNo" ColumnName="EPICNo" />
@@ -558,11 +706,21 @@
           <ScalarProperty Name="RelationFirstName" ColumnName="RelationFirstName" />
           <ScalarProperty Name="RelationLastName" ColumnName="RelationLastName" />
           <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
-          <ScalarProperty Name="City" ColumnName="City" />
-          <ScalarProperty Name="Community" ColumnName="Community" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="Test_Vote" FunctionName="electoraldbModel.Store.Test_Vote" />
+    <FunctionImportMapping FunctionImportName="uspGetVoters1" FunctionName="ElectoralDBModel.Store.uspGetVoters1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ElectoralDBModel.uspGetVoters1_Result">
+          <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="WardNo" ColumnName="WardNo" />
+          <ScalarProperty Name="PollingStationId" ColumnName="PollingStationId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGetVotersNew" FunctionName="ElectoralDBModel.Store.uspGetVotersNew" />
+    <FunctionImportMapping FunctionImportName="Test_Vote" FunctionName="ElectoralDBModel.Store.Test_Vote" />
+    <FunctionImportMapping FunctionImportName="uspFindVoters" FunctionName="ElectoralDBModel.Store.uspFindVoters" />
   </EntityContainerMapping>
 </Mapping>

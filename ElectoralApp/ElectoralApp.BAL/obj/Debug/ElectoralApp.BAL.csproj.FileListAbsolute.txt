@@ -10,3 +10,18 @@ D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.BAL\obj\Debug\Electora
 D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.BAL\obj\Debug\ElectoralApp.BAL.dll
 D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.BAL\obj\Debug\ElectoralApp.BAL.pdb
 D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.BAL\obj\Debug\ElectoralApp.BAL.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.BAL\bin\Debug\ElectoralApp.BAL.dll.config
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.BAL\bin\Debug\ElectoralApp.BAL.dll
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.BAL\bin\Debug\ElectoralApp.BAL.pdb
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.BAL\bin\Debug\ElectoralApp.DAL.exe
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.BAL\bin\Debug\EntityFramework.dll
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.BAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.BAL\bin\Debug\ElectoralApp.DAL.pdb
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.BAL\bin\Debug\ElectoralApp.DAL.exe.config
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.BAL\bin\Debug\EntityFramework.xml
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.BAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.BAL\obj\Debug\ElectoralApp.BAL.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.BAL\obj\Debug\ElectoralApp.BAL.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.BAL\obj\Debug\ElectoralApp.BAL.csproj.CopyComplete
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.BAL\obj\Debug\ElectoralApp.BAL.dll
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.BAL\obj\Debug\ElectoralApp.BAL.pdb

@@ -10,3 +10,16 @@ D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.DAL\obj\Debug\Electora
 D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.DAL\obj\Debug\ElectoralApp.DAL.csproj.CopyComplete
 D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.DAL\obj\Debug\ElectoralApp.DAL.exe
 D:\Sridhar Project\ElectoralApp\ElectoralApp\ElectoralApp.DAL\obj\Debug\ElectoralApp.DAL.pdb
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\bin\Debug\ElectoralApp.DAL.exe.config
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\bin\Debug\ElectoralApp.DAL.exe
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\bin\Debug\ElectoralApp.DAL.pdb
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\bin\Debug\EntityFramework.dll
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\bin\Debug\EntityFramework.xml
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\obj\Debug\ElectoralApp.DAL.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\obj\Debug\ElectoralApp.DAL.csproj.SuggestedBindingRedirects.cache
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\obj\Debug\ElectoralApp.DAL.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\obj\Debug\ElectoralApp.DAL.csproj.CopyComplete
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\obj\Debug\ElectoralApp.DAL.exe
+C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\obj\Debug\ElectoralApp.DAL.pdb

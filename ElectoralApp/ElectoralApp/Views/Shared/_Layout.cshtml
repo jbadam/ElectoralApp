@@ -29,41 +29,50 @@
             <a href="@Url.Action("Index", "Home")" class="br-menu-link active">
                 <div class="br-menu-item">
                     <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
-                    <span class="menu-item-label">Dashboard</span>
+                    <span class="menu-item-label">HOME</span>
                 </div><!-- menu-item -->
             </a><!-- br-menu-link -->
+
             <a href="mailbox.html" class="br-menu-link">
                 <div class="br-menu-item">
                     <i class="menu-item-icon icon ion-ios-email-outline tx-24"></i>
-                    <span class="menu-item-label">Voters</span>
+                    <span class="menu-item-label">VOTERS</span>
+                    <i class="menu-item-arrow fa fa-angle-down"></i>
                 </div><!-- menu-item -->
             </a><!-- br-menu-link -->
-            <a href="card-dashboard.html" class="br-menu-link">
+
+            <ul class="br-menu-sub nav flex-column inactive">
+                <li class="nav-item"><a href="@Url.Action("", "")" class="nav-link">Voter Addition</a></li>
+                <li class="nav-item"><a href="@Url.Action("", "" , new { id=0 })" class="nav-link">Voter Deletion</a></li>
+                <li class="nav-item"><a href="@Url.Action("", "" , new { id=0 })" class="nav-link">Voter Correction/Transfer</a></li>
+            </ul>
+
+            <a href="@Url.Action("Search", "Home")" class="br-menu-link">
                 <div class="br-menu-item">
                     <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-                    <span class="menu-item-label">Positions</span>
+                    <span class="menu-item-label">SEARCH</span>
                 </div><!-- menu-item -->
             </a><!-- br-menu-link -->
 
             <a href="card-dashboard.html" class="br-menu-link">
                 <div class="br-menu-item">
                     <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-                    <span class="menu-item-label">Poll Results</span>
+                    <span class="menu-item-label">CHANGE PASSWORD</span>
                 </div><!-- menu-item -->
             </a><!-- br-menu-link -->
 
-            <a href="card-dashboard.html" class="br-menu-link">
+            <a href="@Url.Action("ViewVoter", "Home")" class="br-menu-link">
                 <div class="br-menu-item">
                     <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-                    <span class="menu-item-label">Voter Registration</span>
+                    <span class="menu-item-label">VIEW PROFILE</span>
                 </div><!-- menu-item -->
             </a><!-- br-menu-link -->
 
 
             <a href="#" class="br-menu-link">
                 <div class="br-menu-item">
-                    <i class="menu-item-icon icon ion-ios-filing-outline tx-24"></i>
-                    <span class="menu-item-label">User Profiles</span>
+                    <i class="menu-item-icon icon ion-ios-filing-outline tx-20"></i>
+                    <span class="menu-item-label">USER PROFILES</span>
                     <i class="menu-item-arrow fa fa-angle-down"></i>
                 </div><!-- menu-item -->
             </a><!-- br-menu-link -->
@@ -73,12 +82,62 @@
             </ul>
 
 
+            <a href="#" class="br-menu-link">
+                <div class="br-menu-item">
+                    <i class="menu-item-icon icon ion-ios-filing-outline tx-24"></i>
+                    <span class="menu-item-label">USER MANAGEMENT</span>
+                    <i class="menu-item-arrow fa fa-angle-down"></i>
+                </div><!-- menu-item -->
+            </a><!-- br-menu-link -->
+            <ul class="br-menu-sub nav flex-column">
+                <li class="nav-item"><a href="@Url.Action("", "")" class="nav-link">Log-In</a></li>
+                <li class="nav-item"><a href="@Url.Action("", "" , new { id=0 })" class="nav-link">Log-Out</a></li>
+                <li class="nav-item"><a href="@Url.Action("", "")" class="nav-link">Forget Password</a></li>
+            </ul>
+
+
             <a href="card-dashboard.html" class="br-menu-link">
                 <div class="br-menu-item">
                     <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-                    <span class="menu-item-label">Reports</span>
+                    <span class="menu-item-label">REPORTS</span>
+                    <i class="menu-item-arrow fa fa-angle-down"></i>
                 </div><!-- menu-item -->
             </a><!-- br-menu-link -->
+            <ul class="br-menu-sub nav flex-column">
+                <li class="nav-item"><a href="@Url.Action("", "")" class="nav-link">Authorization of Extended Data</a></li>
+                <li class="nav-item"><a href="@Url.Action("", "" , new { id=0 })" class="nav-link">Duplicate Voters - Find possible or potential Duplicates by intelligence matching</a></li>
+                <li class="nav-item"><a href="@Url.Action("", "" , new { id=0 })" class="nav-link">User's List</a></li>
+                <li class="nav-item"><a href="@Url.Action("", "")" class="nav-link">Extended data collected by Users over a period of time</a></li>
+                <li class="nav-item"><a href="@Url.Action("", "" , new { id=0 })" class="nav-link">Adding Comminty / Importing Community</a></li>
+                <li class="nav-item"><a href="@Url.Action("", "" , new { id=0 })" class="nav-link">Provision for importing data into Voters Master - Corrections, Additions and Deletions</a></li>
+                <li class="nav-item"><a href="@Url.Action("", "")" class="nav-link">Booth Wise Voter List - PDF and Excel - Ability to select Polling Station /Part, section, VoterType with provision to select Columns</a></li>
+                <li class="nav-item"><a href="@Url.Action("", "" , new { id=0 })" class="nav-link">Individual Status Reports for Requests, i.e New Voter, Voter Transfer and Voter Correction Requests</a></li>
+                <li class="nav-item">
+                    <a href="@Url.Action("", "" , new { id=0 })" class="nav-link">
+                        <div class="br-menu-item">
+                            <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+                            <span class="menu-item-label">Reports listing Apartment wise Voter Details showing Verification Status</span>
+                            <i class="menu-item-arrow fa fa-angle-down"></i>
+                        </div>
+                    </a>
+                </li>
+                <ul>
+                    <li class="nav-item"><a href="@Url.Action("", "")" class="nav-link">Graph - Gender Wise Trends</a></li>
+                    <li class="nav-item"><a href="@Url.Action("", "" , new { id=0 })" class="nav-link">Party wise strengths ( Use respective Colours for Political Parties , ex: Yellow for TDP)</a></li>
+                    <li class="nav-item"><a href="@Url.Action("", "" , new { id=0 })" class="nav-link">Age group Wise Trends ( 18 to 30 Years, 30 to 45 years, 45 to 60 Years, 60 Years and above)</a></li>
+                </ul>
+
+            </ul>
+
+            <a href="card-dashboard.html" class="br-menu-link">
+                <div class="br-menu-item">
+                    <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+                    <span class="menu-item-label">LOGOUT</span>
+                </div><!-- menu-item -->
+            </a><!-- br-menu-link -->
+
+
+
         </div><!-- br-sideleft-menu -->
 
     </div><!-- br-sideleft -->

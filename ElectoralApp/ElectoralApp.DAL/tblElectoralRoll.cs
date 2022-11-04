@@ -20,7 +20,7 @@ namespace ElectoralApp.DAL
             this.tblVoters = new HashSet<tblVoter>();
         }
     
-        public int Id { get; set; }
+        public long Id { get; set; }
         public int RevisionYear { get; set; }
         public Nullable<System.DateTime> QualifyingDate { get; set; }
         public System.DateTime PublishDate { get; set; }

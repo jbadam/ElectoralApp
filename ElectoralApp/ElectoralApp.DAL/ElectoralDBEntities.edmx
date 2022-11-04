@@ -1,0 +1,2884 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ElectoralDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblAssemblyConstituency">
+          <Key>
+            <PropertyRef Name="AssemblyConstituencyId" />
+          </Key>
+          <Property Name="AssemblyConstituencyId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DistrictId" Type="bigint" Nullable="false" />
+          <Property Name="ParliamentConstituencyId" Type="bigint" Nullable="false" />
+          <Property Name="ACNo" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NameTE" Type="nvarchar" MaxLength="128" />
+          <Property Name="ReservedFor" Type="int" />
+        </EntityType>
+        <EntityType Name="tblCaste">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DistrictId" Type="bigint" Nullable="false" />
+          <Property Name="AssemblyConstituencyId" Type="bigint" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mandal" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pincode" Type="nvarchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="tblCommunity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommunityTypeId" Type="int" Nullable="false" />
+          <Property Name="AssemblyConstituencyId" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="DoorNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Locality" Type="nvarchar" MaxLength="50" />
+          <Property Name="Landmark" Type="nvarchar" MaxLength="50" />
+          <Property Name="CityId" Type="bigint" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pincode" Type="char" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCommunityCordinator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommunityId" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="MobileNo1" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MobileNo2" Type="nvarchar" MaxLength="20" />
+          <Property Name="WhatsAppNo" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblCommunityType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDistrict">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblElectoralRoll">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RevisionYear" Type="int" Nullable="false" />
+          <Property Name="QualifyingDate" Type="date" />
+          <Property Name="PublishDate" Type="date" Nullable="false" />
+          <Property Name="RevisionType" Type="nvarchar" MaxLength="128" />
+          <Property Name="RollSummary" Type="nvarchar" MaxLength="512" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'electoraldb.dbo.tblLastName' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblLastName">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="SubCasteId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SubCasteId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMandal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DistrictId" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblParliamentConstituency">
+          <Key>
+            <PropertyRef Name="ParliamentConstituencyId" />
+          </Key>
+          <Property Name="ParliamentConstituencyId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateId" Type="int" Nullable="false" />
+          <Property Name="PCNo" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ReservedFor" Type="int" />
+        </EntityType>
+        <EntityType Name="tblPoliticalParty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StateId" Type="int" Nullable="false" />
+          <Property Name="ShortName" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPollingStation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssemblyConstituencyId" Type="bigint" Nullable="false" />
+          <Property Name="WardId" Type="bigint" />
+          <Property Name="StationNo" Type="int" Nullable="false" />
+          <Property Name="StationName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CityId" Type="bigint" />
+          <Property Name="StationNameTE" Type="nvarchar" MaxLength="512" Nullable="false" />
+          <Property Name="StationAddress" Type="nvarchar" MaxLength="512" Nullable="false" />
+          <Property Name="StationAddressTE" Type="nvarchar" MaxLength="512" Nullable="false" />
+          <Property Name="MainTown" Type="nvarchar" MaxLength="50" />
+          <Property Name="PoliceStation" Type="nvarchar" MaxLength="50" />
+          <Property Name="MandalId" Type="bigint" />
+          <Property Name="RevenueDivision" Type="nvarchar" MaxLength="50" />
+          <Property Name="DistrictId" Type="bigint" />
+          <Property Name="Pincode" Type="char" MaxLength="6" />
+          <Property Name="StartSerialNo" Type="int" />
+          <Property Name="EndSerialNo" Type="int" />
+          <Property Name="TotalElectors" Type="int" />
+          <Property Name="TotalMale" Type="int" />
+          <Property Name="TotalFemale" Type="int" />
+          <Property Name="TotalOthers" Type="int" />
+        </EntityType>
+        <EntityType Name="tblPollingStationSection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PollingStationId" Type="bigint" Nullable="false" />
+          <Property Name="SectionNo" Type="int" Nullable="false" />
+          <Property Name="SectionName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="SectionNameTE" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tblPrivilege">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="PageId" Type="nvarchar" MaxLength="50" />
+          <Property Name="PageName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ElementId" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblRequestAttributes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequestTypeId" Type="int" Nullable="false" />
+          <Property Name="AttrName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblRequestType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FormUsed" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblRolePrivilege">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="PrivilegeId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'electoraldb.dbo.tblSetting' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="AgeLimit" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AgeLimit" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ShortCode" Type="nvarchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="tblSubCaste">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CasteId" Type="int" Nullable="false" />
+          <Property Name="StateId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="AltMobileNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="LoginPwd" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="512" />
+          <Property Name="CityId" Type="bigint" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="Pincode" Type="char" MaxLength="6" />
+          <Property Name="ParentUserId" Type="bigint" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Relation" Type="nvarchar" MaxLength="50" />
+          <Property Name="RelationFirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RelationLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Age" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="EPICNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CommunityId" Type="bigint" />
+          <Property Name="PollingStationId" Type="bigint" />
+          <Property Name="AssemblyConstituencyId" Type="bigint" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifledBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblUserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="RoleId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblUserVisit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="VoterId" Type="bigint" Nullable="false" />
+          <Property Name="VisitStart" Type="datetime" Nullable="false" />
+          <Property Name="VisitEnd" Type="datetime" Nullable="false" />
+          <Property Name="GeoTag" Type="nvarchar" MaxLength="100" />
+          <Property Name="AvailabilityStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsVerified" Type="bit" Nullable="false" />
+          <Property Name="TotalHeadCount" Type="int" />
+          <Property Name="TotalRequests" Type="int" />
+        </EntityType>
+        <EntityType Name="tblVoter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ERId" Type="bigint" Nullable="false" />
+          <Property Name="AssemblyConstituencyId" Type="bigint" Nullable="false" />
+          <Property Name="WardNo" Type="nvarchar" MaxLength="5" />
+          <Property Name="WardSNo" Type="int" />
+          <Property Name="PollingStationId" Type="bigint" Nullable="false" />
+          <Property Name="SerialNo" Type="int" Nullable="false" />
+          <Property Name="PSSId" Type="bigint" />
+          <Property Name="EPICNo" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="OldEPICNo" Type="nvarchar" MaxLength="15" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstNameTE" Type="nvarchar" MaxLength="128" />
+          <Property Name="LastNameTE" Type="nvarchar" MaxLength="128" />
+          <Property Name="Relation" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="RelationFirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RelationLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RelationFirstNameTE" Type="nvarchar" MaxLength="128" />
+          <Property Name="RelationLastNameTE" Type="nvarchar" MaxLength="128" />
+          <Property Name="RelationEPICNo" Type="nvarchar" MaxLength="15" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+          <Property Name="Address" Type="nvarchar" MaxLength="512" />
+          <Property Name="AddressTE" Type="nvarchar" MaxLength="512" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblVoter_Stage_old">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ERId" Type="int" Nullable="false" />
+          <Property Name="ACNo" Type="int" Nullable="false" />
+          <Property Name="WardNo" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="WardSNo" Type="int" Nullable="false" />
+          <Property Name="PartNo" Type="int" Nullable="false" />
+          <Property Name="SerialNo" Type="int" Nullable="false" />
+          <Property Name="PSSId" Type="int" Nullable="false" />
+          <Property Name="EPICNo" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="OldEPICNo" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstNameTE" Type="nvarchar" MaxLength="128" />
+          <Property Name="LastNameTE" Type="nvarchar" MaxLength="128" />
+          <Property Name="Relation" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="RelationFirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RelationLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RelationFirstNameTE" Type="nvarchar" MaxLength="128" />
+          <Property Name="RelationLastNameTE" Type="nvarchar" MaxLength="128" />
+          <Property Name="RelationEPICNo" Type="nvarchar" MaxLength="15" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="512" />
+          <Property Name="AddressTE" Type="nvarchar" MaxLength="512" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="MetaVFName" Type="varchar" MaxLength="128" StoreGeneratedPattern="Computed" />
+          <Property Name="MetaVLName" Type="varchar" MaxLength="128" StoreGeneratedPattern="Computed" />
+          <Property Name="MetaRLFName" Type="varchar" MaxLength="128" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tblVoterExt">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VoterId" Type="bigint" Nullable="false" />
+          <Property Name="CommunityId" Type="bigint" />
+          <Property Name="CurrentAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="OldCommunityId" Type="bigint" />
+          <Property Name="IsAccurate" Type="bit" Nullable="false" />
+          <Property Name="IsHead" Type="bit" />
+          <Property Name="HeadMobileNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="AltMobileNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="WhatsAppNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="SubCasteId" Type="int" />
+          <Property Name="PoliticalPartyId" Type="int" />
+          <Property Name="VoterTypeId" Type="int" Nullable="false" />
+          <Property Name="GeoTagInfo" Type="nvarchar" MaxLength="100" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="512" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="128" />
+          <Property Name="VerifyStatus" Type="int" Nullable="false" />
+          <Property Name="VerifyAuthorizeStatus" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="bigint" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblVoterRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserVisitId" Type="bigint" Nullable="false" />
+          <Property Name="RequestTypeId" Type="int" Nullable="false" />
+          <Property Name="RequestStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="bigint" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblVoterRequestExt">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VoterRequestId" Type="bigint" Nullable="false" />
+          <Property Name="ReqAttrId" Type="int" Nullable="false" />
+          <Property Name="ReqAttrValue" Type="nvarchar" MaxLength="128" />
+          <Property Name="PreviousValue" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="tblVoterType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VoterType" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblWard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityId" Type="bigint" Nullable="false" />
+          <Property Name="WardNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="WardName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LocalType" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'electoraldb.dbo.vw_Get_Voter_Search_Data' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Get_Voter_Search_Data">
+          <Key>
+            <PropertyRef Name="ERId" />
+            <PropertyRef Name="AssemblyConstituencyId" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="PollingStationId" />
+            <PropertyRef Name="SerialNo" />
+            <PropertyRef Name="EPICNo" />
+            <PropertyRef Name="Relation" />
+            <PropertyRef Name="Age" />
+          </Key>
+          <Property Name="ERId" Type="bigint" Nullable="false" />
+          <Property Name="AssemblyConstituencyId" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="WardNo" Type="nvarchar" MaxLength="5" />
+          <Property Name="WardSNo" Type="int" />
+          <Property Name="PollingStationId" Type="bigint" Nullable="false" />
+          <Property Name="SerialNo" Type="int" Nullable="false" />
+          <Property Name="PSSId" Type="bigint" />
+          <Property Name="SectionNo" Type="int" />
+          <Property Name="SectionName" Type="nvarchar" MaxLength="255" />
+          <Property Name="EPICNo" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="OldEPICNo" Type="nvarchar" MaxLength="15" />
+          <Property Name="Relation" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="RelationFirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RelationLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="512" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="CommunityId" Type="bigint" />
+          <Property Name="Community" Type="nvarchar" MaxLength="128" />
+          <Property Name="DoorNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Locality" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_ParlimentConstituency_tblState">
+          <End Role="tblState" Type="Self.tblState" Multiplicity="1" />
+          <End Role="tblParliamentConstituency" Type="Self.tblParliamentConstituency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblParliamentConstituency">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAssemblyConstituency_tblDistrict">
+          <End Role="tblDistrict" Type="Self.tblDistrict" Multiplicity="1" />
+          <End Role="tblAssemblyConstituency" Type="Self.tblAssemblyConstituency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDistrict">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblAssemblyConstituency">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCommunity_tblCommunityType">
+          <End Role="tblCommunityType" Type="Self.tblCommunityType" Multiplicity="1" />
+          <End Role="tblCommunity" Type="Self.tblCommunity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCommunityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblCommunity">
+              <PropertyRef Name="CommunityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCommunityCordinator_tblCommunity">
+          <End Role="tblCommunity" Type="Self.tblCommunity" Multiplicity="1" />
+          <End Role="tblCommunityCordinator" Type="Self.tblCommunityCordinator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCommunity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblCommunityCordinator">
+              <PropertyRef Name="CommunityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDistrict_tblState">
+          <End Role="tblState" Type="Self.tblState" Multiplicity="1" />
+          <End Role="tblDistrict" Type="Self.tblDistrict" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblDistrict">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRequestAttributes_tblRequestType">
+          <End Role="tblRequestType" Type="Self.tblRequestType" Multiplicity="1" />
+          <End Role="tblRequestAttributes" Type="Self.tblRequestAttributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRequestType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblRequestAttributes">
+              <PropertyRef Name="RequestTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRolePrivilege_tblPrivilege">
+          <End Role="tblPrivilege" Type="Self.tblPrivilege" Multiplicity="0..1" />
+          <End Role="tblRolePrivilege" Type="Self.tblRolePrivilege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPrivilege">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblRolePrivilege">
+              <PropertyRef Name="PrivilegeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRolePrivilege_tblRole">
+          <End Role="tblRole" Type="Self.tblRole" Multiplicity="0..1" />
+          <End Role="tblRolePrivilege" Type="Self.tblRolePrivilege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblRolePrivilege">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSubCaste_tblCaste">
+          <End Role="tblCaste" Type="Self.tblCaste" Multiplicity="1" />
+          <End Role="tblSubCaste" Type="Self.tblSubCaste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCaste">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblSubCaste">
+              <PropertyRef Name="CasteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserRole_tblRole">
+          <End Role="tblRole" Type="Self.tblRole" Multiplicity="0..1" />
+          <End Role="tblUserRole" Type="Self.tblUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserRole_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblUserRole" Type="Self.tblUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserVisit_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblUserVisit" Type="Self.tblUserVisit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserVisit">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVoter_tblElectoralRoll">
+          <End Role="tblElectoralRoll" Type="Self.tblElectoralRoll" Multiplicity="1" />
+          <End Role="tblVoter" Type="Self.tblVoter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblElectoralRoll">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblVoter">
+              <PropertyRef Name="ERId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVoterExt_tblVoter">
+          <End Role="tblVoter" Type="Self.tblVoter" Multiplicity="1" />
+          <End Role="tblVoterExt" Type="Self.tblVoterExt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVoter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblVoterExt">
+              <PropertyRef Name="VoterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVoterExt_tblVoterType">
+          <End Role="tblVoterType" Type="Self.tblVoterType" Multiplicity="1" />
+          <End Role="tblVoterExt" Type="Self.tblVoterExt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVoterType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblVoterExt">
+              <PropertyRef Name="VoterTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVoterRequest_tblRequestType">
+          <End Role="tblRequestType" Type="Self.tblRequestType" Multiplicity="1" />
+          <End Role="tblVoterRequest" Type="Self.tblVoterRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRequestType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblVoterRequest">
+              <PropertyRef Name="RequestTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVoterRequest_tblUserVisit">
+          <End Role="tblUserVisit" Type="Self.tblUserVisit" Multiplicity="1" />
+          <End Role="tblVoterRequest" Type="Self.tblVoterRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserVisit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblVoterRequest">
+              <PropertyRef Name="UserVisitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVoterRequestExt_tblRequestAttributes">
+          <End Role="tblRequestAttributes" Type="Self.tblRequestAttributes" Multiplicity="1" />
+          <End Role="tblVoterRequestExt" Type="Self.tblVoterRequestExt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRequestAttributes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblVoterRequestExt">
+              <PropertyRef Name="ReqAttrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVoterRequestExt_tblVoterRequest">
+          <End Role="tblVoterRequest" Type="Self.tblVoterRequest" Multiplicity="1" />
+          <End Role="tblVoterRequestExt" Type="Self.tblVoterRequestExt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVoterRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblVoterRequestExt">
+              <PropertyRef Name="VoterRequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Admin_CreateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="loginUserId" Type="bigint" Mode="In" />
+          <Parameter Name="userDataJsonstr" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Admin_GetDropDownData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="bigint" Mode="In" />
+          <Parameter Name="DropDownType" Type="nvarchar" Mode="In" />
+          <Parameter Name="DropDownRefId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Admin_GetStates_Cities" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="Admin_GetUserList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="bigint" Mode="In" />
+          <Parameter Name="fname" Type="nvarchar" Mode="In" />
+          <Parameter Name="lname" Type="nvarchar" Mode="In" />
+          <Parameter Name="mobileno" Type="nvarchar" Mode="In" />
+          <Parameter Name="stateId" Type="int" Mode="In" />
+          <Parameter Name="cityId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="Admin_UpdateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="bigint" Mode="In" />
+          <Parameter Name="loginUserId" Type="bigint" Mode="In" />
+          <Parameter Name="userDataJsonstr" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Admin_UserinfoByUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="Admin_UserpageDropdowndata" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="dbl_metaphone" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="String" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="GetCitiesByACno" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ACId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetConstituenciesByUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="uspFetchVoters" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="VoterFirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterLastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="RLName" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterEPICNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterOldEPICNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterMobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterAge" Type="int" Mode="In" />
+          <Parameter Name="VoterRLFName" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterCity" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterCommunity" Type="nvarchar" Mode="In" />
+          <Parameter Name="UseSoundex" Type="bit" Mode="In" />
+          <Parameter Name="AgeMargin" Type="int" Mode="In" />
+          <Parameter Name="ElectRollId" Type="int" Mode="In" />
+          <Parameter Name="AssyConstId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="uspFetchVoters_Old" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="VoterFirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterLastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="RLName" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterEPICNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterOldEPICNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterMobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterAge" Type="int" Mode="In" />
+          <Parameter Name="VoterRLFName" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterCity" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterCommunity" Type="nvarchar" Mode="In" />
+          <Parameter Name="UseSoundex" Type="bit" Mode="In" />
+          <Parameter Name="AgeMargin" Type="int" Mode="In" />
+          <Parameter Name="ElectRollId" Type="int" Mode="In" />
+          <Parameter Name="AssyConstId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="uspGetConditionalDuplicateVoters" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="uspGetDuplicateVoters" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="uspGetExactFirstNameSimilarLastName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="uspGetExactLastNameSimilarFirstName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="uspGetVoters" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="VoterFirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterLastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="RLName" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterEPICNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterOldEPICNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterMobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterAge" Type="int" Mode="In" />
+          <Parameter Name="VoterRLFName" Type="nvarchar" Mode="In" />
+          <Parameter Name="UseSoundex" Type="bit" Mode="In" />
+          <Parameter Name="AgeMargin" Type="int" Mode="In" />
+          <Parameter Name="ElectRollId" Type="int" Mode="In" />
+          <Parameter Name="AssyConstId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="uspGetVoters1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AssyConstId" Type="int" Mode="In" />
+          <Parameter Name="VoterCityId" Type="int" Mode="In" />
+          <Parameter Name="VoterWardId" Type="int" Mode="In" />
+          <Parameter Name="VoterPollingBoothId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="uspGetVotersNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="VoterFirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterLastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="RLName" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterEPICNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterOldEPICNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterMobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterAge" Type="int" Mode="In" />
+          <Parameter Name="VoterRLFName" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterCity" Type="nvarchar" Mode="In" />
+          <Parameter Name="VoterCommunity" Type="nvarchar" Mode="In" />
+          <Parameter Name="UseSoundex" Type="bit" Mode="In" />
+          <Parameter Name="AgeMargin" Type="int" Mode="In" />
+          <Parameter Name="AssyConstId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Test_Vote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="electoraladmin" />
+        <Function Name="uspFindVoters" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="electoraladmin">
+          <Parameter Name="FName" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ElectoralDBModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAssemblyConstituency" EntityType="Self.tblAssemblyConstituency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCaste" EntityType="Self.tblCaste" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCity" EntityType="Self.tblCity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCommunity" EntityType="Self.tblCommunity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCommunityCordinator" EntityType="Self.tblCommunityCordinator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCommunityType" EntityType="Self.tblCommunityType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDistrict" EntityType="Self.tblDistrict" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblElectoralRoll" EntityType="Self.tblElectoralRoll" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMandal" EntityType="Self.tblMandal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblParliamentConstituency" EntityType="Self.tblParliamentConstituency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPoliticalParty" EntityType="Self.tblPoliticalParty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPollingStation" EntityType="Self.tblPollingStation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPollingStationSection" EntityType="Self.tblPollingStationSection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPrivilege" EntityType="Self.tblPrivilege" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRequestAttributes" EntityType="Self.tblRequestAttributes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRequestType" EntityType="Self.tblRequestType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRole" EntityType="Self.tblRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRolePrivilege" EntityType="Self.tblRolePrivilege" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblState" EntityType="Self.tblState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSubCaste" EntityType="Self.tblSubCaste" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserRole" EntityType="Self.tblUserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserVisit" EntityType="Self.tblUserVisit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVoter" EntityType="Self.tblVoter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVoter_Stage_old" EntityType="Self.tblVoter_Stage_old" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVoterExt" EntityType="Self.tblVoterExt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVoterRequest" EntityType="Self.tblVoterRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVoterRequestExt" EntityType="Self.tblVoterRequestExt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVoterType" EntityType="Self.tblVoterType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblWard" EntityType="Self.tblWard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLastName" EntityType="Self.tblLastName" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblLastName].[Id] AS [Id], 
+    [tblLastName].[LastName] AS [LastName], 
+    [tblLastName].[SubCasteId] AS [SubCasteId]
+    FROM [dbo].[tblLastName] AS [tblLastName]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblSetting" EntityType="Self.tblSetting" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblSetting].[Id] AS [Id], 
+    [tblSetting].[AgeLimit] AS [AgeLimit]
+    FROM [dbo].[tblSetting] AS [tblSetting]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Get_Voter_Search_Data" EntityType="Self.vw_Get_Voter_Search_Data" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Get_Voter_Search_Data].[ERId] AS [ERId], 
+    [vw_Get_Voter_Search_Data].[AssemblyConstituencyId] AS [AssemblyConstituencyId], 
+    [vw_Get_Voter_Search_Data].[Name] AS [Name], 
+    [vw_Get_Voter_Search_Data].[FirstName] AS [FirstName], 
+    [vw_Get_Voter_Search_Data].[LastName] AS [LastName], 
+    [vw_Get_Voter_Search_Data].[WardNo] AS [WardNo], 
+    [vw_Get_Voter_Search_Data].[WardSNo] AS [WardSNo], 
+    [vw_Get_Voter_Search_Data].[PollingStationId] AS [PollingStationId], 
+    [vw_Get_Voter_Search_Data].[SerialNo] AS [SerialNo], 
+    [vw_Get_Voter_Search_Data].[PSSId] AS [PSSId], 
+    [vw_Get_Voter_Search_Data].[SectionNo] AS [SectionNo], 
+    [vw_Get_Voter_Search_Data].[SectionName] AS [SectionName], 
+    [vw_Get_Voter_Search_Data].[EPICNo] AS [EPICNo], 
+    [vw_Get_Voter_Search_Data].[OldEPICNo] AS [OldEPICNo], 
+    [vw_Get_Voter_Search_Data].[Relation] AS [Relation], 
+    [vw_Get_Voter_Search_Data].[RelationFirstName] AS [RelationFirstName], 
+    [vw_Get_Voter_Search_Data].[RelationLastName] AS [RelationLastName], 
+    [vw_Get_Voter_Search_Data].[Age] AS [Age], 
+    [vw_Get_Voter_Search_Data].[Address] AS [Address], 
+    [vw_Get_Voter_Search_Data].[MobileNo] AS [MobileNo], 
+    [vw_Get_Voter_Search_Data].[CommunityId] AS [CommunityId], 
+    [vw_Get_Voter_Search_Data].[Community] AS [Community], 
+    [vw_Get_Voter_Search_Data].[DoorNo] AS [DoorNo], 
+    [vw_Get_Voter_Search_Data].[Locality] AS [Locality], 
+    [vw_Get_Voter_Search_Data].[City] AS [City]
+    FROM [dbo].[vw_Get_Voter_Search_Data] AS [vw_Get_Voter_Search_Data]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ParlimentConstituency_tblState" Association="Self.FK_ParlimentConstituency_tblState">
+            <End Role="tblState" EntitySet="tblState" />
+            <End Role="tblParliamentConstituency" EntitySet="tblParliamentConstituency" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAssemblyConstituency_tblDistrict" Association="Self.FK_tblAssemblyConstituency_tblDistrict">
+            <End Role="tblDistrict" EntitySet="tblDistrict" />
+            <End Role="tblAssemblyConstituency" EntitySet="tblAssemblyConstituency" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCommunity_tblCommunityType" Association="Self.FK_tblCommunity_tblCommunityType">
+            <End Role="tblCommunityType" EntitySet="tblCommunityType" />
+            <End Role="tblCommunity" EntitySet="tblCommunity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCommunityCordinator_tblCommunity" Association="Self.FK_tblCommunityCordinator_tblCommunity">
+            <End Role="tblCommunity" EntitySet="tblCommunity" />
+            <End Role="tblCommunityCordinator" EntitySet="tblCommunityCordinator" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDistrict_tblState" Association="Self.FK_tblDistrict_tblState">
+            <End Role="tblState" EntitySet="tblState" />
+            <End Role="tblDistrict" EntitySet="tblDistrict" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRequestAttributes_tblRequestType" Association="Self.FK_tblRequestAttributes_tblRequestType">
+            <End Role="tblRequestType" EntitySet="tblRequestType" />
+            <End Role="tblRequestAttributes" EntitySet="tblRequestAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRolePrivilege_tblPrivilege" Association="Self.FK_tblRolePrivilege_tblPrivilege">
+            <End Role="tblPrivilege" EntitySet="tblPrivilege" />
+            <End Role="tblRolePrivilege" EntitySet="tblRolePrivilege" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRolePrivilege_tblRole" Association="Self.FK_tblRolePrivilege_tblRole">
+            <End Role="tblRole" EntitySet="tblRole" />
+            <End Role="tblRolePrivilege" EntitySet="tblRolePrivilege" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSubCaste_tblCaste" Association="Self.FK_tblSubCaste_tblCaste">
+            <End Role="tblCaste" EntitySet="tblCaste" />
+            <End Role="tblSubCaste" EntitySet="tblSubCaste" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserRole_tblRole" Association="Self.FK_tblUserRole_tblRole">
+            <End Role="tblRole" EntitySet="tblRole" />
+            <End Role="tblUserRole" EntitySet="tblUserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserRole_tblUser" Association="Self.FK_tblUserRole_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblUserRole" EntitySet="tblUserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserVisit_tblUser" Association="Self.FK_tblUserVisit_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblUserVisit" EntitySet="tblUserVisit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVoter_tblElectoralRoll" Association="Self.FK_tblVoter_tblElectoralRoll">
+            <End Role="tblElectoralRoll" EntitySet="tblElectoralRoll" />
+            <End Role="tblVoter" EntitySet="tblVoter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVoterExt_tblVoter" Association="Self.FK_tblVoterExt_tblVoter">
+            <End Role="tblVoter" EntitySet="tblVoter" />
+            <End Role="tblVoterExt" EntitySet="tblVoterExt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVoterExt_tblVoterType" Association="Self.FK_tblVoterExt_tblVoterType">
+            <End Role="tblVoterType" EntitySet="tblVoterType" />
+            <End Role="tblVoterExt" EntitySet="tblVoterExt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVoterRequest_tblRequestType" Association="Self.FK_tblVoterRequest_tblRequestType">
+            <End Role="tblRequestType" EntitySet="tblRequestType" />
+            <End Role="tblVoterRequest" EntitySet="tblVoterRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVoterRequest_tblUserVisit" Association="Self.FK_tblVoterRequest_tblUserVisit">
+            <End Role="tblUserVisit" EntitySet="tblUserVisit" />
+            <End Role="tblVoterRequest" EntitySet="tblVoterRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVoterRequestExt_tblRequestAttributes" Association="Self.FK_tblVoterRequestExt_tblRequestAttributes">
+            <End Role="tblRequestAttributes" EntitySet="tblRequestAttributes" />
+            <End Role="tblVoterRequestExt" EntitySet="tblVoterRequestExt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVoterRequestExt_tblVoterRequest" Association="Self.FK_tblVoterRequestExt_tblVoterRequest">
+            <End Role="tblVoterRequest" EntitySet="tblVoterRequest" />
+            <End Role="tblVoterRequestExt" EntitySet="tblVoterRequestExt" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ElectoralDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblAssemblyConstituency">
+          <Key>
+            <PropertyRef Name="AssemblyConstituencyId" />
+          </Key>
+          <Property Name="AssemblyConstituencyId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictId" Type="Int64" Nullable="false" />
+          <Property Name="ParliamentConstituencyId" Type="Int64" Nullable="false" />
+          <Property Name="ACNo" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameTE" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ReservedFor" Type="Int32" />
+          <NavigationProperty Name="tblDistrict" Relationship="Self.FK_tblAssemblyConstituency_tblDistrict" FromRole="tblAssemblyConstituency" ToRole="tblDistrict" />
+        </EntityType>
+        <EntityType Name="tblCaste">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblSubCastes" Relationship="Self.FK_tblSubCaste_tblCaste" FromRole="tblCaste" ToRole="tblSubCaste" />
+        </EntityType>
+        <EntityType Name="tblCity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictId" Type="Int64" Nullable="false" />
+          <Property Name="AssemblyConstituencyId" Type="Int64" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mandal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pincode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblCommunity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommunityTypeId" Type="Int32" Nullable="false" />
+          <Property Name="AssemblyConstituencyId" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DoorNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Locality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Landmark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CityId" Type="Int64" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pincode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblCommunityType" Relationship="Self.FK_tblCommunity_tblCommunityType" FromRole="tblCommunity" ToRole="tblCommunityType" />
+          <NavigationProperty Name="tblCommunityCordinators" Relationship="Self.FK_tblCommunityCordinator_tblCommunity" FromRole="tblCommunity" ToRole="tblCommunityCordinator" />
+        </EntityType>
+        <EntityType Name="tblCommunityCordinator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommunityId" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MobileNo1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MobileNo2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WhatsAppNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblCommunity" Relationship="Self.FK_tblCommunityCordinator_tblCommunity" FromRole="tblCommunityCordinator" ToRole="tblCommunity" />
+        </EntityType>
+        <EntityType Name="tblCommunityType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblCommunities" Relationship="Self.FK_tblCommunity_tblCommunityType" FromRole="tblCommunityType" ToRole="tblCommunity" />
+        </EntityType>
+        <EntityType Name="tblDistrict">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblAssemblyConstituencies" Relationship="Self.FK_tblAssemblyConstituency_tblDistrict" FromRole="tblDistrict" ToRole="tblAssemblyConstituency" />
+          <NavigationProperty Name="tblState" Relationship="Self.FK_tblDistrict_tblState" FromRole="tblDistrict" ToRole="tblState" />
+        </EntityType>
+        <EntityType Name="tblElectoralRoll">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RevisionYear" Type="Int32" Nullable="false" />
+          <Property Name="QualifyingDate" Type="DateTime" Precision="0" />
+          <Property Name="PublishDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RevisionType" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RollSummary" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblVoters" Relationship="Self.FK_tblVoter_tblElectoralRoll" FromRole="tblElectoralRoll" ToRole="tblVoter" />
+        </EntityType>
+        <EntityType Name="tblMandal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictId" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblParliamentConstituency">
+          <Key>
+            <PropertyRef Name="ParliamentConstituencyId" />
+          </Key>
+          <Property Name="ParliamentConstituencyId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateId" Type="Int32" Nullable="false" />
+          <Property Name="PCNo" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReservedFor" Type="Int32" />
+          <NavigationProperty Name="tblState" Relationship="Self.FK_ParlimentConstituency_tblState" FromRole="tblParliamentConstituency" ToRole="tblState" />
+        </EntityType>
+        <EntityType Name="tblPoliticalParty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StateId" Type="Int32" Nullable="false" />
+          <Property Name="ShortName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPollingStation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssemblyConstituencyId" Type="Int64" Nullable="false" />
+          <Property Name="WardId" Type="Int64" />
+          <Property Name="StationNo" Type="Int32" Nullable="false" />
+          <Property Name="StationName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CityId" Type="Int64" />
+          <Property Name="StationNameTE" Type="String" MaxLength="512" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StationAddress" Type="String" MaxLength="512" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StationAddressTE" Type="String" MaxLength="512" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MainTown" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PoliceStation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MandalId" Type="Int64" />
+          <Property Name="RevenueDivision" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DistrictId" Type="Int64" />
+          <Property Name="Pincode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="StartSerialNo" Type="Int32" />
+          <Property Name="EndSerialNo" Type="Int32" />
+          <Property Name="TotalElectors" Type="Int32" />
+          <Property Name="TotalMale" Type="Int32" />
+          <Property Name="TotalFemale" Type="Int32" />
+          <Property Name="TotalOthers" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblPollingStationSection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PollingStationId" Type="Int64" Nullable="false" />
+          <Property Name="SectionNo" Type="Int32" Nullable="false" />
+          <Property Name="SectionName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SectionNameTE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblPrivilege">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PageId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ElementId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblRolePrivileges" Relationship="Self.FK_tblRolePrivilege_tblPrivilege" FromRole="tblPrivilege" ToRole="tblRolePrivilege" />
+        </EntityType>
+        <EntityType Name="tblRequestAttribute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestTypeId" Type="Int32" Nullable="false" />
+          <Property Name="AttrName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblRequestType" Relationship="Self.FK_tblRequestAttributes_tblRequestType" FromRole="tblRequestAttributes" ToRole="tblRequestType" />
+          <NavigationProperty Name="tblVoterRequestExts" Relationship="Self.FK_tblVoterRequestExt_tblRequestAttributes" FromRole="tblRequestAttributes" ToRole="tblVoterRequestExt" />
+        </EntityType>
+        <EntityType Name="tblRequestType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FormUsed" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tblRequestAttributes" Relationship="Self.FK_tblRequestAttributes_tblRequestType" FromRole="tblRequestType" ToRole="tblRequestAttributes" />
+          <NavigationProperty Name="tblVoterRequests" Relationship="Self.FK_tblVoterRequest_tblRequestType" FromRole="tblRequestType" ToRole="tblVoterRequest" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblRolePrivileges" Relationship="Self.FK_tblRolePrivilege_tblRole" FromRole="tblRole" ToRole="tblRolePrivilege" />
+          <NavigationProperty Name="tblUserRoles" Relationship="Self.FK_tblUserRole_tblRole" FromRole="tblRole" ToRole="tblUserRole" />
+        </EntityType>
+        <EntityType Name="tblRolePrivilege">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="PrivilegeId" Type="Int32" />
+          <NavigationProperty Name="tblPrivilege" Relationship="Self.FK_tblRolePrivilege_tblPrivilege" FromRole="tblRolePrivilege" ToRole="tblPrivilege" />
+          <NavigationProperty Name="tblRole" Relationship="Self.FK_tblRolePrivilege_tblRole" FromRole="tblRolePrivilege" ToRole="tblRole" />
+        </EntityType>
+        <EntityType Name="tblState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShortCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblDistricts" Relationship="Self.FK_tblDistrict_tblState" FromRole="tblState" ToRole="tblDistrict" />
+          <NavigationProperty Name="tblParliamentConstituencies" Relationship="Self.FK_ParlimentConstituency_tblState" FromRole="tblState" ToRole="tblParliamentConstituency" />
+        </EntityType>
+        <EntityType Name="tblSubCaste">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CasteId" Type="Int32" Nullable="false" />
+          <Property Name="StateId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblCaste" Relationship="Self.FK_tblSubCaste_tblCaste" FromRole="tblSubCaste" ToRole="tblCaste" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AltMobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginPwd" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="CityId" Type="Int64" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="Pincode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="ParentUserId" Type="Int64" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Relation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RelationFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RelationLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EPICNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CommunityId" Type="Int64" />
+          <Property Name="PollingStationId" Type="Int64" />
+          <Property Name="AssemblyConstituencyId" Type="Int64" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifledBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblUserRoles" Relationship="Self.FK_tblUserRole_tblUser" FromRole="tblUser" ToRole="tblUserRole" />
+          <NavigationProperty Name="tblUserVisits" Relationship="Self.FK_tblUserVisit_tblUser" FromRole="tblUser" ToRole="tblUserVisit" />
+        </EntityType>
+        <EntityType Name="tblUserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" />
+          <NavigationProperty Name="tblRole" Relationship="Self.FK_tblUserRole_tblRole" FromRole="tblUserRole" ToRole="tblRole" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblUserRole_tblUser" FromRole="tblUserRole" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblUserVisit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="VoterId" Type="Int64" Nullable="false" />
+          <Property Name="VisitStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="VisitEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GeoTag" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AvailabilityStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsVerified" Type="Boolean" Nullable="false" />
+          <Property Name="TotalHeadCount" Type="Int32" />
+          <Property Name="TotalRequests" Type="Int32" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblUserVisit_tblUser" FromRole="tblUserVisit" ToRole="tblUser" />
+          <NavigationProperty Name="tblVoterRequests" Relationship="Self.FK_tblVoterRequest_tblUserVisit" FromRole="tblUserVisit" ToRole="tblVoterRequest" />
+        </EntityType>
+        <EntityType Name="tblVoter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ERId" Type="Int64" Nullable="false" />
+          <Property Name="AssemblyConstituencyId" Type="Int64" Nullable="false" />
+          <Property Name="WardNo" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="WardSNo" Type="Int32" />
+          <Property Name="PollingStationId" Type="Int64" Nullable="false" />
+          <Property Name="SerialNo" Type="Int32" Nullable="false" />
+          <Property Name="PSSId" Type="Int64" />
+          <Property Name="EPICNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OldEPICNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstNameTE" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LastNameTE" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Relation" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RelationFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RelationLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RelationFirstNameTE" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RelationLastNameTE" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RelationEPICNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="AddressTE" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblElectoralRoll" Relationship="Self.FK_tblVoter_tblElectoralRoll" FromRole="tblVoter" ToRole="tblElectoralRoll" />
+          <NavigationProperty Name="tblVoterExts" Relationship="Self.FK_tblVoterExt_tblVoter" FromRole="tblVoter" ToRole="tblVoterExt" />
+        </EntityType>
+        <EntityType Name="tblVoter_Stage_old">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ERId" Type="Int32" Nullable="false" />
+          <Property Name="ACNo" Type="Int32" Nullable="false" />
+          <Property Name="WardNo" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WardSNo" Type="Int32" Nullable="false" />
+          <Property Name="PartNo" Type="Int32" Nullable="false" />
+          <Property Name="SerialNo" Type="Int32" Nullable="false" />
+          <Property Name="PSSId" Type="Int32" Nullable="false" />
+          <Property Name="EPICNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OldEPICNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstNameTE" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LastNameTE" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Relation" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RelationFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RelationLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RelationFirstNameTE" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RelationLastNameTE" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RelationEPICNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="AddressTE" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MetaVFName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="MetaVLName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="MetaRLFName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tblVoterExt">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VoterId" Type="Int64" Nullable="false" />
+          <Property Name="CommunityId" Type="Int64" />
+          <Property Name="CurrentAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OldCommunityId" Type="Int64" />
+          <Property Name="IsAccurate" Type="Boolean" Nullable="false" />
+          <Property Name="IsHead" Type="Boolean" />
+          <Property Name="HeadMobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AltMobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WhatsAppNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SubCasteId" Type="Int32" />
+          <Property Name="PoliticalPartyId" Type="Int32" />
+          <Property Name="VoterTypeId" Type="Int32" Nullable="false" />
+          <Property Name="GeoTagInfo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="VerifyStatus" Type="Int32" Nullable="false" />
+          <Property Name="VerifyAuthorizeStatus" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int64" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblVoter" Relationship="Self.FK_tblVoterExt_tblVoter" FromRole="tblVoterExt" ToRole="tblVoter" />
+          <NavigationProperty Name="tblVoterType" Relationship="Self.FK_tblVoterExt_tblVoterType" FromRole="tblVoterExt" ToRole="tblVoterType" />
+        </EntityType>
+        <EntityType Name="tblVoterRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserVisitId" Type="Int64" Nullable="false" />
+          <Property Name="RequestTypeId" Type="Int32" Nullable="false" />
+          <Property Name="RequestStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="Int64" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblRequestType" Relationship="Self.FK_tblVoterRequest_tblRequestType" FromRole="tblVoterRequest" ToRole="tblRequestType" />
+          <NavigationProperty Name="tblUserVisit" Relationship="Self.FK_tblVoterRequest_tblUserVisit" FromRole="tblVoterRequest" ToRole="tblUserVisit" />
+          <NavigationProperty Name="tblVoterRequestExts" Relationship="Self.FK_tblVoterRequestExt_tblVoterRequest" FromRole="tblVoterRequest" ToRole="tblVoterRequestExt" />
+        </EntityType>
+        <EntityType Name="tblVoterRequestExt">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VoterRequestId" Type="Int64" Nullable="false" />
+          <Property Name="ReqAttrId" Type="Int32" Nullable="false" />
+          <Property Name="ReqAttrValue" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PreviousValue" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblRequestAttribute" Relationship="Self.FK_tblVoterRequestExt_tblRequestAttributes" FromRole="tblVoterRequestExt" ToRole="tblRequestAttributes" />
+          <NavigationProperty Name="tblVoterRequest" Relationship="Self.FK_tblVoterRequestExt_tblVoterRequest" FromRole="tblVoterRequestExt" ToRole="tblVoterRequest" />
+        </EntityType>
+        <EntityType Name="tblVoterType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VoterType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblVoterExts" Relationship="Self.FK_tblVoterExt_tblVoterType" FromRole="tblVoterType" ToRole="tblVoterExt" />
+        </EntityType>
+        <EntityType Name="tblWard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="Int64" Nullable="false" />
+          <Property Name="WardNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WardName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LocalType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblLastName">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="SubCasteId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SubCasteId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="AgeLimit" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgeLimit" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_Get_Voter_Search_Data">
+          <Key>
+            <PropertyRef Name="ERId" />
+            <PropertyRef Name="AssemblyConstituencyId" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="PollingStationId" />
+            <PropertyRef Name="SerialNo" />
+            <PropertyRef Name="EPICNo" />
+            <PropertyRef Name="Relation" />
+            <PropertyRef Name="Age" />
+          </Key>
+          <Property Name="ERId" Type="Int64" Nullable="false" />
+          <Property Name="AssemblyConstituencyId" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WardNo" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="WardSNo" Type="Int32" />
+          <Property Name="PollingStationId" Type="Int64" Nullable="false" />
+          <Property Name="SerialNo" Type="Int32" Nullable="false" />
+          <Property Name="PSSId" Type="Int64" />
+          <Property Name="SectionNo" Type="Int32" />
+          <Property Name="SectionName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EPICNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OldEPICNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Relation" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RelationFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RelationLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CommunityId" Type="Int64" />
+          <Property Name="Community" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DoorNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Locality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_tblAssemblyConstituency_tblDistrict">
+          <End Role="tblDistrict" Type="Self.tblDistrict" Multiplicity="1" />
+          <End Role="tblAssemblyConstituency" Type="Self.tblAssemblyConstituency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDistrict">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblAssemblyConstituency">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSubCaste_tblCaste">
+          <End Role="tblCaste" Type="Self.tblCaste" Multiplicity="1" />
+          <End Role="tblSubCaste" Type="Self.tblSubCaste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCaste">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblSubCaste">
+              <PropertyRef Name="CasteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCommunity_tblCommunityType">
+          <End Role="tblCommunityType" Type="Self.tblCommunityType" Multiplicity="1" />
+          <End Role="tblCommunity" Type="Self.tblCommunity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCommunityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblCommunity">
+              <PropertyRef Name="CommunityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCommunityCordinator_tblCommunity">
+          <End Role="tblCommunity" Type="Self.tblCommunity" Multiplicity="1" />
+          <End Role="tblCommunityCordinator" Type="Self.tblCommunityCordinator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCommunity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblCommunityCordinator">
+              <PropertyRef Name="CommunityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDistrict_tblState">
+          <End Role="tblState" Type="Self.tblState" Multiplicity="1" />
+          <End Role="tblDistrict" Type="Self.tblDistrict" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblDistrict">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVoter_tblElectoralRoll">
+          <End Role="tblElectoralRoll" Type="Self.tblElectoralRoll" Multiplicity="1" />
+          <End Role="tblVoter" Type="Self.tblVoter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblElectoralRoll">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblVoter">
+              <PropertyRef Name="ERId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParlimentConstituency_tblState">
+          <End Role="tblState" Type="Self.tblState" Multiplicity="1" />
+          <End Role="tblParliamentConstituency" Type="Self.tblParliamentConstituency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblParliamentConstituency">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRolePrivilege_tblPrivilege">
+          <End Role="tblPrivilege" Type="Self.tblPrivilege" Multiplicity="0..1" />
+          <End Role="tblRolePrivilege" Type="Self.tblRolePrivilege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPrivilege">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblRolePrivilege">
+              <PropertyRef Name="PrivilegeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRequestAttributes_tblRequestType">
+          <End Role="tblRequestType" Type="Self.tblRequestType" Multiplicity="1" />
+          <End Role="tblRequestAttributes" Type="Self.tblRequestAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRequestType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblRequestAttributes">
+              <PropertyRef Name="RequestTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVoterRequestExt_tblRequestAttributes">
+          <End Role="tblRequestAttributes" Type="Self.tblRequestAttribute" Multiplicity="1" />
+          <End Role="tblVoterRequestExt" Type="Self.tblVoterRequestExt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRequestAttributes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblVoterRequestExt">
+              <PropertyRef Name="ReqAttrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVoterRequest_tblRequestType">
+          <End Role="tblRequestType" Type="Self.tblRequestType" Multiplicity="1" />
+          <End Role="tblVoterRequest" Type="Self.tblVoterRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRequestType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblVoterRequest">
+              <PropertyRef Name="RequestTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRolePrivilege_tblRole">
+          <End Role="tblRole" Type="Self.tblRole" Multiplicity="0..1" />
+          <End Role="tblRolePrivilege" Type="Self.tblRolePrivilege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblRolePrivilege">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserRole_tblRole">
+          <End Role="tblRole" Type="Self.tblRole" Multiplicity="0..1" />
+          <End Role="tblUserRole" Type="Self.tblUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserRole_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblUserRole" Type="Self.tblUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblUserVisit_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblUserVisit" Type="Self.tblUserVisit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblUserVisit">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVoterRequest_tblUserVisit">
+          <End Role="tblUserVisit" Type="Self.tblUserVisit" Multiplicity="1" />
+          <End Role="tblVoterRequest" Type="Self.tblVoterRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUserVisit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblVoterRequest">
+              <PropertyRef Name="UserVisitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVoterExt_tblVoter">
+          <End Role="tblVoter" Type="Self.tblVoter" Multiplicity="1" />
+          <End Role="tblVoterExt" Type="Self.tblVoterExt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVoter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblVoterExt">
+              <PropertyRef Name="VoterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVoterExt_tblVoterType">
+          <End Role="tblVoterType" Type="Self.tblVoterType" Multiplicity="1" />
+          <End Role="tblVoterExt" Type="Self.tblVoterExt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVoterType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblVoterExt">
+              <PropertyRef Name="VoterTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVoterRequestExt_tblVoterRequest">
+          <End Role="tblVoterRequest" Type="Self.tblVoterRequest" Multiplicity="1" />
+          <End Role="tblVoterRequestExt" Type="Self.tblVoterRequestExt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVoterRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblVoterRequestExt">
+              <PropertyRef Name="VoterRequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ElectoralDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tblAssemblyConstituencies" EntityType="Self.tblAssemblyConstituency" />
+          <EntitySet Name="tblCastes" EntityType="Self.tblCaste" />
+          <EntitySet Name="tblCities" EntityType="Self.tblCity" />
+          <EntitySet Name="tblCommunities" EntityType="Self.tblCommunity" />
+          <EntitySet Name="tblCommunityCordinators" EntityType="Self.tblCommunityCordinator" />
+          <EntitySet Name="tblCommunityTypes" EntityType="Self.tblCommunityType" />
+          <EntitySet Name="tblDistricts" EntityType="Self.tblDistrict" />
+          <EntitySet Name="tblElectoralRolls" EntityType="Self.tblElectoralRoll" />
+          <EntitySet Name="tblMandals" EntityType="Self.tblMandal" />
+          <EntitySet Name="tblParliamentConstituencies" EntityType="Self.tblParliamentConstituency" />
+          <EntitySet Name="tblPoliticalParties" EntityType="Self.tblPoliticalParty" />
+          <EntitySet Name="tblPollingStations" EntityType="Self.tblPollingStation" />
+          <EntitySet Name="tblPollingStationSections" EntityType="Self.tblPollingStationSection" />
+          <EntitySet Name="tblPrivileges" EntityType="Self.tblPrivilege" />
+          <EntitySet Name="tblRequestAttributes" EntityType="Self.tblRequestAttribute" />
+          <EntitySet Name="tblRequestTypes" EntityType="Self.tblRequestType" />
+          <EntitySet Name="tblRoles" EntityType="Self.tblRole" />
+          <EntitySet Name="tblRolePrivileges" EntityType="Self.tblRolePrivilege" />
+          <EntitySet Name="tblStates" EntityType="Self.tblState" />
+          <EntitySet Name="tblSubCastes" EntityType="Self.tblSubCaste" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+          <EntitySet Name="tblUserRoles" EntityType="Self.tblUserRole" />
+          <EntitySet Name="tblUserVisits" EntityType="Self.tblUserVisit" />
+          <EntitySet Name="tblVoters" EntityType="Self.tblVoter" />
+          <EntitySet Name="tblVoter_Stage_old" EntityType="Self.tblVoter_Stage_old" />
+          <EntitySet Name="tblVoterExts" EntityType="Self.tblVoterExt" />
+          <EntitySet Name="tblVoterRequests" EntityType="Self.tblVoterRequest" />
+          <EntitySet Name="tblVoterRequestExts" EntityType="Self.tblVoterRequestExt" />
+          <EntitySet Name="tblVoterTypes" EntityType="Self.tblVoterType" />
+          <EntitySet Name="tblWards" EntityType="Self.tblWard" />
+          <EntitySet Name="tblLastNames" EntityType="Self.tblLastName" />
+          <EntitySet Name="tblSettings" EntityType="Self.tblSetting" />
+          <EntitySet Name="vw_Get_Voter_Search_Data" EntityType="Self.vw_Get_Voter_Search_Data" />
+          <AssociationSet Name="FK_tblAssemblyConstituency_tblDistrict" Association="Self.FK_tblAssemblyConstituency_tblDistrict">
+            <End Role="tblDistrict" EntitySet="tblDistricts" />
+            <End Role="tblAssemblyConstituency" EntitySet="tblAssemblyConstituencies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSubCaste_tblCaste" Association="Self.FK_tblSubCaste_tblCaste">
+            <End Role="tblCaste" EntitySet="tblCastes" />
+            <End Role="tblSubCaste" EntitySet="tblSubCastes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCommunity_tblCommunityType" Association="Self.FK_tblCommunity_tblCommunityType">
+            <End Role="tblCommunityType" EntitySet="tblCommunityTypes" />
+            <End Role="tblCommunity" EntitySet="tblCommunities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCommunityCordinator_tblCommunity" Association="Self.FK_tblCommunityCordinator_tblCommunity">
+            <End Role="tblCommunity" EntitySet="tblCommunities" />
+            <End Role="tblCommunityCordinator" EntitySet="tblCommunityCordinators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDistrict_tblState" Association="Self.FK_tblDistrict_tblState">
+            <End Role="tblState" EntitySet="tblStates" />
+            <End Role="tblDistrict" EntitySet="tblDistricts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVoter_tblElectoralRoll" Association="Self.FK_tblVoter_tblElectoralRoll">
+            <End Role="tblElectoralRoll" EntitySet="tblElectoralRolls" />
+            <End Role="tblVoter" EntitySet="tblVoters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParlimentConstituency_tblState" Association="Self.FK_ParlimentConstituency_tblState">
+            <End Role="tblState" EntitySet="tblStates" />
+            <End Role="tblParliamentConstituency" EntitySet="tblParliamentConstituencies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRolePrivilege_tblPrivilege" Association="Self.FK_tblRolePrivilege_tblPrivilege">
+            <End Role="tblPrivilege" EntitySet="tblPrivileges" />
+            <End Role="tblRolePrivilege" EntitySet="tblRolePrivileges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRequestAttributes_tblRequestType" Association="Self.FK_tblRequestAttributes_tblRequestType">
+            <End Role="tblRequestType" EntitySet="tblRequestTypes" />
+            <End Role="tblRequestAttributes" EntitySet="tblRequestAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVoterRequestExt_tblRequestAttributes" Association="Self.FK_tblVoterRequestExt_tblRequestAttributes">
+            <End Role="tblRequestAttributes" EntitySet="tblRequestAttributes" />
+            <End Role="tblVoterRequestExt" EntitySet="tblVoterRequestExts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVoterRequest_tblRequestType" Association="Self.FK_tblVoterRequest_tblRequestType">
+            <End Role="tblRequestType" EntitySet="tblRequestTypes" />
+            <End Role="tblVoterRequest" EntitySet="tblVoterRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRolePrivilege_tblRole" Association="Self.FK_tblRolePrivilege_tblRole">
+            <End Role="tblRole" EntitySet="tblRoles" />
+            <End Role="tblRolePrivilege" EntitySet="tblRolePrivileges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserRole_tblRole" Association="Self.FK_tblUserRole_tblRole">
+            <End Role="tblRole" EntitySet="tblRoles" />
+            <End Role="tblUserRole" EntitySet="tblUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserRole_tblUser" Association="Self.FK_tblUserRole_tblUser">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblUserRole" EntitySet="tblUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblUserVisit_tblUser" Association="Self.FK_tblUserVisit_tblUser">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblUserVisit" EntitySet="tblUserVisits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVoterRequest_tblUserVisit" Association="Self.FK_tblVoterRequest_tblUserVisit">
+            <End Role="tblUserVisit" EntitySet="tblUserVisits" />
+            <End Role="tblVoterRequest" EntitySet="tblVoterRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVoterExt_tblVoter" Association="Self.FK_tblVoterExt_tblVoter">
+            <End Role="tblVoter" EntitySet="tblVoters" />
+            <End Role="tblVoterExt" EntitySet="tblVoterExts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVoterExt_tblVoterType" Association="Self.FK_tblVoterExt_tblVoterType">
+            <End Role="tblVoterType" EntitySet="tblVoterTypes" />
+            <End Role="tblVoterExt" EntitySet="tblVoterExts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVoterRequestExt_tblVoterRequest" Association="Self.FK_tblVoterRequestExt_tblVoterRequest">
+            <End Role="tblVoterRequest" EntitySet="tblVoterRequests" />
+            <End Role="tblVoterRequestExt" EntitySet="tblVoterRequestExts" />
+          </AssociationSet>
+          <FunctionImport Name="Admin_CreateUser" ReturnType="Collection(ElectoralDBModel.Admin_CreateUser_Result)">
+            <Parameter Name="loginUserId" Mode="In" Type="Int64" />
+            <Parameter Name="userDataJsonstr" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Admin_GetDropDownData" ReturnType="Collection(ElectoralDBModel.Admin_GetDropDownData_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int64" />
+            <Parameter Name="DropDownType" Mode="In" Type="String" />
+            <Parameter Name="DropDownRefId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Admin_GetStates_Cities" ReturnType="Collection(ElectoralDBModel.Admin_GetStates_Cities_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="Admin_GetUserList" ReturnType="Collection(ElectoralDBModel.Admin_GetUserList_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int64" />
+            <Parameter Name="fname" Mode="In" Type="String" />
+            <Parameter Name="lname" Mode="In" Type="String" />
+            <Parameter Name="mobileno" Mode="In" Type="String" />
+            <Parameter Name="stateId" Mode="In" Type="Int32" />
+            <Parameter Name="cityId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="Admin_UpdateUser" ReturnType="Collection(ElectoralDBModel.Admin_UpdateUser_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int64" />
+            <Parameter Name="loginUserId" Mode="In" Type="Int64" />
+            <Parameter Name="userDataJsonstr" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Admin_UserinfoByUserId" ReturnType="Collection(ElectoralDBModel.Admin_UserinfoByUserId_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="Admin_UserpageDropdowndata" ReturnType="Collection(ElectoralDBModel.Admin_UserpageDropdowndata_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetCitiesByACno" ReturnType="Collection(ElectoralDBModel.GetCitiesByACno_Result)">
+            <Parameter Name="ACId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetConstituenciesByUserId" ReturnType="Collection(Int32)">
+            <Parameter Name="UserId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ElectoralDBModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ElectoralDBModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="uspFetchVoters">
+            <Parameter Name="VoterFirstName" Mode="In" Type="String" />
+            <Parameter Name="VoterLastName" Mode="In" Type="String" />
+            <Parameter Name="RLName" Mode="In" Type="String" />
+            <Parameter Name="VoterEPICNo" Mode="In" Type="String" />
+            <Parameter Name="VoterOldEPICNo" Mode="In" Type="String" />
+            <Parameter Name="VoterAddress" Mode="In" Type="String" />
+            <Parameter Name="VoterMobile" Mode="In" Type="String" />
+            <Parameter Name="VoterAge" Mode="In" Type="Int32" />
+            <Parameter Name="VoterRLFName" Mode="In" Type="String" />
+            <Parameter Name="VoterCity" Mode="In" Type="String" />
+            <Parameter Name="VoterCommunity" Mode="In" Type="String" />
+            <Parameter Name="UseSoundex" Mode="In" Type="Boolean" />
+            <Parameter Name="AgeMargin" Mode="In" Type="Int32" />
+            <Parameter Name="ElectRollId" Mode="In" Type="Int32" />
+            <Parameter Name="AssyConstId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspFetchVoters_Old" ReturnType="Collection(ElectoralDBModel.uspFetchVoters_Old_Result)">
+            <Parameter Name="VoterFirstName" Mode="In" Type="String" />
+            <Parameter Name="VoterLastName" Mode="In" Type="String" />
+            <Parameter Name="RLName" Mode="In" Type="String" />
+            <Parameter Name="VoterEPICNo" Mode="In" Type="String" />
+            <Parameter Name="VoterOldEPICNo" Mode="In" Type="String" />
+            <Parameter Name="VoterAddress" Mode="In" Type="String" />
+            <Parameter Name="VoterMobile" Mode="In" Type="String" />
+            <Parameter Name="VoterAge" Mode="In" Type="Int32" />
+            <Parameter Name="VoterRLFName" Mode="In" Type="String" />
+            <Parameter Name="VoterCity" Mode="In" Type="String" />
+            <Parameter Name="VoterCommunity" Mode="In" Type="String" />
+            <Parameter Name="UseSoundex" Mode="In" Type="Boolean" />
+            <Parameter Name="AgeMargin" Mode="In" Type="Int32" />
+            <Parameter Name="ElectRollId" Mode="In" Type="Int32" />
+            <Parameter Name="AssyConstId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetConditionalDuplicateVoters" ReturnType="Collection(ElectoralDBModel.uspGetConditionalDuplicateVoters_Result)" />
+          <FunctionImport Name="uspGetDuplicateVoters" ReturnType="Collection(ElectoralDBModel.uspGetDuplicateVoters_Result)" />
+          <FunctionImport Name="uspGetExactFirstNameSimilarLastName" ReturnType="Collection(ElectoralDBModel.uspGetExactFirstNameSimilarLastName_Result)" />
+          <FunctionImport Name="uspGetExactLastNameSimilarFirstName" ReturnType="Collection(ElectoralDBModel.uspGetExactLastNameSimilarFirstName_Result)" />
+          <FunctionImport Name="uspGetVoters" ReturnType="Collection(ElectoralDBModel.uspGetVoters_Result)">
+            <Parameter Name="VoterFirstName" Mode="In" Type="String" />
+            <Parameter Name="VoterLastName" Mode="In" Type="String" />
+            <Parameter Name="RLName" Mode="In" Type="String" />
+            <Parameter Name="VoterEPICNo" Mode="In" Type="String" />
+            <Parameter Name="VoterOldEPICNo" Mode="In" Type="String" />
+            <Parameter Name="VoterAddress" Mode="In" Type="String" />
+            <Parameter Name="VoterMobile" Mode="In" Type="String" />
+            <Parameter Name="VoterAge" Mode="In" Type="Int32" />
+            <Parameter Name="VoterRLFName" Mode="In" Type="String" />
+            <Parameter Name="UseSoundex" Mode="In" Type="Boolean" />
+            <Parameter Name="AgeMargin" Mode="In" Type="Int32" />
+            <Parameter Name="ElectRollId" Mode="In" Type="Int32" />
+            <Parameter Name="AssyConstId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetVoters1" ReturnType="Collection(ElectoralDBModel.uspGetVoters1_Result)">
+            <Parameter Name="AssyConstId" Mode="In" Type="Int32" />
+            <Parameter Name="VoterCityId" Mode="In" Type="Int32" />
+            <Parameter Name="VoterWardId" Mode="In" Type="Int32" />
+            <Parameter Name="VoterPollingBoothId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetVotersNew">
+            <Parameter Name="VoterFirstName" Mode="In" Type="String" />
+            <Parameter Name="VoterLastName" Mode="In" Type="String" />
+            <Parameter Name="RLName" Mode="In" Type="String" />
+            <Parameter Name="VoterEPICNo" Mode="In" Type="String" />
+            <Parameter Name="VoterOldEPICNo" Mode="In" Type="String" />
+            <Parameter Name="VoterAddress" Mode="In" Type="String" />
+            <Parameter Name="VoterMobile" Mode="In" Type="String" />
+            <Parameter Name="VoterAge" Mode="In" Type="Int32" />
+            <Parameter Name="VoterRLFName" Mode="In" Type="String" />
+            <Parameter Name="VoterCity" Mode="In" Type="String" />
+            <Parameter Name="VoterCommunity" Mode="In" Type="String" />
+            <Parameter Name="UseSoundex" Mode="In" Type="Boolean" />
+            <Parameter Name="AgeMargin" Mode="In" Type="Int32" />
+            <Parameter Name="AssyConstId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Test_Vote" />
+          <FunctionImport Name="uspFindVoters">
+            <Parameter Name="FName" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Admin_CreateUser_Result">
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="7" />
+          <Property Type="String" Name="Message" Nullable="false" MaxLength="23" />
+        </ComplexType>
+        <ComplexType Name="Admin_GetDropDownData_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Admin_GetStates_Cities_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Admin_GetUserList_Result">
+          <Property Type="Int64" Name="Id" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MobileNo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ZipCode" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="EpicNo" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Admin_UpdateUser_Result">
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="7" />
+          <Property Type="String" Name="Message" Nullable="false" MaxLength="25" />
+        </ComplexType>
+        <ComplexType Name="Admin_UserinfoByUserId_Result">
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MobileNo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="AltMobileNo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="512" />
+          <Property Type="Int64" Name="CityId" Nullable="false" />
+          <Property Type="Int32" Name="StateId" Nullable="false" />
+          <Property Type="String" Name="Pincode" Nullable="true" MaxLength="6" />
+          <Property Type="Int64" Name="ParentUserId" Nullable="false" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Relation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RelationFirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RelationLastName" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Age" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="EPICNo" Nullable="true" MaxLength="50" />
+          <Property Type="Int64" Name="CommunityId" Nullable="false" />
+          <Property Type="Int64" Name="PollingStationId" Nullable="false" />
+          <Property Type="Int64" Name="AssemblyConstituencyId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Admin_UserpageDropdowndata_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetCitiesByACno_Result">
+          <Property Type="Int64" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="uspFetchVoters_Old_Result">
+          <Property Type="Int64" Name="ERId" Nullable="false" />
+          <Property Type="Int64" Name="AssemblyConstituencyId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="WardNo" Nullable="true" MaxLength="5" />
+          <Property Type="Int32" Name="WardSNo" Nullable="true" />
+          <Property Type="Int64" Name="PollingStationId" Nullable="false" />
+          <Property Type="Int32" Name="SerialNo" Nullable="false" />
+          <Property Type="Int64" Name="PSSId" Nullable="true" />
+          <Property Type="Int32" Name="SectionNo" Nullable="true" />
+          <Property Type="String" Name="SectionName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="EPICNo" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="OldEPICNo" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Relation" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="RelationFirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RelationLastName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Age" Nullable="false" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="MobileNo" Nullable="true" MaxLength="20" />
+          <Property Type="Int64" Name="CommunityId" Nullable="true" />
+          <Property Type="String" Name="Community" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="DoorNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Locality" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="uspGetConditionalDuplicateVoters_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="Firstname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Lastname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RelationFirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EPICNo" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="MobileNo" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Age" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="uspGetDuplicateVoters_Result">
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="String" Name="First_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Last_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EPIC_No" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Relation_Type" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Relation_First_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Relation_Last_Name" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Age" Nullable="false" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="Mobile_No" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="uspGetExactFirstNameSimilarLastName_Result">
+          <Property Type="String" Name="EPIC_No" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="First_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Last_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Relation_First_Name" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Age" Nullable="false" />
+          <Property Type="String" Name="EPIC_No1" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="First_Name1" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Last_Name1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Relation_First_Name1" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Age1" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="uspGetExactLastNameSimilarFirstName_Result">
+          <Property Type="String" Name="EPIC_No" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Last_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="First_Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Relation_First_Name" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Age" Nullable="false" />
+          <Property Type="String" Name="EPIC_No1" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Last_Name1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="First_Name1" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Relation_First_Name1" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Age1" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="uspGetVoters_Result">
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EPICNo" Nullable="false" MaxLength="15" />
+          <Property Type="Int32" Name="Age" Nullable="false" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="RelationFirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RelationLastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MobileNo" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="uspGetVoters1_Result">
+          <Property Type="Int64" Name="AssemblyConstituencyId" Nullable="false" />
+          <Property Type="Int64" Name="CityId" Nullable="true" />
+          <Property Type="String" Name="WardNo" Nullable="true" MaxLength="5" />
+          <Property Type="Int64" Name="PollingStationId" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ElectoralDBModelStoreContainer" CdmEntityContainer="ElectoralDBEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ElectoralDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAssemblyConstituencies">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblAssemblyConstituency">
+              <MappingFragment StoreEntitySet="tblAssemblyConstituency">
+                <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="ParliamentConstituencyId" ColumnName="ParliamentConstituencyId" />
+                <ScalarProperty Name="ACNo" ColumnName="ACNo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NameTE" ColumnName="NameTE" />
+                <ScalarProperty Name="ReservedFor" ColumnName="ReservedFor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCastes">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblCaste">
+              <MappingFragment StoreEntitySet="tblCaste">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCities">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblCity">
+              <MappingFragment StoreEntitySet="tblCity">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mandal" ColumnName="Mandal" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCommunities">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblCommunity">
+              <MappingFragment StoreEntitySet="tblCommunity">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CommunityTypeId" ColumnName="CommunityTypeId" />
+                <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DoorNo" ColumnName="DoorNo" />
+                <ScalarProperty Name="Locality" ColumnName="Locality" />
+                <ScalarProperty Name="Landmark" ColumnName="Landmark" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCommunityCordinators">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblCommunityCordinator">
+              <MappingFragment StoreEntitySet="tblCommunityCordinator">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CommunityId" ColumnName="CommunityId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MobileNo1" ColumnName="MobileNo1" />
+                <ScalarProperty Name="MobileNo2" ColumnName="MobileNo2" />
+                <ScalarProperty Name="WhatsAppNo" ColumnName="WhatsAppNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCommunityTypes">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblCommunityType">
+              <MappingFragment StoreEntitySet="tblCommunityType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDistricts">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblDistrict">
+              <MappingFragment StoreEntitySet="tblDistrict">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblElectoralRolls">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblElectoralRoll">
+              <MappingFragment StoreEntitySet="tblElectoralRoll">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RevisionYear" ColumnName="RevisionYear" />
+                <ScalarProperty Name="QualifyingDate" ColumnName="QualifyingDate" />
+                <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+                <ScalarProperty Name="RevisionType" ColumnName="RevisionType" />
+                <ScalarProperty Name="RollSummary" ColumnName="RollSummary" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMandals">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblMandal">
+              <MappingFragment StoreEntitySet="tblMandal">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblParliamentConstituencies">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblParliamentConstituency">
+              <MappingFragment StoreEntitySet="tblParliamentConstituency">
+                <ScalarProperty Name="ParliamentConstituencyId" ColumnName="ParliamentConstituencyId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="PCNo" ColumnName="PCNo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ReservedFor" ColumnName="ReservedFor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPoliticalParties">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblPoliticalParty">
+              <MappingFragment StoreEntitySet="tblPoliticalParty">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPollingStations">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblPollingStation">
+              <MappingFragment StoreEntitySet="tblPollingStation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
+                <ScalarProperty Name="WardId" ColumnName="WardId" />
+                <ScalarProperty Name="StationNo" ColumnName="StationNo" />
+                <ScalarProperty Name="StationName" ColumnName="StationName" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="StationNameTE" ColumnName="StationNameTE" />
+                <ScalarProperty Name="StationAddress" ColumnName="StationAddress" />
+                <ScalarProperty Name="StationAddressTE" ColumnName="StationAddressTE" />
+                <ScalarProperty Name="MainTown" ColumnName="MainTown" />
+                <ScalarProperty Name="PoliceStation" ColumnName="PoliceStation" />
+                <ScalarProperty Name="MandalId" ColumnName="MandalId" />
+                <ScalarProperty Name="RevenueDivision" ColumnName="RevenueDivision" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="StartSerialNo" ColumnName="StartSerialNo" />
+                <ScalarProperty Name="EndSerialNo" ColumnName="EndSerialNo" />
+                <ScalarProperty Name="TotalElectors" ColumnName="TotalElectors" />
+                <ScalarProperty Name="TotalMale" ColumnName="TotalMale" />
+                <ScalarProperty Name="TotalFemale" ColumnName="TotalFemale" />
+                <ScalarProperty Name="TotalOthers" ColumnName="TotalOthers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPollingStationSections">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblPollingStationSection">
+              <MappingFragment StoreEntitySet="tblPollingStationSection">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PollingStationId" ColumnName="PollingStationId" />
+                <ScalarProperty Name="SectionNo" ColumnName="SectionNo" />
+                <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+                <ScalarProperty Name="SectionNameTE" ColumnName="SectionNameTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPrivileges">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblPrivilege">
+              <MappingFragment StoreEntitySet="tblPrivilege">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="ElementId" ColumnName="ElementId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRequestAttributes">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblRequestAttribute">
+              <MappingFragment StoreEntitySet="tblRequestAttributes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RequestTypeId" ColumnName="RequestTypeId" />
+                <ScalarProperty Name="AttrName" ColumnName="AttrName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRequestTypes">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblRequestType">
+              <MappingFragment StoreEntitySet="tblRequestType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FormUsed" ColumnName="FormUsed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRoles">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblRole">
+              <MappingFragment StoreEntitySet="tblRole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRolePrivileges">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblRolePrivilege">
+              <MappingFragment StoreEntitySet="tblRolePrivilege">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="PrivilegeId" ColumnName="PrivilegeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStates">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblState">
+              <MappingFragment StoreEntitySet="tblState">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShortCode" ColumnName="ShortCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSubCastes">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblSubCaste">
+              <MappingFragment StoreEntitySet="tblSubCaste">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CasteId" ColumnName="CasteId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="AltMobileNo" ColumnName="AltMobileNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LoginPwd" ColumnName="LoginPwd" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="ParentUserId" ColumnName="ParentUserId" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+                <ScalarProperty Name="RelationFirstName" ColumnName="RelationFirstName" />
+                <ScalarProperty Name="RelationLastName" ColumnName="RelationLastName" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="EPICNo" ColumnName="EPICNo" />
+                <ScalarProperty Name="CommunityId" ColumnName="CommunityId" />
+                <ScalarProperty Name="PollingStationId" ColumnName="PollingStationId" />
+                <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifledBy" ColumnName="ModifledBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserRoles">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblUserRole">
+              <MappingFragment StoreEntitySet="tblUserRole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserVisits">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblUserVisit">
+              <MappingFragment StoreEntitySet="tblUserVisit">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="VoterId" ColumnName="VoterId" />
+                <ScalarProperty Name="VisitStart" ColumnName="VisitStart" />
+                <ScalarProperty Name="VisitEnd" ColumnName="VisitEnd" />
+                <ScalarProperty Name="GeoTag" ColumnName="GeoTag" />
+                <ScalarProperty Name="AvailabilityStatus" ColumnName="AvailabilityStatus" />
+                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+                <ScalarProperty Name="TotalHeadCount" ColumnName="TotalHeadCount" />
+                <ScalarProperty Name="TotalRequests" ColumnName="TotalRequests" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVoters">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblVoter">
+              <MappingFragment StoreEntitySet="tblVoter">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ERId" ColumnName="ERId" />
+                <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
+                <ScalarProperty Name="WardNo" ColumnName="WardNo" />
+                <ScalarProperty Name="WardSNo" ColumnName="WardSNo" />
+                <ScalarProperty Name="PollingStationId" ColumnName="PollingStationId" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="PSSId" ColumnName="PSSId" />
+                <ScalarProperty Name="EPICNo" ColumnName="EPICNo" />
+                <ScalarProperty Name="OldEPICNo" ColumnName="OldEPICNo" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstNameTE" ColumnName="FirstNameTE" />
+                <ScalarProperty Name="LastNameTE" ColumnName="LastNameTE" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+                <ScalarProperty Name="RelationFirstName" ColumnName="RelationFirstName" />
+                <ScalarProperty Name="RelationLastName" ColumnName="RelationLastName" />
+                <ScalarProperty Name="RelationFirstNameTE" ColumnName="RelationFirstNameTE" />
+                <ScalarProperty Name="RelationLastNameTE" ColumnName="RelationLastNameTE" />
+                <ScalarProperty Name="RelationEPICNo" ColumnName="RelationEPICNo" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="AddressTE" ColumnName="AddressTE" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVoter_Stage_old">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblVoter_Stage_old">
+              <MappingFragment StoreEntitySet="tblVoter_Stage_old">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ERId" ColumnName="ERId" />
+                <ScalarProperty Name="ACNo" ColumnName="ACNo" />
+                <ScalarProperty Name="WardNo" ColumnName="WardNo" />
+                <ScalarProperty Name="WardSNo" ColumnName="WardSNo" />
+                <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="PSSId" ColumnName="PSSId" />
+                <ScalarProperty Name="EPICNo" ColumnName="EPICNo" />
+                <ScalarProperty Name="OldEPICNo" ColumnName="OldEPICNo" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstNameTE" ColumnName="FirstNameTE" />
+                <ScalarProperty Name="LastNameTE" ColumnName="LastNameTE" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+                <ScalarProperty Name="RelationFirstName" ColumnName="RelationFirstName" />
+                <ScalarProperty Name="RelationLastName" ColumnName="RelationLastName" />
+                <ScalarProperty Name="RelationFirstNameTE" ColumnName="RelationFirstNameTE" />
+                <ScalarProperty Name="RelationLastNameTE" ColumnName="RelationLastNameTE" />
+                <ScalarProperty Name="RelationEPICNo" ColumnName="RelationEPICNo" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="AddressTE" ColumnName="AddressTE" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="MetaVFName" ColumnName="MetaVFName" />
+                <ScalarProperty Name="MetaVLName" ColumnName="MetaVLName" />
+                <ScalarProperty Name="MetaRLFName" ColumnName="MetaRLFName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVoterExts">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblVoterExt">
+              <MappingFragment StoreEntitySet="tblVoterExt">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VoterId" ColumnName="VoterId" />
+                <ScalarProperty Name="CommunityId" ColumnName="CommunityId" />
+                <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+                <ScalarProperty Name="OldCommunityId" ColumnName="OldCommunityId" />
+                <ScalarProperty Name="IsAccurate" ColumnName="IsAccurate" />
+                <ScalarProperty Name="IsHead" ColumnName="IsHead" />
+                <ScalarProperty Name="HeadMobileNo" ColumnName="HeadMobileNo" />
+                <ScalarProperty Name="AltMobileNo" ColumnName="AltMobileNo" />
+                <ScalarProperty Name="WhatsAppNo" ColumnName="WhatsAppNo" />
+                <ScalarProperty Name="SubCasteId" ColumnName="SubCasteId" />
+                <ScalarProperty Name="PoliticalPartyId" ColumnName="PoliticalPartyId" />
+                <ScalarProperty Name="VoterTypeId" ColumnName="VoterTypeId" />
+                <ScalarProperty Name="GeoTagInfo" ColumnName="GeoTagInfo" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="VerifyStatus" ColumnName="VerifyStatus" />
+                <ScalarProperty Name="VerifyAuthorizeStatus" ColumnName="VerifyAuthorizeStatus" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVoterRequests">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblVoterRequest">
+              <MappingFragment StoreEntitySet="tblVoterRequest">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserVisitId" ColumnName="UserVisitId" />
+                <ScalarProperty Name="RequestTypeId" ColumnName="RequestTypeId" />
+                <ScalarProperty Name="RequestStatus" ColumnName="RequestStatus" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVoterRequestExts">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblVoterRequestExt">
+              <MappingFragment StoreEntitySet="tblVoterRequestExt">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VoterRequestId" ColumnName="VoterRequestId" />
+                <ScalarProperty Name="ReqAttrId" ColumnName="ReqAttrId" />
+                <ScalarProperty Name="ReqAttrValue" ColumnName="ReqAttrValue" />
+                <ScalarProperty Name="PreviousValue" ColumnName="PreviousValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVoterTypes">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblVoterType">
+              <MappingFragment StoreEntitySet="tblVoterType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VoterType" ColumnName="VoterType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblWards">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblWard">
+              <MappingFragment StoreEntitySet="tblWard">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="WardNo" ColumnName="WardNo" />
+                <ScalarProperty Name="WardName" ColumnName="WardName" />
+                <ScalarProperty Name="LocalType" ColumnName="LocalType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLastNames">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblLastName">
+              <MappingFragment StoreEntitySet="tblLastName">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="SubCasteId" ColumnName="SubCasteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSettings">
+            <EntityTypeMapping TypeName="ElectoralDBModel.tblSetting">
+              <MappingFragment StoreEntitySet="tblSetting">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AgeLimit" ColumnName="AgeLimit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Get_Voter_Search_Data">
+            <EntityTypeMapping TypeName="ElectoralDBModel.vw_Get_Voter_Search_Data">
+              <MappingFragment StoreEntitySet="vw_Get_Voter_Search_Data">
+                <ScalarProperty Name="ERId" ColumnName="ERId" />
+                <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="WardNo" ColumnName="WardNo" />
+                <ScalarProperty Name="WardSNo" ColumnName="WardSNo" />
+                <ScalarProperty Name="PollingStationId" ColumnName="PollingStationId" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="PSSId" ColumnName="PSSId" />
+                <ScalarProperty Name="SectionNo" ColumnName="SectionNo" />
+                <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+                <ScalarProperty Name="EPICNo" ColumnName="EPICNo" />
+                <ScalarProperty Name="OldEPICNo" ColumnName="OldEPICNo" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+                <ScalarProperty Name="RelationFirstName" ColumnName="RelationFirstName" />
+                <ScalarProperty Name="RelationLastName" ColumnName="RelationLastName" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="CommunityId" ColumnName="CommunityId" />
+                <ScalarProperty Name="Community" ColumnName="Community" />
+                <ScalarProperty Name="DoorNo" ColumnName="DoorNo" />
+                <ScalarProperty Name="Locality" ColumnName="Locality" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Admin_CreateUser" FunctionName="ElectoralDBModel.Store.Admin_CreateUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ElectoralDBModel.Admin_CreateUser_Result">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Admin_GetDropDownData" FunctionName="ElectoralDBModel.Store.Admin_GetDropDownData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ElectoralDBModel.Admin_GetDropDownData_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Admin_GetStates_Cities" FunctionName="ElectoralDBModel.Store.Admin_GetStates_Cities">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ElectoralDBModel.Admin_GetStates_Cities_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Admin_GetUserList" FunctionName="ElectoralDBModel.Store.Admin_GetUserList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ElectoralDBModel.Admin_GetUserList_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="EpicNo" ColumnName="EpicNo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Admin_UpdateUser" FunctionName="ElectoralDBModel.Store.Admin_UpdateUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ElectoralDBModel.Admin_UpdateUser_Result">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Admin_UserinfoByUserId" FunctionName="ElectoralDBModel.Store.Admin_UserinfoByUserId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ElectoralDBModel.Admin_UserinfoByUserId_Result">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="AltMobileNo" ColumnName="AltMobileNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="ParentUserId" ColumnName="ParentUserId" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+                <ScalarProperty Name="RelationFirstName" ColumnName="RelationFirstName" />
+                <ScalarProperty Name="RelationLastName" ColumnName="RelationLastName" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="EPICNo" ColumnName="EPICNo" />
+                <ScalarProperty Name="CommunityId" ColumnName="CommunityId" />
+                <ScalarProperty Name="PollingStationId" ColumnName="PollingStationId" />
+                <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Admin_UserpageDropdowndata" FunctionName="ElectoralDBModel.Store.Admin_UserpageDropdowndata">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ElectoralDBModel.Admin_UserpageDropdowndata_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCitiesByACno" FunctionName="ElectoralDBModel.Store.GetCitiesByACno">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ElectoralDBModel.GetCitiesByACno_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetConstituenciesByUserId" FunctionName="ElectoralDBModel.Store.GetConstituenciesByUserId" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ElectoralDBModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ElectoralDBModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ElectoralDBModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ElectoralDBModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ElectoralDBModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ElectoralDBModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ElectoralDBModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ElectoralDBModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ElectoralDBModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="uspFetchVoters" FunctionName="ElectoralDBModel.Store.uspFetchVoters" />
+          <FunctionImportMapping FunctionImportName="uspFetchVoters_Old" FunctionName="ElectoralDBModel.Store.uspFetchVoters_Old">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ElectoralDBModel.uspFetchVoters_Old_Result">
+                <ScalarProperty Name="ERId" ColumnName="ERId" />
+                <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="WardNo" ColumnName="WardNo" />
+                <ScalarProperty Name="WardSNo" ColumnName="WardSNo" />
+                <ScalarProperty Name="PollingStationId" ColumnName="PollingStationId" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="PSSId" ColumnName="PSSId" />
+                <ScalarProperty Name="SectionNo" ColumnName="SectionNo" />
+                <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+                <ScalarProperty Name="EPICNo" ColumnName="EPICNo" />
+                <ScalarProperty Name="OldEPICNo" ColumnName="OldEPICNo" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+                <ScalarProperty Name="RelationFirstName" ColumnName="RelationFirstName" />
+                <ScalarProperty Name="RelationLastName" ColumnName="RelationLastName" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="CommunityId" ColumnName="CommunityId" />
+                <ScalarProperty Name="Community" ColumnName="Community" />
+                <ScalarProperty Name="DoorNo" ColumnName="DoorNo" />
+                <ScalarProperty Name="Locality" ColumnName="Locality" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetConditionalDuplicateVoters" FunctionName="ElectoralDBModel.Store.uspGetConditionalDuplicateVoters">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ElectoralDBModel.uspGetConditionalDuplicateVoters_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="RelationFirstName" ColumnName="RelationFirstName" />
+                <ScalarProperty Name="EPICNo" ColumnName="EPICNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetDuplicateVoters" FunctionName="ElectoralDBModel.Store.uspGetDuplicateVoters">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ElectoralDBModel.uspGetDuplicateVoters_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="First_Name" ColumnName="First Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+                <ScalarProperty Name="EPIC_No" ColumnName="EPIC No" />
+                <ScalarProperty Name="Relation_Type" ColumnName="Relation Type" />
+                <ScalarProperty Name="Relation_First_Name" ColumnName="Relation First Name" />
+                <ScalarProperty Name="Relation_Last_Name" ColumnName="Relation Last Name" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Mobile_No" ColumnName="Mobile No" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetExactFirstNameSimilarLastName" FunctionName="ElectoralDBModel.Store.uspGetExactFirstNameSimilarLastName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ElectoralDBModel.uspGetExactFirstNameSimilarLastName_Result">
+                <ScalarProperty Name="EPIC_No" ColumnName="EPIC No" />
+                <ScalarProperty Name="First_Name" ColumnName="First Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+                <ScalarProperty Name="Relation_First_Name" ColumnName="Relation First Name" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="EPIC_No1" ColumnName="EPIC No1" />
+                <ScalarProperty Name="First_Name1" ColumnName="First Name1" />
+                <ScalarProperty Name="Last_Name1" ColumnName="Last Name1" />
+                <ScalarProperty Name="Relation_First_Name1" ColumnName="Relation First Name1" />
+                <ScalarProperty Name="Age1" ColumnName="Age1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetExactLastNameSimilarFirstName" FunctionName="ElectoralDBModel.Store.uspGetExactLastNameSimilarFirstName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ElectoralDBModel.uspGetExactLastNameSimilarFirstName_Result">
+                <ScalarProperty Name="EPIC_No" ColumnName="EPIC No" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+                <ScalarProperty Name="First_Name" ColumnName="First Name" />
+                <ScalarProperty Name="Relation_First_Name" ColumnName="Relation First Name" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="EPIC_No1" ColumnName="EPIC No1" />
+                <ScalarProperty Name="Last_Name1" ColumnName="Last Name1" />
+                <ScalarProperty Name="First_Name1" ColumnName="First Name1" />
+                <ScalarProperty Name="Relation_First_Name1" ColumnName="Relation First Name1" />
+                <ScalarProperty Name="Age1" ColumnName="Age1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetVoters" FunctionName="ElectoralDBModel.Store.uspGetVoters">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ElectoralDBModel.uspGetVoters_Result">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EPICNo" ColumnName="EPICNo" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="RelationFirstName" ColumnName="RelationFirstName" />
+                <ScalarProperty Name="RelationLastName" ColumnName="RelationLastName" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetVoters1" FunctionName="ElectoralDBModel.Store.uspGetVoters1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ElectoralDBModel.uspGetVoters1_Result">
+                <ScalarProperty Name="AssemblyConstituencyId" ColumnName="AssemblyConstituencyId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="WardNo" ColumnName="WardNo" />
+                <ScalarProperty Name="PollingStationId" ColumnName="PollingStationId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetVotersNew" FunctionName="ElectoralDBModel.Store.uspGetVotersNew" />
+          <FunctionImportMapping FunctionImportName="Test_Vote" FunctionName="ElectoralDBModel.Store.Test_Vote" />
+          <FunctionImportMapping FunctionImportName="uspFindVoters" FunctionName="ElectoralDBModel.Store.uspFindVoters" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

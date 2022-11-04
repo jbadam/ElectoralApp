@@ -21,13 +21,13 @@ namespace ElectoralApp.DAL
         }
     
         public long Id { get; set; }
-        public int ERId { get; set; }
-        public int ACNo { get; set; }
+        public long ERId { get; set; }
+        public long AssemblyConstituencyId { get; set; }
         public string WardNo { get; set; }
         public Nullable<int> WardSNo { get; set; }
-        public int PartNo { get; set; }
+        public long PollingStationId { get; set; }
         public int SerialNo { get; set; }
-        public Nullable<int> PSSId { get; set; }
+        public Nullable<long> PSSId { get; set; }
         public string EPICNo { get; set; }
         public string OldEPICNo { get; set; }
         public string FirstName { get; set; }
@@ -47,7 +47,6 @@ namespace ElectoralApp.DAL
         public string AddressTE { get; set; }
         public string MobileNo { get; set; }
     
-        public virtual tblAssemblyConstituency tblAssemblyConstituency { get; set; }
         public virtual tblElectoralRoll tblElectoralRoll { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblVoterExt> tblVoterExts { get; set; }

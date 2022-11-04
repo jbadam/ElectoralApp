@@ -1,4 +1,5 @@
 ﻿using ElectoralApp.BAL;
+using ElectoralApp.BAL.Repository;
 using ElectoralApp.BAL.Repository.Code;
 using ElectoralApp.BAL.Repository.Interfaces;
 using ElectoralApp.Models;
@@ -81,7 +82,7 @@ namespace ElectoralApp.Controllers
                                  RoleId=(int)ls1.RoleId,
                                 // PollingBoothID= (int)ls.PollingBoothId,
                                  Age=(int)ls.Age,
-                                 CommunityID= Convert.ToInt32(ls.CommunityName.ToString())
+                                 //CommunityID= Convert.ToInt32(ls.CommunityName.ToString())
                                  
                              }).Where(u => u.Id == Id).FirstOrDefault();
                         
@@ -155,7 +156,7 @@ namespace ElectoralApp.Controllers
                 tbluserEntities.LoginPwd = "XXXX";
                 tbluserEntities.Age = model.Age;
                // tbluserEntities.EPICId = model.EpicId;
-                tbluserEntities.CommunityName = model.CommunityID.ToString();
+               // tbluserEntities.CommunityName = model.CommunityID.ToString();
                // tbluserEntities.PollingBoothId = model.PollingBoothID;
 
                 long result = 0;

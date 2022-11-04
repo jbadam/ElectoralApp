@@ -16,6 +16,7 @@ namespace ElectoralApp.DAL
     {
         public int Id { get; set; }
         public int CasteId { get; set; }
+        public int StateId { get; set; }
         public string Name { get; set; }
     
         public virtual tblCaste tblCaste { get; set; }

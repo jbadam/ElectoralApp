@@ -29,10 +29,20 @@ namespace ElectoralApp.DAL
         public string Email { get; set; }
         public string LoginPwd { get; set; }
         public string Address { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string PinCode { get; set; }
+        public Nullable<long> CityId { get; set; }
+        public Nullable<int> StateId { get; set; }
+        public string Pincode { get; set; }
         public Nullable<long> ParentUserId { get; set; }
+        public string Gender { get; set; }
+        public string Relation { get; set; }
+        public string RelationFirstName { get; set; }
+        public string RelationLastName { get; set; }
+        public Nullable<decimal> Age { get; set; }
+        public string EPICNo { get; set; }
+        public Nullable<long> CommunityId { get; set; }
+        public Nullable<long> PollingStationId { get; set; }
+        public Nullable<long> AssemblyConstituencyId { get; set; }
+        public Nullable<bool> Status { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string ModifledBy { get; set; }

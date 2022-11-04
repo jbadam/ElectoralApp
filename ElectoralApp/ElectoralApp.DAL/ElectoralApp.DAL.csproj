@@ -52,151 +52,210 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ElectoralAppEntity.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ElectoralAppEntity.Context.tt</DependentUpon>
+    <Compile Include="Admin_CreateUser_Result.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="ElectoralAppEntity.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+    <Compile Include="Admin_GetDropDownData_Result.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="ElectoralAppEntity.Designer.cs">
+    <Compile Include="Admin_GetStates_Cities_Result.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_GetUserList_Result.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_UpdateUser_Result.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_UserinfoByUserId_Result.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_UserpageDropdowndata_Result.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ElectoralDBEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ElectoralAppEntity.edmx</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ElectoralDBEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ElectoralDBEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ElectoralDBEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="GetCitiesByACno_Result.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Code\LookupRepository.cs" />
+    <Compile Include="Repository\Code\SearchRepository.cs" />
+    <Compile Include="Repository\Code\UserRepository.cs" />
+    <Compile Include="Repository\Interfaces\ILookupReposiotry.cs" />
+    <Compile Include="Repository\Interfaces\ISearchRepository.cs" />
+    <Compile Include="Repository\Interfaces\IUserRepository.cs" />
+    <Compile Include="Repository\Model\SearchModel.cs" />
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblAssemblyConstituency.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblCaste.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblCity.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblCommunity.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblCommunityCordinator.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblCommunityType.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDistrict.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblElectoralRoll.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblLastName.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMandal.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblParliamentConstituency.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPoliticalParty.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPollingStation.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPollingStationSection.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPrivilege.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblRequestAttribute.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblRequestType.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblRole.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblRolePrivilege.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblSetting.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblState.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblSubCaste.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblUser.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblUserRole.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblUserVisit.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblVoter.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblVoterDemo.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblVoterExt.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblVoterRequest.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblVoterRequestExt.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblVoter_Stage.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+    <Compile Include="tblVoterType.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="uspFindVoters_Result.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+    <Compile Include="tblVoter_Stage_old.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="uspGetExactFNameSimilarLName_Result.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+    <Compile Include="tblWard.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="uspGetExactLNameSimilarFName_Result.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+    <Compile Include="uspFetchVoters_Old_Result.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="uspGetConditionalDuplicateVoters_Result.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="uspGetDuplicateVoters_Result.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="uspGetExactFirstNameSimilarLastName_Result.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="uspGetExactLastNameSimilarFirstName_Result.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="uspGetVoters1_Result.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="uspGetVoters_Result.cs">
-      <DependentUpon>ElectoralAppEntity.tt</DependentUpon>
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_Get_Voter_Search_Data.cs">
+      <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="ElectoralAppEntity.edmx">
+    <EntityDeploy Include="ElectoralDBEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ElectoralAppEntity.Designer.cs</LastGenOutput>
+      <LastGenOutput>ElectoralDBEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ElectoralAppEntity.edmx.diagram">
-      <DependentUpon>ElectoralAppEntity.edmx</DependentUpon>
+    <None Include="ElectoralDBEntities.edmx.diagram">
+      <DependentUpon>ElectoralDBEntities.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ElectoralAppEntity.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ElectoralAppEntity.Context.cs</LastGenOutput>
-      <DependentUpon>ElectoralAppEntity.edmx</DependentUpon>
-    </Content>
-    <Content Include="ElectoralAppEntity.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ElectoralAppEntity.edmx</DependentUpon>
-      <LastGenOutput>ElectoralAppEntity.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="ElectoralDBEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ElectoralDBEntities.edmx</DependentUpon>
+      <LastGenOutput>ElectoralDBEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ElectoralDBEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ElectoralDBEntities.edmx</DependentUpon>
+      <LastGenOutput>ElectoralDBEntities.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

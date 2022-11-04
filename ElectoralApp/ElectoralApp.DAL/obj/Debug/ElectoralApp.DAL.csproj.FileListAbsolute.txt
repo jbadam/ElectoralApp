@@ -17,8 +17,6 @@ C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\bin
 C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\bin\Debug\EntityFramework.xml
 C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\obj\Debug\ElectoralApp.DAL.csproj.AssemblyReference.cache
-C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\obj\Debug\ElectoralApp.DAL.csproj.SuggestedBindingRedirects.cache
 C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\obj\Debug\ElectoralApp.DAL.csproj.CoreCompileInputs.cache
 C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\obj\Debug\ElectoralApp.DAL.csproj.CopyComplete
 C:\Users\User\source\repos\jbadam\ElectoralApp\ElectoralApp\ElectoralApp.DAL\obj\Debug\ElectoralApp.DAL.exe

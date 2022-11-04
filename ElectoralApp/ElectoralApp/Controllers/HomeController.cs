@@ -1,4 +1,5 @@
 ﻿using ElectoralApp.BAL;
+using ElectoralApp.BAL.Repository;
 using ElectoralApp.BAL.Repository.Code;
 using ElectoralApp.BAL.Repository.Interfaces;
 using ElectoralApp.BAL.Repository.Model;

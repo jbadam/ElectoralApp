@@ -1,33 +1,36 @@
-﻿using ElectoralApp.BAL;
-using ElectoralApp.BAL.Repository;
-using ElectoralApp.BAL.Repository.Code;
+﻿using ElectoralApp.BAL.Repository.Code;
 using ElectoralApp.BAL.Repository.Interfaces;
 using ElectoralApp.BAL.Repository.Model;
+using ElectoralApp.DAL;
 using ElectoralApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System.Configuration;
+
 
 namespace ElectoralApp.Controllers
 {
     public class HomeController : Controller
     {
 
-        private ILookupReposiotry _lookupRepository;
-        private ISearchRepository _searchRepository;
+        private ILookupManager _lookupManager;
+        private ISearchManager _searchManager;
+        private readonly ElectoralDBEntities _context;
+        //private Iconfiguration 
 
+       // ElectoralAPI.ElectoralUnifiedAPIClient obj = new ElectoralAPI.ElectoralUnifiedAPIClient();
         public HomeController()
         {
-            
-            _lookupRepository = new LookupRepository(new ElectoralDBEntities());
-            _searchRepository = new SearchRepository(new ElectoralDBEntities());
+            _lookupManager = new LookupManager(new ElectoralDBEntities());
+            _searchManager = new SearchManager(new ElectoralDBEntities());
         }
-        public HomeController(ISearchRepository searchRepository, ILookupReposiotry lookupReposiotry)
+        public HomeController(ISearchManager searchManager, ILookupManager lookupManager)
         {
-            _lookupRepository = lookupReposiotry;
-            _searchRepository = searchRepository;
+            _searchManager = searchManager;
+            _lookupManager = lookupManager;
+            
 
         }
         public ActionResult Index()
@@ -37,19 +40,39 @@ namespace ElectoralApp.Controllers
         [HandleError]
         public ActionResult Search()
         {
-                     
+            long lUserId = 3;         
             SearchViewModel sModel = new SearchViewModel();
-            sModel.AssemblyConstituencies = (from ls in _lookupRepository.GetAssemblyConstituencies()
-                                                select new AssemblyConstituencies
-                                                {
-                                                    Text = ls.Name,
-                                                    Value = ls.ACNo
-                                                }
-                                                ).ToList();
+            List<SelectListItem> assemblyConstituencyName = new List<SelectListItem>();
+            assemblyConstituencyName = (from ls in _lookupManager.GetAssemblyConstituencies(lUserId).ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = ls.Name,
+                                               Value = ls.AssemblyConstituencyId.ToString()
+
+                                           }).ToList();
+            sModel.AssemblyConstituency = assemblyConstituencyName;
            sModel.ListData = new List<GridData>();
            return View(sModel);
 
         }
+
+        [HttpPost]
+        public ActionResult GetCity(string acId)
+        {
+
+            List<SelectListItem> citiName = new List<SelectListItem>();
+            if (!string.IsNullOrEmpty(acId))
+            {
+                citiName = (from ls in _lookupManager.GetCityList(long.Parse(acId)).ToList()
+                            select new SelectListItem
+                            {
+                                Text = ls.Name,
+                                Value = ls.Id.ToString()
+                            }).ToList();
+            }
+            return Json(citiName, JsonRequestBehavior.AllowGet);
+        }
+
         [HandleError]
         [HttpPost]
         public ActionResult Search(SearchViewModel sModel)
@@ -57,73 +80,48 @@ namespace ElectoralApp.Controllers
 
             try
             {
-                SearchModel searchModel = new SearchModel();
+                BAL.ElectoralAPI.SearchFiltersInfoReq sFilterReq = new BAL.ElectoralAPI.SearchFiltersInfoReq();
 
-                searchModel.FirstName = sModel.FirstName;
-                searchModel.LastName = sModel.LastName;
-                searchModel.RLLName = sModel.RLLName;
-                searchModel.VoterEPICNo = sModel.VoterEPICNo;
-                searchModel.VoterOldEPIC = sModel.VoterOldEPIC;
-                searchModel.VoterAddress = sModel.VoterAddress;
-                searchModel.VoterMobile1 = sModel.VoterMobile1;
-                searchModel.Age = sModel.Age;
-                searchModel.RLFName = sModel.RLFName;
-                searchModel.VoterCity = sModel.VoterCity;
-                searchModel.VoterCommunity = sModel.VoterCommunity;
-                searchModel.UseSoundEx = sModel.UseSoundEx;
-                searchModel.AgeMargin = 3;
-                searchModel.LERId = 1;
-                if (sModel.AssemblyConstituencyNo == 0)
-                    searchModel.vLACNo = null;
-                else
-                    searchModel.vLACNo = sModel.AssemblyConstituencyNo;
-
-                sModel.ListData = (from ls in _searchRepository.SearchVoterListNew(searchModel)
+                sFilterReq.ACId = sModel.AssemblyConstituencyNo;
+                sFilterReq.Firstname = sModel.FirstName;
+                sFilterReq.Lastname = sModel.LastName;
+                sFilterReq.RFName = sModel.RLFName;
+                sFilterReq.EPICNo = sModel.VoterEPICNo;
+                sFilterReq.Mobile = sModel.VoterMobile1;
+                sFilterReq.UserId = 3;
+                sFilterReq.HashValue = "8776f108e247ab1e2b323042c049c266407c81fbad41bde1e8dfc1bb66fd267e";
+                if (!String.IsNullOrEmpty(sModel.Age))
+                    sFilterReq.Age = int.Parse(sModel.Age.ToString());
+                sFilterReq.RLName = sModel.RLFName;
+                if (!String.IsNullOrEmpty(sModel.VoterCity))
+                    sFilterReq.CityId = int.Parse(sModel.VoterCity.ToString());
+                SearchInfo  serachInfo = _searchManager.SearchVoterListNew(sFilterReq);
+                sModel.ListData = (from ls in serachInfo.VoterList
                                    select new GridData
                                    {
-                                       VoterEPICNo = ls.EPICNo,
-                                       FirstName = ls.FirstName,
-                                       LastName = ls.LastName,
-                                       RLFName = ls.RelationFirstName,
-                                       RLLName = ls.RelationLastName,
-                                       Age = ls.Age,
-                                       VoterMobile1 = ls.MobileNo,
-                                       VoterAddress = ls.Address
+                                       VoterEPICNo=ls.EPICNo,
+                                       FirstName = ls.Firstname,
+                                       LastName = ls.Lastname,
+                                       Age = int.Parse(ls.Age.ToString()),
+                                       RLFName = ls.RName,
+                                       VoterMobile1 = ls.Mobile,
+                                       VoterAddress=ls.Address,
+                                       VoterId=ls.VoterId
+
                                    }).ToList();
 
+                long lUserId = 3;
+                List<SelectListItem> assemblyConstituencyName = new List<SelectListItem>();
+                assemblyConstituencyName = (from ls in _lookupManager.GetAssemblyConstituencies(lUserId).ToList()
+                                            select new SelectListItem
+                                            {
+                                                Text = ls.Name,
+                                                Value = ls.AssemblyConstituencyId.ToString()
 
-
-
-                //sModel.ListData = (from ls in _searchRepository.SearchVoterList(searchModel)
-                //                 select new GridData
-                //                 {
-                //                     VoterEPICNo =ls.EPICNo,
-                //                     FirstName = ls.FirstName,
-                //                     LastName =ls.LastName,
-                //                     RLFName = ls.RelationFirstName,
-                //                     RLLName = ls.RelationLastName,
-                //                     Age= ls.Age,
-                //                     VoterMobile1 = ls.MobileNo,
-                //                     VoterAddress= ls.Address
-                //                 }).ToList();
-
-
-
-
-
-
-                sModel.AssemblyConstituencies = (from ls in _lookupRepository.GetAssemblyConstituencies()
-                                                 select new AssemblyConstituencies
-                                                 {
-                                                     Text = ls.Name,
-                                                     Value = ls.ACNo
-                                                 }
-                                                    ).ToList();
-
+                                            }).ToList();
+                sModel.AssemblyConstituency = assemblyConstituencyName;
 
                 return View(sModel);
-
-
             }
             catch (Exception)
             {
@@ -132,35 +130,29 @@ namespace ElectoralApp.Controllers
             }
 
         }
-        public ActionResult ViewVoter(string Mobile)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="VoterId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [HandleError]
+        public ActionResult ViewVoter(long VoterId)
         {
-            SearchModel searchModel = new SearchModel();
+            try
+            {
+                int UserId = 3;
+                string HashValue = "8776f108e247ab1e2b323042c049c266407c81fbad41bde1e8dfc1bb66fd267e";
+                VoterInfo voterInfo = new VoterInfo();
+                voterInfo = _searchManager.GetVoterDetails(VoterId, UserId, HashValue);
+                return View(voterInfo);
+            }
+            catch (Exception)
+            {
 
-            
-            searchModel.VoterMobile1 = Mobile;
-                      
-            searchModel.AgeMargin = 3;
-            searchModel.LERId = 1;
-            searchModel.vLACNo = null;
+                throw;
+            }
            
-
-            var ListData = (from ls in _searchRepository.SearchVoterListNew(searchModel)
-                               select new GridData
-                               {
-                                   VoterEPICNo = ls.EPICNo,
-                                   FirstName = ls.FirstName,
-                                   LastName = ls.LastName,
-                                   RLFName = ls.RelationFirstName,
-                                   RLLName = ls.RelationLastName,
-                                   Age = ls.Age,
-                                   VoterMobile1 = ls.MobileNo,
-                                   VoterAddress = ls.Address
-                               }).FirstOrDefault();
-
-            return View(ListData);
         }
-
-
-
     }
 }

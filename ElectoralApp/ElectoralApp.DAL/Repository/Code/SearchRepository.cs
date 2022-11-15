@@ -28,7 +28,7 @@ namespace ElectoralApp.DAL.Repository.Code
             return _context.tblVoters.ToList();
         }
 
-        public ObjectResult<uspGetVoters_Result> SearchVoterListNew(SearchModel searchModel)
+        public ObjectResult<uspGetVoters_Result> SearchVoterListNew(DBSearchModel searchModel)
         {
             //return _context.uspGetVoters(searchModel.FirstName, searchModel.LastName, searchModel.RLFName,
             //                            searchModel.VoterEPICNo, searchModel.VoterAddress, searchModel.VoterMobile1, searchModel.Age, false);
@@ -46,7 +46,7 @@ namespace ElectoralApp.DAL.Repository.Code
 
         }
 
-        public ObjectResult<uspGetVoters_Result> SearchVoterList(SearchModel searchModel)
+        public ObjectResult<uspGetVoters_Result> SearchVoterList(DBSearchModel searchModel)
         {
             //return _context.uspGetVoters(searchModel.FirstName, searchModel.LastName, searchModel.RLFName,
             //                            searchModel.VoterEPICNo, searchModel.VoterAddress, searchModel.VoterMobile1, searchModel.Age, false);

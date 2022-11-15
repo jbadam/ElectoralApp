@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b7de8206-563d-484d-b025-42ba8d36e019" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://bizstageapps.azurewebsites.net/ElectoralUnifiedAPI/ElectoralUnifiedAPI.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wsdl.xsd" MetadataType="Schema" ID="26bb9e21-723d-4f1f-815f-ebc48d56eaa3" SourceId="1" SourceUrl="http://bizstageapps.azurewebsites.net/ElectoralUnifiedAPI/ElectoralUnifiedAPI.svc/wsdl?xsd=xsd0" />
+    <MetadataFile FileName="wsdl.disco" MetadataType="Disco" ID="9f3d492f-2f3a-4461-90e9-a3079c095bbd" SourceId="1" SourceUrl="http://bizstageapps.azurewebsites.net/ElectoralUnifiedAPI/ElectoralUnifiedAPI.svc/wsdl?disco" />
+    <MetadataFile FileName="wsdl1.xsd" MetadataType="Schema" ID="3090b380-1b77-4854-a357-c84d6596851f" SourceId="1" SourceUrl="http://bizstageapps.azurewebsites.net/ElectoralUnifiedAPI/ElectoralUnifiedAPI.svc/wsdl?xsd=xsd3" />
+    <MetadataFile FileName="wsdl2.xsd" MetadataType="Schema" ID="e6d8efcf-f39f-4dfd-8f21-97db4d3daac8" SourceId="1" SourceUrl="http://bizstageapps.azurewebsites.net/ElectoralUnifiedAPI/ElectoralUnifiedAPI.svc/wsdl?xsd=xsd2" />
+    <MetadataFile FileName="ElectoralUnifiedAPI.wsdl" MetadataType="Wsdl" ID="79d35535-17a8-4164-a453-d96adb5105a2" SourceId="1" SourceUrl="http://bizstageapps.azurewebsites.net/ElectoralUnifiedAPI/ElectoralUnifiedAPI.svc/wsdl?wsdl" />
+    <MetadataFile FileName="wsdl3.xsd" MetadataType="Schema" ID="6e437e54-2bc8-4123-b20d-23f37d7bd242" SourceId="1" SourceUrl="http://bizstageapps.azurewebsites.net/ElectoralUnifiedAPI/ElectoralUnifiedAPI.svc/wsdl?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

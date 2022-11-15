@@ -1,7 +1,9 @@
-﻿using System;
+﻿using ElectoralApp.BAL.Repository.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace ElectoralApp.Models
 {
@@ -28,7 +30,7 @@ namespace ElectoralApp.Models
 
         public string VoterMobile2 { get; set; }
 
-        public int? Age { get; set; }
+        public string Age { get; set; }
 
         public string AppartmentName { get; set; }
 
@@ -45,7 +47,9 @@ namespace ElectoralApp.Models
         public int? LERId { get; set; }
 
 
-        public List<AssemblyConstituencies> AssemblyConstituencies { get; set; }
+        public List<SelectListItem> AssemblyConstituency { get; set; }
+
+        public List<SelectListItem> CityNames { get; set; }
 
         public List<GridData> ListData { get; set; }
 
@@ -55,6 +59,7 @@ namespace ElectoralApp.Models
 
     public class GridData
     {
+        public long VoterId { get; set; }
         public string VoterEPICNo { get; set; }
         public string VoterOldEPIC { get; set; }
 

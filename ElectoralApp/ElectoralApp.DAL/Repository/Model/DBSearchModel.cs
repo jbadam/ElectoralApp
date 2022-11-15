@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ElectoralApp.DAL.Repository.Model
 {
-    public class SearchModel
+    public class DBSearchModel
     {
         public int AssemblyConstituencyNo { get; set; }
 

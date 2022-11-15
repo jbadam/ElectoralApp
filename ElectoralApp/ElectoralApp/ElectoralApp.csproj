@@ -71,6 +71,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -126,7 +127,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -510,6 +510,66 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Grid.mvc.readme" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.AdvRespSearchInfo.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.AdvRespVoterExtInfo.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.AdvRespVoterInfo.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespACInfo.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespAdvVoterExtStatus.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespCasteInfo.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespCityInfo.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespCommunityInfo.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespCommunityStatus.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespCommunityTypeInfo.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespLoginInfo.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespPartyInfo.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespPSInfo.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespSearchInfo.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespSubCasteInfo.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespVoterExtStatus.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespVoterInfo.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespVoterStatusTypeInfo.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespVoterTypeInfo.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespWardInfo.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.AdvRespSearchInfo1.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.AdvRespVoterExtInfo1.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.AdvRespVoterInfo1.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespACInfo1.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespAdvVoterExtStatus1.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespCasteInfo1.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespCityInfo1.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespCommunityInfo1.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespCommunityStatus1.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespCommunityTypeInfo1.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespLoginInfo1.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespPartyInfo1.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespPSInfo1.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespSearchInfo1.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespSubCasteInfo1.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespVoterExtStatus1.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespVoterInfo1.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespVoterStatusTypeInfo1.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespVoterTypeInfo1.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespWardInfo1.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.AdvRespSearchInfo2.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.AdvRespVoterExtInfo2.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.AdvRespVoterInfo2.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespACInfo2.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespAdvVoterExtStatus2.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespCasteInfo2.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespCityInfo2.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespCommunityInfo2.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespCommunityStatus2.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespCommunityTypeInfo2.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespLoginInfo2.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespPartyInfo2.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespPSInfo2.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespSearchInfo2.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespSubCasteInfo2.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespVoterExtStatus2.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespVoterInfo2.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespVoterStatusTypeInfo2.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespVoterTypeInfo2.datasource" />
+    <Content Include="Properties\DataSources\ElectoralApp.BAL.ElectoralAPI.RespWardInfo2.datasource" />
     <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Properties\PublishProfiles\IISProfile3.pubxml" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -739,6 +799,13 @@
       <Project>{48f65c7f-070e-4371-b828-40f1043862c4}</Project>
       <Name>ElectoralApp.BAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ElectoralApp.DAL\ElectoralApp.DAL.csproj">
+      <Project>{E1BB7E3F-3E73-4A5C-9FEC-11B80B7A03BB}</Project>
+      <Name>ElectoralApp.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

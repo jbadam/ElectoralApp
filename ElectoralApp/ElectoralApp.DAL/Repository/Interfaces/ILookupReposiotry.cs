@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace ElectoralApp.DAL.Repository.Interfaces
 {
-    interface ILookupReposiotry
+    public interface ILookupReposiotry
     {
 
         IEnumerable<tblCommunity> GetCommunityList();
 
+        IEnumerable<tblCity> GetCityList(long AssemblyConstituencyId);
+
         IEnumerable<tblState> GetStates();
-        IEnumerable<tblAssemblyConstituency> GetAssemblyConstituencies();
+        IEnumerable<tblAssemblyConstituency> GetAssemblyConstituencies(long UserId);
 
         IEnumerable<tblRole> GetRolesList();
 

@@ -14,18 +14,18 @@ namespace ElectoralApp.Controllers
     public class LoginController : Controller
     {
         // GET: Login
-        private IUserRepository _userRepository;
-        private ILookupReposiotry _lookupRepository;
+        private IUserManager _userManager;
+        private ILookupManager _lookupManager;
 
         public LoginController()
         {
-            _userRepository = new UserRepository(new ElectoralDBEntities());
-            _lookupRepository = new LookupRepository(new ElectoralDBEntities());
+            //_userManager = new UserManager();
+           // _lookupRepository = new LookupRepository(new ElectoralDBEntities());
         }
-        public LoginController(IUserRepository userRepository, ILookupReposiotry lookupReposiotry)
+        public LoginController(IUserManager userManager, ILookupManager lookupManager)
         {
-            _userRepository = userRepository;
-            _lookupRepository = lookupReposiotry;
+            _userManager = userManager;
+            _lookupManager = lookupManager;
         }
         public ActionResult SignIn()
         {
@@ -39,7 +39,7 @@ namespace ElectoralApp.Controllers
 
         public ActionResult Index()
         {
-            var model = (from ls in _userRepository.GetAllUser().ToList()
+            var model = (from ls in _userManager.GetAllUser().ToList()
                          select new UserModel
                          {
                              Id=ls.Id,

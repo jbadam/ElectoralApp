@@ -13,8 +13,8 @@ namespace ElectoralApp.DAL.Repository.Interfaces
 
         IEnumerable<tblVoter> GetVoterList();
 
-        ObjectResult<uspGetVoters_Result> SearchVoterList(SearchModel searchModel);
+        ObjectResult<uspGetVoters_Result> SearchVoterList(DBSearchModel searchModel);
 
-        ObjectResult<uspGetVoters_Result> SearchVoterListNew(SearchModel searchModel);
+        ObjectResult<uspGetVoters_Result> SearchVoterListNew(DBSearchModel searchModel);
     }
 }

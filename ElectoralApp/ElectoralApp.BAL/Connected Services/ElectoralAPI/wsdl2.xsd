@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ElectoralUnifiedAPI" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ElectoralUnifiedAPI" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://bizstageapps.azurewebsites.net/ElectoralUnifiedAPI/ElectoralUnifiedAPI.svc/wsdl?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="LoginInfoReq">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DeviceInfo" nillable="true" type="tns:DeviceInfo" />
+      <xs:element minOccurs="0" name="GeoTagInfo" nillable="true" type="tns:GeoTaggingInfo" />
+      <xs:element minOccurs="0" name="HashValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserLogin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserPwd" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LoginInfoReq" nillable="true" type="tns:LoginInfoReq" />
+  <xs:complexType name="DeviceInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppVer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OSName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OSVer" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DeviceInfo" nillable="true" type="tns:DeviceInfo" />
+  <xs:complexType name="GeoTaggingInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Elevation" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Latitude" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Longitude" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GeoTaggingInfo" nillable="true" type="tns:GeoTaggingInfo" />
+  <xs:complexType name="RespLoginInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddressInfo" nillable="true" type="tns:AddressInfo" />
+      <xs:element minOccurs="0" name="ElectoralInfo" nillable="true" type="tns:ElectoralInfo" />
+      <xs:element minOccurs="0" name="HashValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RelationInfo" nillable="true" type="tns:RelationInfo" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+      <xs:element minOccurs="0" name="UserInfo" nillable="true" type="tns:UserInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RespLoginInfo" nillable="true" type="tns:RespLoginInfo" />
+  <xs:complexType name="AddressInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityId" type="xs:long" />
+      <xs:element minOccurs="0" name="Pincode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StateId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddressInfo" nillable="true" type="tns:AddressInfo" />
+  <xs:complexType name="ElectoralInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ACId" type="xs:long" />
+      <xs:element minOccurs="0" name="CommunityId" type="xs:long" />
+      <xs:element minOccurs="0" name="EPICNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PollingStationId" type="xs:long" />
+      <xs:element minOccurs="0" name="Relation" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ElectoralInfo" nillable="true" type="tns:ElectoralInfo" />
+  <xs:complexType name="RelationInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RFirstname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RLastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Relation" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RelationInfo" nillable="true" type="tns:RelationInfo" />
+  <xs:complexType name="UserInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Age" type="xs:int" />
+      <xs:element minOccurs="0" name="AltMobileNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Firstname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Lastname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentId" type="xs:long" />
+      <xs:element minOccurs="0" name="UserId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserInfo" nillable="true" type="tns:UserInfo" />
+  <xs:complexType name="ArrayOfRespACInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RespACInfo" nillable="true" type="tns:RespACInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRespACInfo" nillable="true" type="tns:ArrayOfRespACInfo" />
+  <xs:complexType name="RespACInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ACId" type="xs:long" />
+      <xs:element minOccurs="0" name="ACName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ACNo" type="xs:int" />
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RespACInfo" nillable="true" type="tns:RespACInfo" />
+  <xs:complexType name="ArrayOfRespCityInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RespCityInfo" nillable="true" type="tns:RespCityInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRespCityInfo" nillable="true" type="tns:ArrayOfRespCityInfo" />
+  <xs:complexType name="RespCityInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RespCityInfo" nillable="true" type="tns:RespCityInfo" />
+  <xs:complexType name="ArrayOfRespWardInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RespWardInfo" nillable="true" type="tns:RespWardInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRespWardInfo" nillable="true" type="tns:ArrayOfRespWardInfo" />
+  <xs:complexType name="RespWardInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WardId" type="xs:long" />
+      <xs:element minOccurs="0" name="WardNo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RespWardInfo" nillable="true" type="tns:RespWardInfo" />
+  <xs:complexType name="ArrayOfRespPSInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RespPSInfo" nillable="true" type="tns:RespPSInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRespPSInfo" nillable="true" type="tns:ArrayOfRespPSInfo" />
+  <xs:complexType name="RespPSInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StationId" type="xs:long" />
+      <xs:element minOccurs="0" name="StationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StationNo" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RespPSInfo" nillable="true" type="tns:RespPSInfo" />
+  <xs:complexType name="ArrayOfRespCommunityTypeInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RespCommunityTypeInfo" nillable="true" type="tns:RespCommunityTypeInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRespCommunityTypeInfo" nillable="true" type="tns:ArrayOfRespCommunityTypeInfo" />
+  <xs:complexType name="RespCommunityTypeInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CommunityTypeId" type="xs:long" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RespCommunityTypeInfo" nillable="true" type="tns:RespCommunityTypeInfo" />
+  <xs:complexType name="ArrayOfRespCommunityInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RespCommunityInfo" nillable="true" type="tns:RespCommunityInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRespCommunityInfo" nillable="true" type="tns:ArrayOfRespCommunityInfo" />
+  <xs:complexType name="RespCommunityInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CommunityId" type="xs:long" />
+      <xs:element minOccurs="0" name="Landmark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Locality" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RespCommunityInfo" nillable="true" type="tns:RespCommunityInfo" />
+  <xs:complexType name="CommunitySearchInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ACId" type="xs:long" />
+      <xs:element minOccurs="0" name="CityId" type="xs:long" />
+      <xs:element minOccurs="0" name="HashValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SearchValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CommunitySearchInfo" nillable="true" type="tns:CommunitySearchInfo" />
+  <xs:complexType name="CommunityInfoReq">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ACId" type="xs:long" />
+      <xs:element minOccurs="0" name="CityId" type="xs:long" />
+      <xs:element minOccurs="0" name="CommunityTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="HashValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Landmark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Locality" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CommunityInfoReq" nillable="true" type="tns:CommunityInfoReq" />
+  <xs:complexType name="RespCommunityStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CommunityId" type="xs:long" />
+      <xs:element minOccurs="0" name="HashValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RespCommunityStatus" nillable="true" type="tns:RespCommunityStatus" />
+  <xs:complexType name="ArrayOfRespCasteInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RespCasteInfo" nillable="true" type="tns:RespCasteInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRespCasteInfo" nillable="true" type="tns:ArrayOfRespCasteInfo" />
+  <xs:complexType name="RespCasteInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RespCasteInfo" nillable="true" type="tns:RespCasteInfo" />
+  <xs:complexType name="ArrayOfRespSubCasteInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RespSubCasteInfo" nillable="true" type="tns:RespSubCasteInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRespSubCasteInfo" nillable="true" type="tns:ArrayOfRespSubCasteInfo" />
+  <xs:complexType name="RespSubCasteInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RespSubCasteInfo" nillable="true" type="tns:RespSubCasteInfo" />
+  <xs:complexType name="ArrayOfRespPartyInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RespPartyInfo" nillable="true" type="tns:RespPartyInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRespPartyInfo" nillable="true" type="tns:ArrayOfRespPartyInfo" />
+  <xs:complexType name="RespPartyInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RespPartyInfo" nillable="true" type="tns:RespPartyInfo" />
+  <xs:complexType name="ArrayOfRespVoterTypeInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RespVoterTypeInfo" nillable="true" type="tns:RespVoterTypeInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRespVoterTypeInfo" nillable="true" type="tns:ArrayOfRespVoterTypeInfo" />
+  <xs:complexType name="RespVoterTypeInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RespVoterTypeInfo" nillable="true" type="tns:RespVoterTypeInfo" />
+  <xs:complexType name="ArrayOfRespVoterStatusTypeInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RespVoterStatusTypeInfo" nillable="true" type="tns:RespVoterStatusTypeInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRespVoterStatusTypeInfo" nillable="true" type="tns:ArrayOfRespVoterStatusTypeInfo" />
+  <xs:complexType name="RespVoterStatusTypeInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RespVoterStatusTypeInfo" nillable="true" type="tns:RespVoterStatusTypeInfo" />
+  <xs:complexType name="SearchInfoReq">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ACId" type="xs:long" />
+      <xs:element minOccurs="0" name="CityId" type="xs:long" />
+      <xs:element minOccurs="0" name="EndCount" type="xs:int" />
+      <xs:element minOccurs="0" name="HashValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PSId" type="xs:long" />
+      <xs:element minOccurs="0" name="SetCount" type="xs:int" />
+      <xs:element minOccurs="0" name="StartCount" type="xs:int" />
+      <xs:element minOccurs="0" name="UserId" type="xs:long" />
+      <xs:element minOccurs="0" name="WardId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchInfoReq" nillable="true" type="tns:SearchInfoReq" />
+  <xs:complexType name="RespSearchInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RecCount" type="xs:long" />
+      <xs:element minOccurs="0" name="VoterList" nillable="true" type="tns:ArrayOfSearchInfoResp" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RespSearchInfo" nillable="true" type="tns:RespSearchInfo" />
+  <xs:complexType name="ArrayOfSearchInfoResp">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SearchInfoResp" nillable="true" type="tns:SearchInfoResp" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSearchInfoResp" nillable="true" type="tns:ArrayOfSearchInfoResp" />
+  <xs:complexType name="SearchInfoResp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Age" type="xs:decimal" />
+      <xs:element minOccurs="0" name="EPICNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Firstname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HashValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Lastname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VoterId" type="xs:long" />
+      <xs:element minOccurs="0" name="Ward" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchInfoResp" nillable="true" type="tns:SearchInfoResp" />
+  <xs:complexType name="RespVoterInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ElectoralInfo" nillable="true" type="tns:VoterElectoralInfo" />
+      <xs:element minOccurs="0" name="HashValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PersonalInfo" nillable="true" type="tns:VoterPersonalInfo" />
+      <xs:element minOccurs="0" name="RelationInfo" nillable="true" type="tns:VoterRelationInfo" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RespVoterInfo" nillable="true" type="tns:RespVoterInfo" />
+  <xs:complexType name="VoterElectoralInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ACId" type="xs:long" />
+      <xs:element minOccurs="0" name="ACName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityId" type="xs:long" />
+      <xs:element minOccurs="0" name="District" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DistrictId" type="xs:long" />
+      <xs:element minOccurs="0" name="EPICNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OldEPICNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PCName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PSAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PSId" type="xs:long" />
+      <xs:element minOccurs="0" name="PSName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PSNo" type="xs:int" />
+      <xs:element minOccurs="0" name="PSSId" type="xs:long" />
+      <xs:element minOccurs="0" name="PSSName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PSSNo" type="xs:int" />
+      <xs:element minOccurs="0" name="SerialNo" type="xs:int" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StateId" type="xs:int" />
+      <xs:element minOccurs="0" name="WardNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WardSNo" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VoterElectoralInfo" nillable="true" type="tns:VoterElectoralInfo" />
+  <xs:complexType name="VoterPersonalInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Age" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DOB" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Firstname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Lastname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileNo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VoterPersonalInfo" nillable="true" type="tns:VoterPersonalInfo" />
+  <xs:complexType name="VoterRelationInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="REPICNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RFirstname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RLastname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Relation" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VoterRelationInfo" nillable="true" type="tns:VoterRelationInfo" />
+  <xs:complexType name="SearchFiltersInfoReq">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ACId" type="xs:long" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Age" type="xs:int" />
+      <xs:element minOccurs="0" name="AgeMargin" type="xs:int" />
+      <xs:element minOccurs="0" name="CityId" type="xs:long" />
+      <xs:element minOccurs="0" name="EPICNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Firstname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HashValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSoundex" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Lastname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OldEPICNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PSId" type="xs:long" />
+      <xs:element minOccurs="0" name="RFName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RLName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="xs:long" />
+      <xs:element minOccurs="0" name="WardId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchFiltersInfoReq" nillable="true" type="tns:SearchFiltersInfoReq" />
+  <xs:complexType name="VoterExtInfoReq">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AltMobileNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Altitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CommunityId" type="xs:long" />
+      <xs:element minOccurs="0" name="HashValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HeadCount" type="xs:int" />
+      <xs:element minOccurs="0" name="HeadMobileNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsAccurate" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsHead" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OldCommunityId" type="xs:long" />
+      <xs:element minOccurs="0" name="PartyId" type="xs:int" />
+      <xs:element minOccurs="0" name="PresentAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubCasteId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserId" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VoterId" type="xs:long" />
+      <xs:element minOccurs="0" name="VoterTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="WhatsAppNo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VoterExtInfoReq" nillable="true" type="tns:VoterExtInfoReq" />
+  <xs:complexType name="RespVoterExtStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HashValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+      <xs:element minOccurs="0" name="VoterExtId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RespVoterExtStatus" nillable="true" type="tns:RespVoterExtStatus" />
+  <xs:complexType name="AdvSearchInfoReq">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ACId" type="xs:long" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityId" type="xs:long" />
+      <xs:element minOccurs="0" name="EndCount" type="xs:int" />
+      <xs:element minOccurs="0" name="HashValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SetCount" type="xs:int" />
+      <xs:element minOccurs="0" name="StartCount" type="xs:int" />
+      <xs:element minOccurs="0" name="UserId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdvSearchInfoReq" nillable="true" type="tns:AdvSearchInfoReq" />
+  <xs:complexType name="AdvRespSearchInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RecCount" type="xs:long" />
+      <xs:element minOccurs="0" name="VoterList" nillable="true" type="tns:ArrayOfAdvSearchInfoResp" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdvRespSearchInfo" nillable="true" type="tns:AdvRespSearchInfo" />
+  <xs:complexType name="ArrayOfAdvSearchInfoResp">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AdvSearchInfoResp" nillable="true" type="tns:AdvSearchInfoResp" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAdvSearchInfoResp" nillable="true" type="tns:ArrayOfAdvSearchInfoResp" />
+  <xs:complexType name="AdvSearchInfoResp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Age" type="xs:decimal" />
+      <xs:element minOccurs="0" name="EPICNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Firstname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HashValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Lastname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VerifyStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="VoterId" type="xs:long" />
+      <xs:element minOccurs="0" name="Ward" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdvSearchInfoResp" nillable="true" type="tns:AdvSearchInfoResp" />
+  <xs:complexType name="AdvVoterInfoReq">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HashValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="xs:long" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="VoterIds" nillable="true" type="q1:ArrayOflong" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdvVoterInfoReq" nillable="true" type="tns:AdvVoterInfoReq" />
+  <xs:complexType name="AdvRespVoterInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HashValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+      <xs:element minOccurs="0" name="VotersInfo" nillable="true" type="tns:ArrayOfVoterInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdvRespVoterInfo" nillable="true" type="tns:AdvRespVoterInfo" />
+  <xs:complexType name="ArrayOfVoterInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VoterInfo" nillable="true" type="tns:VoterInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVoterInfo" nillable="true" type="tns:ArrayOfVoterInfo" />
+  <xs:complexType name="VoterInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ElectoralInfo" nillable="true" type="tns:VoterElectoralInfo" />
+      <xs:element minOccurs="0" name="PersonalInfo" nillable="true" type="tns:VoterPersonalInfo" />
+      <xs:element minOccurs="0" name="RelationInfo" nillable="true" type="tns:VoterRelationInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VoterInfo" nillable="true" type="tns:VoterInfo" />
+  <xs:complexType name="AdvVoterExtInfoReq">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Altitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CommunityId" type="xs:long" />
+      <xs:element minOccurs="0" name="HashValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HeadMobileNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsShifted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OccupancyId" type="xs:int" />
+      <xs:element minOccurs="0" name="PartyId" type="xs:int" />
+      <xs:element minOccurs="0" name="PresentAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubCasteId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserId" type="xs:long" />
+      <xs:element minOccurs="0" name="VisitTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VotersExtInfo" nillable="true" type="tns:ArrayOfVoterExtInfo" />
+      <xs:element minOccurs="0" name="WillTransfer" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdvVoterExtInfoReq" nillable="true" type="tns:AdvVoterExtInfoReq" />
+  <xs:complexType name="ArrayOfVoterExtInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VoterExtInfo" nillable="true" type="tns:VoterExtInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVoterExtInfo" nillable="true" type="tns:ArrayOfVoterExtInfo" />
+  <xs:complexType name="VoterExtInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsHead" type="xs:boolean" />
+      <xs:element minOccurs="0" name="VoterId" type="xs:long" />
+      <xs:element minOccurs="0" name="VoterStatusId" type="xs:int" />
+      <xs:element minOccurs="0" name="VoterTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="WhatsAppNo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VoterExtInfo" nillable="true" type="tns:VoterExtInfo" />
+  <xs:complexType name="RespAdvVoterExtStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HashValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RespAdvVoterExtStatus" nillable="true" type="tns:RespAdvVoterExtStatus" />
+  <xs:complexType name="AdvVoterExtDataReq">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HashValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="xs:long" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="VoterIds" nillable="true" type="q2:ArrayOflong" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdvVoterExtDataReq" nillable="true" type="tns:AdvVoterExtDataReq" />
+  <xs:complexType name="AdvRespVoterExtInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HashValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+      <xs:element minOccurs="0" name="VotersExtInfo" nillable="true" type="tns:ArrayOfRespVoterExtInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdvRespVoterExtInfo" nillable="true" type="tns:AdvRespVoterExtInfo" />
+  <xs:complexType name="ArrayOfRespVoterExtInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RespVoterExtInfo" nillable="true" type="tns:RespVoterExtInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRespVoterExtInfo" nillable="true" type="tns:ArrayOfRespVoterExtInfo" />
+  <xs:complexType name="RespVoterExtInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CommunityId" type="xs:long" />
+      <xs:element minOccurs="0" name="HeadMobileNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsHead" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsShifted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Isverified" type="xs:int" />
+      <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OccupancyId" type="xs:int" />
+      <xs:element minOccurs="0" name="PartyId" type="xs:int" />
+      <xs:element minOccurs="0" name="PresentAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+      <xs:element minOccurs="0" name="SubCasteId" type="xs:int" />
+      <xs:element minOccurs="0" name="VoterId" type="xs:long" />
+      <xs:element minOccurs="0" name="VoterStatusId" type="xs:int" />
+      <xs:element minOccurs="0" name="VoterTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="WhatsAppNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WillTransfer" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RespVoterExtInfo" nillable="true" type="tns:RespVoterExtInfo" />
+</xs:schema>

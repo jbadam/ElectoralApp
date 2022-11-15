@@ -13,8 +13,6 @@ namespace ElectoralApp.BAL.Repository.Model
         public string VoterEPICNo { get; set; }
         public string VoterOldEPIC { get; set; }
 
-        public string RelationEPIC { get; set; }
-
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -27,11 +25,7 @@ namespace ElectoralApp.BAL.Repository.Model
 
         public string VoterMobile1 { get; set; }
 
-        public string VoterMobile2 { get; set; }
-
-        public int? Age { get; set; }
-
-        public string AppartmentName { get; set; }
+        public int Age { get; set; }
 
         public string VoterCity { get; set; }
 
@@ -39,10 +33,5 @@ namespace ElectoralApp.BAL.Repository.Model
 
         public bool UseSoundEx { get; set; }
 
-        public int? AgeMargin { get; set; }
-
-        public int? LERId { get; set; }
-
-        public int? vLACNo { get; set; }
     }
 }

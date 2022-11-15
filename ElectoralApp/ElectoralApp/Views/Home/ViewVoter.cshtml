@@ -1,4 +1,4 @@
-﻿@model ElectoralApp.Models.GridData
+﻿@model ElectoralApp.BAL.Repository.Model.VoterInfo
     
     @{
         ViewBag.Title = "ViewVoter";
@@ -28,26 +28,22 @@
                                 <table id="datatable1" class="table display responsive nowrap">
                                     <tbody>
                                         <tr>
-                                            <td>Voter ID</td>
-                                            <td>@Model.VoterEPICNo</td>
-                                        </tr>
-                                        <tr>
                                             <td>Name</td>
-                                            <td>@Model.FirstName</td>
-                                            <td>@Model.LastName</td>
+                                            <td>@Model.personalInfo.Firstname</td>
+                                            <td>@Model.personalInfo.Lastname</td>
                                         </tr>
                                         <tr>
                                             <td>Relation Name</td>
-                                            <td>@Model.RLFName </td>
-                                            <td>@Model.RLLName </td>
+                                            <td>@Model.relationInfo.RFirstname </td>
+                                            <td>@Model.relationInfo.RLastname </td>
                                         </tr>
                                         <tr>
                                             <td>Mobile</td>
-                                            <td>@Model.VoterMobile1</td>
+                                            <td>@Model.personalInfo.MobileNo</td>
                                         </tr>
                                         <tr>
                                             <td>Address</td>
-                                            <td>@Model.VoterAddress</td>
+                                            <td>@Model.personalInfo.Address</td>
                                         </tr>
                                         
                                     </tbody>

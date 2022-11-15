@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ElectoralUnifiedAPI" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://bizstageapps.azurewebsites.net/ElectoralUnifiedAPI/ElectoralUnifiedAPI.svc/wsdl?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://bizstageapps.azurewebsites.net/ElectoralUnifiedAPI/ElectoralUnifiedAPI.svc/wsdl?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://bizstageapps.azurewebsites.net/ElectoralUnifiedAPI/ElectoralUnifiedAPI.svc/wsdl?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ElectoralUnifiedAPI" />
+      <xsd:import schemaLocation="http://bizstageapps.azurewebsites.net/ElectoralUnifiedAPI/ElectoralUnifiedAPI.svc/wsdl?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IElectoralUnifiedAPI_ValidateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateUser" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_ValidateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetAllAssemblyConstituencies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAssemblyConstituencies" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetAllAssemblyConstituencies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAssemblyConstituenciesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetStateAssemblyConstituencies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStateAssemblyConstituencies" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetStateAssemblyConstituencies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStateAssemblyConstituenciesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetAssemblyConstituencyCities_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssemblyConstituencyCities" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetAssemblyConstituencyCities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssemblyConstituencyCitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetCityWards_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityWards" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetCityWards_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityWardsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetPollingStations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPollingStations" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetPollingStations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPollingStationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetCityPollingStations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityPollingStations" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetCityPollingStations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityPollingStationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetWardPollingStations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWardPollingStations" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetWardPollingStations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWardPollingStationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetCommunityTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommunityTypes" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetCommunityTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommunityTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetCityCommunities_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityCommunities" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetCityCommunities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityCommunitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_SearchCityCommunities_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchCityCommunities" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_SearchCityCommunities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchCityCommunitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_AddCityCommunity_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCityCommunity" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_AddCityCommunity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCityCommunityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetCastes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCastes" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetCastes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCastesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetSubCastes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubCastes" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetSubCastes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubCastesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetParties_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetParties" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetParties_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPartiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetVoterTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVoterTypes" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetVoterTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVoterTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetVoterStatusTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVoterStatusTypes" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetVoterStatusTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVoterStatusTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetUserAssemblyConstituencies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserAssemblyConstituencies" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetUserAssemblyConstituencies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserAssemblyConstituenciesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_SearchConstituencyVoters_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchConstituencyVoters" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_SearchConstituencyVoters_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchConstituencyVotersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetVoterInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVoterInfo" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_GetVoterInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVoterInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_SearchVoters_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchVoters" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_SearchVoters_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchVotersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_AddVoterExtInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddVoterExtInfo" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_AddVoterExtInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddVoterExtInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_AdvSearchConstituencyVoters_InputMessage">
+    <wsdl:part name="parameters" element="tns:AdvSearchConstituencyVoters" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_AdvSearchConstituencyVoters_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AdvSearchConstituencyVotersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_AdvGetVoterInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:AdvGetVoterInfo" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_AdvGetVoterInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AdvGetVoterInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_AdvAddVoterExtInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:AdvAddVoterExtInfo" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_AdvAddVoterExtInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AdvAddVoterExtInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_AdvGetVoterExtInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:AdvGetVoterExtInfo" />
+  </wsdl:message>
+  <wsdl:message name="IElectoralUnifiedAPI_AdvGetVoterExtInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AdvGetVoterExtInfoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IElectoralUnifiedAPI">
+    <wsdl:operation name="ValidateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/ValidateUser" message="tns:IElectoralUnifiedAPI_ValidateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/ValidateUserResponse" message="tns:IElectoralUnifiedAPI_ValidateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAssemblyConstituencies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetAllAssemblyConstituencies" message="tns:IElectoralUnifiedAPI_GetAllAssemblyConstituencies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetAllAssemblyConstituenciesResponse" message="tns:IElectoralUnifiedAPI_GetAllAssemblyConstituencies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStateAssemblyConstituencies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetStateAssemblyConstituencies" message="tns:IElectoralUnifiedAPI_GetStateAssemblyConstituencies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetStateAssemblyConstituenciesResponse" message="tns:IElectoralUnifiedAPI_GetStateAssemblyConstituencies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAssemblyConstituencyCities">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetAssemblyConstituencyCities" message="tns:IElectoralUnifiedAPI_GetAssemblyConstituencyCities_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetAssemblyConstituencyCitiesResponse" message="tns:IElectoralUnifiedAPI_GetAssemblyConstituencyCities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityWards">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetCityWards" message="tns:IElectoralUnifiedAPI_GetCityWards_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetCityWardsResponse" message="tns:IElectoralUnifiedAPI_GetCityWards_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPollingStations">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetPollingStations" message="tns:IElectoralUnifiedAPI_GetPollingStations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetPollingStationsResponse" message="tns:IElectoralUnifiedAPI_GetPollingStations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityPollingStations">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetCityPollingStations" message="tns:IElectoralUnifiedAPI_GetCityPollingStations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetCityPollingStationsResponse" message="tns:IElectoralUnifiedAPI_GetCityPollingStations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWardPollingStations">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetWardPollingStations" message="tns:IElectoralUnifiedAPI_GetWardPollingStations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetWardPollingStationsResponse" message="tns:IElectoralUnifiedAPI_GetWardPollingStations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommunityTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetCommunityTypes" message="tns:IElectoralUnifiedAPI_GetCommunityTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetCommunityTypesResponse" message="tns:IElectoralUnifiedAPI_GetCommunityTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityCommunities">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetCityCommunities" message="tns:IElectoralUnifiedAPI_GetCityCommunities_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetCityCommunitiesResponse" message="tns:IElectoralUnifiedAPI_GetCityCommunities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchCityCommunities">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/SearchCityCommunities" message="tns:IElectoralUnifiedAPI_SearchCityCommunities_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/SearchCityCommunitiesResponse" message="tns:IElectoralUnifiedAPI_SearchCityCommunities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCityCommunity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/AddCityCommunity" message="tns:IElectoralUnifiedAPI_AddCityCommunity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/AddCityCommunityResponse" message="tns:IElectoralUnifiedAPI_AddCityCommunity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCastes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetCastes" message="tns:IElectoralUnifiedAPI_GetCastes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetCastesResponse" message="tns:IElectoralUnifiedAPI_GetCastes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubCastes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetSubCastes" message="tns:IElectoralUnifiedAPI_GetSubCastes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetSubCastesResponse" message="tns:IElectoralUnifiedAPI_GetSubCastes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParties">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetParties" message="tns:IElectoralUnifiedAPI_GetParties_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetPartiesResponse" message="tns:IElectoralUnifiedAPI_GetParties_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVoterTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetVoterTypes" message="tns:IElectoralUnifiedAPI_GetVoterTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetVoterTypesResponse" message="tns:IElectoralUnifiedAPI_GetVoterTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVoterStatusTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetVoterStatusTypes" message="tns:IElectoralUnifiedAPI_GetVoterStatusTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetVoterStatusTypesResponse" message="tns:IElectoralUnifiedAPI_GetVoterStatusTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserAssemblyConstituencies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetUserAssemblyConstituencies" message="tns:IElectoralUnifiedAPI_GetUserAssemblyConstituencies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetUserAssemblyConstituenciesResponse" message="tns:IElectoralUnifiedAPI_GetUserAssemblyConstituencies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchConstituencyVoters">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/SearchConstituencyVoters" message="tns:IElectoralUnifiedAPI_SearchConstituencyVoters_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/SearchConstituencyVotersResponse" message="tns:IElectoralUnifiedAPI_SearchConstituencyVoters_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVoterInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetVoterInfo" message="tns:IElectoralUnifiedAPI_GetVoterInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/GetVoterInfoResponse" message="tns:IElectoralUnifiedAPI_GetVoterInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchVoters">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/SearchVoters" message="tns:IElectoralUnifiedAPI_SearchVoters_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/SearchVotersResponse" message="tns:IElectoralUnifiedAPI_SearchVoters_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddVoterExtInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/AddVoterExtInfo" message="tns:IElectoralUnifiedAPI_AddVoterExtInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/AddVoterExtInfoResponse" message="tns:IElectoralUnifiedAPI_AddVoterExtInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AdvSearchConstituencyVoters">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/AdvSearchConstituencyVoters" message="tns:IElectoralUnifiedAPI_AdvSearchConstituencyVoters_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/AdvSearchConstituencyVotersResponse" message="tns:IElectoralUnifiedAPI_AdvSearchConstituencyVoters_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AdvGetVoterInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/AdvGetVoterInfo" message="tns:IElectoralUnifiedAPI_AdvGetVoterInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/AdvGetVoterInfoResponse" message="tns:IElectoralUnifiedAPI_AdvGetVoterInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AdvAddVoterExtInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/AdvAddVoterExtInfo" message="tns:IElectoralUnifiedAPI_AdvAddVoterExtInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/AdvAddVoterExtInfoResponse" message="tns:IElectoralUnifiedAPI_AdvAddVoterExtInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AdvGetVoterExtInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/AdvGetVoterExtInfo" message="tns:IElectoralUnifiedAPI_AdvGetVoterExtInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IElectoralUnifiedAPI/AdvGetVoterExtInfoResponse" message="tns:IElectoralUnifiedAPI_AdvGetVoterExtInfo_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="ElectoralUnifiedAPI" />
+</wsdl:definitions>

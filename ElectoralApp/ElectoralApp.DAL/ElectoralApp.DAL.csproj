@@ -99,7 +99,7 @@
     <Compile Include="Repository\Interfaces\ILookupReposiotry.cs" />
     <Compile Include="Repository\Interfaces\ISearchRepository.cs" />
     <Compile Include="Repository\Interfaces\IUserRepository.cs" />
-    <Compile Include="Repository\Model\SearchModel.cs" />
+    <Compile Include="Repository\Model\DBSearchModel.cs" />
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>ElectoralDBEntities.tt</DependentUpon>
     </Compile>
